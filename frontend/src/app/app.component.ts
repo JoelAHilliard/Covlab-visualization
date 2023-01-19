@@ -9,9 +9,7 @@ export class AppComponent {
   title = 'covid-portal';
 
   links = [
-    {text: 'Labelling', route: ''},
-    {text: 'Labelled Data', route: ''},
-    {text: 'Status', route: ''},
+
     {text: 'Related Words', route: 'related-words'},
     {text: 'Map', route: 'map'},
     {text: 'Logout', route: ''}
