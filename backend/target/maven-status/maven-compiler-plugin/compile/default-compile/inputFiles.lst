@@ -1,0 +1,11 @@
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/MudblApplication.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/repository/TweetScraperRepository.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/model/TwitterWeeklyAverageData.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/model/TweetScraper.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/configuration/SecurityConfiguration.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/configuration/SecurityConfig.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/service/TweetScraperService.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/configuration/WebConfiguration.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/model/TwitterData.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/controller/TweetScraperController.java
+/projects/twitter/visualization/backend/src/main/java/com/twitter/mudbl/exception/MyResourceNotFoundException.java

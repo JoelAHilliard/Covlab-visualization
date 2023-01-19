@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      username: visualization
+      password: ihae@!rgYI(3F*gi2yg7GI%
+      database: TweetScraper
+      port: 57017
+      host: localhost
+
+server:
+  port : 8080
+  tomcat:
+    relaxed-query-chars: '|,{,},[,]'

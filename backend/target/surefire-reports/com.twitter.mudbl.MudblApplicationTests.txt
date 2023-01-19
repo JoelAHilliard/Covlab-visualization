@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.twitter.mudbl.MudblApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.739 s - in com.twitter.mudbl.MudblApplicationTests
