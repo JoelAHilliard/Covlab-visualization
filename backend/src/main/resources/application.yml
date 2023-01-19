@@ -1,10 +1,10 @@
 spring:
   data:
     mongodb:
-      username: visualization
-      password: ihae@!rgYI(3F*gi2yg7GI%
-      database: TweetScraper
-      port: 57017
+      username: 123
+      password: 123
+      database: 123
+      port: 123
       host: localhost
 
 server:
