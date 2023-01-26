@@ -5,7 +5,8 @@ import { RelatedWordsComponent } from './components/related-words/related-words.
 
 const routes: Routes = [
   {path: 'map', component: MapComponent},
-  {path: 'related-words', component: RelatedWordsComponent}
+  {path: 'related-words', component: RelatedWordsComponent},
+  {path: '', redirectTo: '/related-words', pathMatch: 'full'}
 ];
 
 @NgModule({

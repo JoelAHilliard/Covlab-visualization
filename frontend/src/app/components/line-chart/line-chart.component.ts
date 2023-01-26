@@ -62,13 +62,14 @@ export class LineChartComponent implements OnInit {
         rotation: -45,
         centerY: am5.p50,
         centerX: am5.p100,
-        paddingRight: 15
+        paddingRight: 15,
+        textDecoration:'underline'
       });
       
       xRenderer.grid.template.set('opacity', 0);
       
       let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(this.barRoot, {
-        maxDeviation: 0.3,
+        maxDeviation: 1,
         categoryField: "key",
         renderer: xRenderer,
         tooltip: am5.Tooltip.new(this.barRoot, {})
@@ -254,9 +255,22 @@ export class LineChartComponent implements OnInit {
 
   getTwitterData(){
     this.twitterService.getSource().subscribe((dt: TwitterData[]) => {
-      this.TwitterData = dt;
+      this.TwitterData = this.removeExcessHTML(dt);
       this.createGraph();
     });
+  }
+
+  removeExcessHTML(dt: TwitterData[]) : TwitterData[]{
+    var uniqueKeys = new Set();
+    const uniqueData = dt.filter((element: any)=>{
+      element['key'] = element['key'].replace(/<[^>]*>/g, "");
+      if(!uniqueKeys.has(element['key'])){
+        uniqueKeys.add(element['key'])
+        return true
+      }
+      return false
+    })
+    return uniqueData;
   }
 
   updateWeeklyAvgChart(period: any){
