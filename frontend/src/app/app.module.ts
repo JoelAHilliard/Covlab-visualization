@@ -18,14 +18,17 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon'
-
+import { MatIconModule } from '@angular/material/icon';
+import { CasesCountries } from './components/cases-countries-line/cases-countries-line';
+import { GraphsContainerComponent } from './graphs-container/graphs-container.component';
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     LineChartComponent,
-    RelatedWordsComponent
+    RelatedWordsComponent,
+    CasesCountries,
+    GraphsContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { MatIconModule } from '@angular/material/icon'
     MatButtonModule,
     MatTableModule,
     MatIconModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
