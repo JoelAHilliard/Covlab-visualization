@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'chart.js/auto';
 @Component({
-  selector: 'app-test',
+  selector: 'cases-countries',
   templateUrl: './cases-countries-line.component.html',
   styleUrls: ['./cases-countries-line.component.scss']
 })
