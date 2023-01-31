@@ -20,7 +20,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { CasesCountries } from './components/cases-countries-line/cases-countries-line';
-import { GraphsContainerComponent } from './graphs-container/graphs-container.component';
+import { GraphsContainerComponent } from './components/graphs-container/graphs-container.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { GraphsContainerComponent } from './graphs-container/graphs-container.co
     RelatedWordsComponent,
     CasesCountries,
     GraphsContainerComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
