@@ -3,7 +3,6 @@ import * as am5core from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy'
 import * as am5map from '@amcharts/amcharts5/map';
 import * as am5geodata_usaLow from '@amcharts/amcharts5-geodata/usaLow';
-//import am5themes_Animated from '@amcharts/amcharts5/themes/animated';
 import { CovidTrackingService } from 'src/app/services/covid-tracking.service';
 import { CovidData, TwitterData } from 'src/app/interfaces/covid-data';
 

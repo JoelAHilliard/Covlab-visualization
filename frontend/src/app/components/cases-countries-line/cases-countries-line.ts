@@ -1,3 +1,4 @@
+import { any } from '@amcharts/amcharts5/.internal/core/util/Array';
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'chart.js/auto';
 @Component({
@@ -11,44 +12,48 @@ export class CasesCountries implements OnInit {
 
   days: String[] = [];
 
+  datasets: any[] = [];
+
+  dataAmerican = {
+    label: 'America',
+    data: [45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 14, 45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1,
+    pointHoverBackgroundColor: 'black'
+  }
+  
+  dataUK = {
+    label: 'United Kingdom',
+    data: [25, 65, 80, 60, 70, 30, 55, 75, 95, 105, 115, 100, 90, 45, 35, 20, 10, 15, 55, 140, 50, 110, 130, 120, 145, 135, 105, 90, 75, 45, 35, 65, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,90, 45, 35, 20, 10, 15, 55, 140, 50,90, 45, 35, 20],
+    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+    borderColor: 'rgba(255, 0, 0, 1)',
+    borderWidth: 1,
+    pointHoverBackgroundColor: 'black'
+  }
+
+  dataFromAPI = [this.dataAmerican,this.dataUK]
+
   constructor() { }
 
   ngOnInit(): void {
+    const dataUnitedKingdom = [45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 14, 45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145]
+    
+    this.datasets = [this.dataAmerican,this.dataUK];
+
     const startDate = new Date(2023, 3, 1);
     const endDate = new Date(2023, 5, 1);
 
     this.days = this.setDateData(startDate,endDate);
 
-    const config = {
-        labels: this.days,
-        datasets: [
-            {
-              label: 'America',
-              data: [45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 14, 45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145],
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1,
-              pointHoverBackgroundColor: 'black'
-           },
-           {
-            label: 'United Kingdom',
-            data: [25, 65, 80, 60, 70, 30, 55, 75, 95, 105, 115, 100, 90, 45, 35, 20, 10, 15, 55, 140, 50, 110, 130, 120, 145, 135, 105, 90, 75, 45, 35, 65, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,90, 45, 35, 20, 10, 15, 55, 140, 50,90, 45, 35, 20],
-            backgroundColor: 'rgba(255, 0, 0, 0.2)',
-            borderColor: 'rgba(255, 0, 0, 1)',
-            borderWidth: 1,
-            pointHoverBackgroundColor: 'black'
-
-         }
-
-      ]
-    };
+    
      
 
-    this.createChart(config);
+    this.createChart(["All"]);
    
   }
 
-  setDateData(startDate: Date,endDate: Date){
+  setDateData(startDate: Date, endDate: Date){
     var days = []
     for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
       days.push(d.toLocaleDateString());
@@ -56,14 +61,61 @@ export class CasesCountries implements OnInit {
     return days;
   }
   
-  createChart(data: any){
+  addData(chart:any, label:String, data:any) {
+    this.chart.data.labels.push(label);
+    this.chart.data.datasets.forEach((dataset:any) => {
+        dataset.data.push(data);
+    });
+    this.chart.update();
+  }
+
+  removeData(val:string) {
+    for (let i = 0; i < this.datasets.length; i++) {
+      if (this.datasets[i].label === val) {
+        this.datasets.splice(i, 1);
+        break;
+      }
+    }
+    this.chart.update();
+  }
+  generateDatasets(type: string[]){
+
+    // if 1 or less user filters, use a swicth
+    if(type.length == 1){
+      switch (type[0]){
+        case "All":
+          return this.dataFromAPI;
+        case "America":
+          return [this.dataAmerican];
+        case "United Kingdom":
+          return [this.dataUK];
+        default:
+          return this.dataFromAPI;
+      }
+    } 
+    // filter from the data reveived based on if the users wants to see it
+    else {
+      return this.dataFromAPI.filter(dataset => type.some(a => dataset.label.includes(a)));
+    }
+  }
+  recreateChart(type:any){
+    // must destroy chart before reloading
+    this.chart.destroy();
+    this.createChart(type);
+  }
+  createChart(type:any){
+    const config = {
+      labels: this.days,
+      // here is where the data is dynamically loaded
+      datasets:this.generateDatasets(type)
+    };
+    
     this.chart = new Chart('canvas', {
       type:'line',
-      data:data,
-    
+      data:config,
       options: {
         responsive: true,
-          
+        maintainAspectRatio: true,
         plugins: {
           legend: {
               labels: {
