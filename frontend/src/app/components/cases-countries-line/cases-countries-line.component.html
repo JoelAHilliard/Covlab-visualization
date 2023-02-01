@@ -1,15 +1,20 @@
 <div  style="display: flex; flex-flow:column; width:80%; justify-content: center; margin: auto;">
-<h1 style="text-align: center;">Title 1</h1>
 
-<h4 style="text-decoration: underline;">Select Data</h4>
-<mat-select multiple disableRipple value="" (selectionChange)="recreateChart($event.value)">
-        <mat-option value="All" selected>All</mat-option>
-        <mat-option value="United Kingdom">United Kingdom</mat-option>
-        <mat-option value="America">America</mat-option>
-</mat-select>
+
   <canvas id="canvas">
         {{chart}}
 </canvas>
+<mat-label>Filter by country</mat-label>
+<div id="selector">
+    <mat-form-field appearance="fill">
+
+<mat-select multiple disableRipple (selectionChange)="recreateChart($event.value)">
+        <mat-option  name="option" value="United Kingdom">United Kingdom</mat-option>
+        <mat-option  name="option" value="America">America</mat-option>
+</mat-select>
+    </mat-form-field>
+</div>
+<div>
     <div id="chartdiv"></div>
 </div>
 

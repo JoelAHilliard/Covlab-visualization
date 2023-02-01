@@ -23,11 +23,10 @@ export class MapComponent implements OnInit {
     this.CovidData.forEach(element => {
       data.push({
         id: "US-" + element.state,
-        value: type == "positive"
-          ? element.positive
-          : type == "negative"
-            ? element.negative
-            : element.probableCases
+        value: type == "positive" ? 
+        element.positive : 
+        type == "negative" ? element.negative : 
+        type == "probable" ? element.probableCases : Math.floor(Math.random() * 101)
       });
     });
     //console.log(this.CovidData);

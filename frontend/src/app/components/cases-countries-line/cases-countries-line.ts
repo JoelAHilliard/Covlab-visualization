@@ -9,6 +9,8 @@ import {Chart} from 'chart.js/auto';
 export class CasesCountries implements OnInit {
   chart: any;
 
+  groupName = 'Selections';
+
   days: String[] = [];
 
 
@@ -30,6 +32,7 @@ export class CasesCountries implements OnInit {
     pointHoverBackgroundColor: 'black'
   }
 
+  //replace with dynamic data
   dataFromAPI = [this.dataAmerican,this.dataUK]
 
   ngOnInit(): void {    
@@ -73,6 +76,11 @@ export class CasesCountries implements OnInit {
   recreateChart(type:any){
     // must destroy chart before reloading
     this.chart.destroy();
+
+    if(type.length == 0){
+      type = ['All'];
+    }
+
     this.createChart(type);
   }
   // code that creates the chart
@@ -90,6 +98,13 @@ export class CasesCountries implements OnInit {
         responsive: true,
         maintainAspectRatio: true,
         plugins: {
+          title: {
+            display: true,
+            text: 'Positive Cases by Country',
+            font: {
+              size: 20
+            }
+          },
           legend: {
               labels: {
                   font: {
@@ -115,7 +130,8 @@ export class CasesCountries implements OnInit {
                 }
               }
             }
-        }        
+        }   
+             
       }
     });
   }
