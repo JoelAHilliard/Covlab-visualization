@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Options } from "@angular-slider/ngx-slider";
 import { CasesCountries } from './cases-countries-line';
 
 describe('CasesCountries', () => {

@@ -22,6 +22,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { CasesCountries } from './components/cases-countries-line/cases-countries-line';
 import { GraphsContainerComponent } from './components/graphs-container/graphs-container.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,9 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatSliderModule,
+    NgxSliderModule
 
   ],
   providers: [],

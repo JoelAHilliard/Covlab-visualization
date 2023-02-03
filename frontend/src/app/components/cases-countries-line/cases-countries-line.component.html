@@ -1,20 +1,20 @@
-<div  style="display: flex; flex-flow:column; width:80%; justify-content: center; margin: auto;">
 
 
-  <canvas id="canvas">
+
+<div style="margin: auto;">
+
+<canvas id="canvas" style="min-height: 100px;">
         {{chart}}
 </canvas>
-<mat-label>Filter by country</mat-label>
-<div id="selector">
-    <mat-form-field appearance="fill">
 
-<mat-select multiple disableRipple (selectionChange)="recreateChart($event.value)">
+<ngx-slider [value]="minValue" [highValue]="maxValue" [options]="options"  (userChange)="updateDate($event)" ></ngx-slider>
+<div id="selector">
+<mat-form-field appearance="fill">
+    <mat-label>Select Country</mat-label>
+    <mat-select multiple disableRipple (selectionChange)="recreateChart($event.value)" aria-label="Select">
         <mat-option  name="option" value="United Kingdom">United Kingdom</mat-option>
         <mat-option  name="option" value="America">America</mat-option>
-</mat-select>
-    </mat-form-field>
-</div>
-<div>
-    <div id="chartdiv"></div>
+    </mat-select>
+</mat-form-field>
 </div>
 

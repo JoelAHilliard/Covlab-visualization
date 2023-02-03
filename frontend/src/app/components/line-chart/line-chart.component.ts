@@ -120,7 +120,7 @@ export class LineChartComponent implements OnInit {
       xAxis.data.setAll(this.TwitterData.slice(0, 20));
       series.data.setAll(this.TwitterData.slice(0, 20));
       
-      
+      console.log("Here")
       // Make stuff animate on load
       series.appear(1000);
       chart.appear(1000, 100);
