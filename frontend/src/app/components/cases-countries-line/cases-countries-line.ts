@@ -93,18 +93,25 @@ export class CasesCountries implements OnInit {
   }
 
 
-  updateDate(event: any) {
+  updateData(event: any) {
+
     console.log(event)
+
     this.days = this.setDateData(new Date(event.value), new Date(event.highValue));
-    this.recreateChart(this.selectedGroup);
-  }
-  setDateData(startDate: Date, endDate: Date){
-    var days = []
-    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-      days.push(d.toLocaleDateString());
+    
+    // left hand was moved
+    if(event.pointerType == 0){
+      console.log(event);
     }
-    return days;
+    
+    // right hand was moved
+    if(event.pointerType == 1){
+      console.log(event);
+    }
+    this.createChart(this.selectedGroup);
   }
+
+  
   // generates custom datasets for the graph
   generateDatasets(type: string[]){
     this.selectedGroup = type;
@@ -131,8 +138,6 @@ export class CasesCountries implements OnInit {
     // must destroy chart before reloading
     this.chart.destroy();
 
-    
-
     if(type.length == 0){
       type = ['All'];
     }
@@ -140,12 +145,12 @@ export class CasesCountries implements OnInit {
     this.createChart(type);
   }
 
-  onSliderChange(value: any){
-    console.log(value)
-  }
+  
   // code that creates the chart
   createChart(type:any){
-    
+    if(this.chart){
+      this.chart.destroy();
+    }
     var showSecondYAxis = false;
 
     if(type[0] == 'All' || type[0] == 'America'){
@@ -158,7 +163,7 @@ export class CasesCountries implements OnInit {
       // here is where the data is dynamically loaded
       datasets:this.generateDatasets(type)
     };
-    
+
     this.chart = new Chart('canvas', {
       type:'line',
       data:config,
@@ -230,5 +235,12 @@ export class CasesCountries implements OnInit {
              
       }
     });
+  }
+  setDateData(startDate: Date, endDate: Date){
+    var days = []
+    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+      days.push(d.toLocaleDateString());
+    }
+    return days;
   }
 }
