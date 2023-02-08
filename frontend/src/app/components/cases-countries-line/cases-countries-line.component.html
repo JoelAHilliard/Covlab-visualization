@@ -3,10 +3,6 @@
 
 <div style="margin: auto;">
 
-<canvas id="canvas" style="min-height: 100px;">
-        {{chart}}
-</canvas>
-
 <div id="chartContainer"></div>
 
 
@@ -15,9 +11,10 @@
 <div id="selector">
 <mat-form-field appearance="fill">
     <mat-label>Select Country</mat-label>
-    <mat-select multiple disableRipple (selectionChange)="recreateChart($event.value)" aria-label="Select">
-        <mat-option  name="option" value="United Kingdom">United Kingdom</mat-option>
-        <mat-option  name="option" value="America">America</mat-option>
+    <!-- <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select"> -->
+    <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select">
+        <mat-option  name="option" value="unitedKingdom">United Kingdom</mat-option>
+        <mat-option  name="option" value="america">America</mat-option>
     </mat-select>
 </mat-form-field>
 <div id="container"></div>
