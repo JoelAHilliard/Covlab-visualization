@@ -7,6 +7,10 @@
         {{chart}}
 </canvas>
 
+<div id="chartContainer"></div>
+
+
+
 <ngx-slider [value]="minValue" [highValue]="maxValue" [options]="options"  (userChange)="updateData($event)" ></ngx-slider>
 <div id="selector">
 <mat-form-field appearance="fill">
@@ -16,5 +20,6 @@
         <mat-option  name="option" value="America">America</mat-option>
     </mat-select>
 </mat-form-field>
+<div id="container"></div>
 </div>
 

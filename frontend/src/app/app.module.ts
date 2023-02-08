@@ -24,6 +24,8 @@ import { GraphsContainerComponent } from './components/graphs-container/graphs-c
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { TableComponent } from './table/table.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     CasesCountries,
     GraphsContainerComponent,
     PieChartComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     MatTableModule,
     MatIconModule,
     MatSliderModule,
-    NgxSliderModule
+    NgxSliderModule,
+    NgxDatatableModule
 
   ],
   providers: [],

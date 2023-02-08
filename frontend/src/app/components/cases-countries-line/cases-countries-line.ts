@@ -1,7 +1,9 @@
 import { ChangeContext, LabelType, Options } from '@angular-slider/ngx-slider';
+import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'chart.js/auto';
 import { timeHours } from 'd3-time';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'cases-countries',
@@ -11,12 +13,74 @@ import { timeHours } from 'd3-time';
 
 export class CasesCountries implements OnInit {
 
+
+  highcharts: any;
+
+
   chart: any;
 
-  days: String[] = [];
+  chart1: any;
+
+  days: string[] = [];
+
+  lastValue: number = 0;
+
+  lastHighestValue: number = 0;
+
+
+  
+
+  rawAmericanPositiveCases = this.generateRawCases();
+
+  rawEuropePositiveCases = this.generateRawCases();
+
+  rawAsiaPositiveCases = this.generateRawCases();
+
+
+  rawDataSets = [this.rawAmericanPositiveCases,this.rawEuropePositiveCases,this.rawAsiaPositiveCases];
+
+  leftSliderIndex: number = 0;
+
+  rightSliderIndex: number = this.rawAmericanPositiveCases.length;
+
+  dataAmerican = {
+    label: 'America',
+    data: this.rawAmericanPositiveCases,
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 3,
+    pointHoverBackgroundColor: 'black',
+    yAxisID:"y"
+  }
+
+  tweetCountAmerican = {
+    type:"line",
+    label: 'USA Tweets',
+    data: this.rawAsiaPositiveCases,
+    backgroundColor: 'rgb(105,105,105)',
+    borderColor: 'rgb(105,105,105)',
+    borderWidth: 1,
+    pointHoverBackgroundColor: 'black',
+    yAxisID:"tweetCount",
+    
+  }
+  
+  dataUK = {
+    label: 'United Kingdom',
+    data:this.rawEuropePositiveCases,
+    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+    borderColor: 'rgba(255, 0, 0, 1)',
+    borderWidth: 3,
+    pointHoverBackgroundColor: 'black',
+    yAxisID:"y"
+  }
+
+  //replace with dynamic data
+  dataFromAPI = [this.dataAmerican,this.dataUK,this.tweetCountAmerican]
+
  
   startDate = new Date(2023, 3, 1);
-  endDate = new Date(2023, 5, 1);
+  endDate = new Date(2023, 3, 15);
 
   dateRange: Date[] = this.createDateRange(this.startDate,this.endDate);
 
@@ -24,6 +88,8 @@ export class CasesCountries implements OnInit {
   maxValue: number = this.dateRange[this.dateRange.length-1].getTime();
   
   value: number = this.dateRange[0].getTime();
+  
+  selectedGroup = [""];
   
   options: Options = {
     stepsArray: this.dateRange.map((date: Date) => {
@@ -35,8 +101,26 @@ export class CasesCountries implements OnInit {
   
   };
 
-  selectedGroup = [""];
+  generateTweetCounts(){
 
+    let rawAmericanPositiveCases = [];
+    for (let i = 0; i < 15; i++) {
+      let cases = Math.floor(Math.random() * 10000);
+      rawAmericanPositiveCases.push(cases);
+    }
+    console.log(rawAmericanPositiveCases)
+    return rawAmericanPositiveCases;
+  }
+
+  generateRawCases() {
+  let rawAmericanPositiveCases = [];
+  for (let i = 0; i < 15; i++) {
+    let date = "4/" + (i + 1) + "/2023";
+    let cases = Math.floor(Math.random() * 100000);
+    rawAmericanPositiveCases.push([date, cases]);
+  }
+  return rawAmericanPositiveCases;
+  }
   createDateRange(startDate: Date, endDate: Date): Date[] {
     const dates: Date[] = [];
     for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
@@ -47,78 +131,143 @@ export class CasesCountries implements OnInit {
 
 
 
-  dataAmerican = {
-    label: 'America',
-    data: [45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 14, 45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145],
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 3,
-    pointHoverBackgroundColor: 'black',
-    yAxisID:"y"
-  }
-
-  tweetCountAmerican = {
-    label: 'USA Tweets',
-    data: [125, 135, 14, 45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,45, 35, 60, 70, 80, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115],
-    backgroundColor: 'rgb(105,105,105)',
-    borderColor: 'rgb(105,105,105)',
-    borderWidth: 1,
-    pointHoverBackgroundColor: 'black',
-    yAxisID:"tweetCount",
-    type:"bar"
-
-  }
   
-  dataUK = {
-    label: 'United Kingdom',
-    data: [25, 65, 80, 60, 70, 30, 55, 75, 95, 105, 115, 100, 90, 45, 35, 20, 10, 15, 55, 140, 50, 110, 130, 120, 145, 135, 105, 90, 75, 45, 35, 65, 50, 40, 20, 10, 15, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145,90, 45, 35, 20, 10, 15, 55, 140, 50,90, 45, 35, 20],
-    backgroundColor: 'rgba(255, 0, 0, 0.2)',
-    borderColor: 'rgba(255, 0, 0, 1)',
-    borderWidth: 3,
-    pointHoverBackgroundColor: 'black',
-    yAxisID:"y"
-  }
-
-  //replace with dynamic data
-  dataFromAPI = [this.dataAmerican,this.dataUK,this.tweetCountAmerican]
-
   ngOnInit(): void {    
     const startDate = new Date(2023, 3, 1);
-    const endDate = new Date(2023, 5, 1);
+    const endDate = new Date(2023, 3, 15);
 
     this.days = this.setDateData(startDate,endDate);
 
+    console.log(this.days)
+
     this.createChart(["All"]);
-   
+
+    this.makeHighchart()
+    
   }
 
 
-  updateData(event: any) {
-
-    console.log(event)
-
-    this.days = this.setDateData(new Date(event.value), new Date(event.highValue));
-    
+  updateData(event: any) {    
     // left hand was moved
     if(event.pointerType == 0){
-      console.log(event);
+      //find index of where slider was left
+      let index = 0;
+      let date = new Date(event.value);
+      // copy of data (this assumes that all data lengths are equal)
+      let data = new Array(this.rawAmericanPositiveCases)[0];
+      //copy of the x axis data
+      let daysCopy = new Array(this.days)[0]
+      
+      //find correct index to slice the dataset at
+      for (let i = 0;i<data.length;i++){
+        if(data[i][0] === date.toLocaleDateString()){
+          index = i;
+        }
+      }
+      let counter = 0;
+      /*var temp = document.getElementById("chartContainer").highcharts()*/
+      this.chart.data.datasets.forEach((element:any) => {
+        //find correct  raw data somehow and set it here
+        element.data = this.rawDataSets[counter].slice(index,this.rightSliderIndex+1);
+        counter++;
+      });
+      this.highcharts.xAxis[0].update({
+        categories:daysCopy.slice(index,this.rightSliderIndex+1)
+      })
+      counter = 0
+      this.highcharts.series.forEach((element:any) => {
+        console.log(element)
+        element.update({
+          data: this.rawDataSets[counter].slice(index,this.rightSliderIndex+1)
+
+        })
+        counter++;
+      });
+      
+      
+      
+
+
+
+
+      this.leftSliderIndex = index;
+
+
+      //slice data (or a copy of it?) based on this index
+
+
     }
     
     // right hand was moved
     if(event.pointerType == 1){
-      console.log(event);
+      let index = 0;
+      let date = new Date(event.highValue);
+      // copy of data
+      let data = new Array(this.rawAmericanPositiveCases)[0];
+
+      for (let i = 0;i<data.length;i++){
+        if(data[i][0] === date.toLocaleDateString()){
+          index = i;
+        }
+      }
+
+      if(index == 0){
+        index = this.rightSliderIndex;
+      }
+      let counter = 0;
+      this.chart.data.datasets.forEach((element:any) => {
+        //find correct  raw data somehow and set it here
+        element.data = this.rawDataSets[counter].slice(this.leftSliderIndex,index+1);
+        counter++;
+      });
+      this.rightSliderIndex = index;
+
     }
+    
+   
+    
+    this.lastValue = event.value;
+    this.lastHighestValue = event.lastHighestValue;
     this.createChart(this.selectedGroup);
+    this.highcharts.redraw();
   }
 
   
   // generates custom datasets for the graph
   generateDatasets(type: string[]){
+
+    // dataAmerican = {
+    //   label: 'America',
+    //   data: this.rawAmericanPositiveCases,
+    //   backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    //   borderColor: 'rgba(54, 162, 235, 1)',
+    //   borderWidth: 3,
+    //   pointHoverBackgroundColor: 'black',
+    //   yAxisID:"y"
+    // }
     this.selectedGroup = type;
+
+    let counter = 0;
+
+    let allData = [];
+
     // if 1 or less user filters, use a swicth
     if(type.length == 1){
       switch (type[0]){
         case "All":
+          this.rawDataSets.forEach ((element) => {
+            let data = {
+              label: counter,
+              data: element,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 3,
+              pointHoverBackgroundColor: 'black',
+              yAxisID:"y"
+            }
+            allData.push(data);
+          })
+          
           return this.dataFromAPI;
         case "America":
           return [this.dataAmerican,this.tweetCountAmerican];
@@ -144,8 +293,6 @@ export class CasesCountries implements OnInit {
 
     this.createChart(type);
   }
-
-  
   // code that creates the chart
   createChart(type:any){
     if(this.chart){
@@ -159,29 +306,15 @@ export class CasesCountries implements OnInit {
 
 
     const config = {
-      labels: this.days,
       // here is where the data is dynamically loaded
       datasets:this.generateDatasets(type)
     };
 
     this.chart = new Chart('canvas', {
-      type:'line',
+      type:"line",
       data:config,
       options: {
-        
-        maintainAspectRatio: true,
         plugins: {
-          // annotation: {
-          //   annotations: {
-          //     line1: {
-          //       type: 'line',
-          //       yMin: 60,
-          //       yMax: 60,
-          //       borderColor: 'rgb(255, 99, 132)',
-          //       borderWidth: 2,
-          //     }
-          //   }
-          // },
           tooltip :{
             enabled:true
           },
@@ -242,5 +375,76 @@ export class CasesCountries implements OnInit {
       days.push(d.toLocaleDateString());
     }
     return days;
+  }
+  
+
+  makeHighchart(){
+    this.highcharts = Highcharts.chart('chartContainer', {
+      title: {
+          text: 'Covtech Data',
+          align: 'left'
+      },
+      navigator : {
+          enabled:true
+      },
+      rangeSelector :{
+        verticalAlign:'top',
+        x:0,
+        y:0,
+        enabled:true
+      },
+      xAxis: {
+          categories: this.days
+      },
+      yAxis: [{ // Primary yAxis
+          labels: {
+              
+          },
+          title: {
+              text: 'Positive Cases',
+            
+          }
+      },{ // Primary yAxis
+      labels: {
+          
+      },
+      title: {
+          text: 'Tweets',
+         
+      },
+      opposite:true
+  }],
+      tooltip: {
+          valueSuffix: ' positive tests'
+      },
+      series: [
+        {
+          type: 'column',
+          name: '2020',
+          data: this.dataUK.data,
+          yAxis:1
+        }, 
+        {
+          type: 'spline',
+          name: 'American Data',
+          data: this.dataAmerican.data,
+          marker: {
+              lineWidth: 2,
+              lineColor: "purple",
+              fillColor: 'white'
+          }
+        },
+        {
+          type: 'spline',
+          name: 'UK Data',
+          data: this.dataUK.data,
+          marker: {
+              lineWidth: 2,
+              lineColor: "purple",
+              fillColor: 'white'
+          }
+        }
+      ]
+    }); 
   }
 }
