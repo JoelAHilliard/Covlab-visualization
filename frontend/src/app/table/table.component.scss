@@ -1,7 +1,15 @@
 td, th{
-    text-align: center;
+    text-align: left;
     
 }
 th.mat-header-cell {
-    text-align: center;
+    text-align: left;
+}
+tr.mat-row:first-child{
+    font-weight: bold;
+    background-color:#a9a9a9;
+
+}
+tr.mat-row:not(:first-child) {
+
 }

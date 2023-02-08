@@ -156,6 +156,7 @@ export class CasesCountries implements OnInit {
     return dates;
   }
 
+
   updateData(event: any) {
     
     //a fresh copy of the days array (this will be extracted dynamically)

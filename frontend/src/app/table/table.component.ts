@@ -1,5 +1,9 @@
+import { sameBounds } from '@amcharts/amcharts5/.internal/core/util/Utils';
 import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { Chart } from 'chart.js';
+import * as Highcharts from 'highcharts';
+import { TableGraphComponent } from '../table-graph/table-graph.component';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -8,12 +12,54 @@ import { MatTableModule } from '@angular/material/table';
 export class TableComponent implements OnInit {
 
   constructor() { }
+
+
+
   data:any = []
   columndefs : string[] = ['state','dailyCases','per100k','twoWeekChangeCases',
-  'testPositivity','hospitaliedDaily','hospitalizedPer100k','twoWeekChangeHospitalized'
-  ,'deathsDailyAvg','deathsPer100k','fullyVaccinated'];
-  ngOnInit(): void {
+  'testPositivity','hospitaliedDaily','hospitalizedPer100k','twoWeekChangeHospitalized',
+  'deathsDailyAvg','deathsPer100k','fullyVaccinated'];
 
+ 
+  
+  ngOnInit(): void {
+    // var ctx = document.getElementById("myChart").getContext("2d");
+    // new Chart(ctx!, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ['January', 'February', 'March', 'April', 'May'],
+    //     datasets: [
+    //       {
+    //         label: 'Sales',
+    //         data: [10, 20, 30, 40, 50],
+    //         backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    //         borderColor: 'rgba(75, 192, 192, 1)',
+    //         borderWidth: 1,
+    //       },
+    //     ],
+    //   },
+    //   options: {
+      
+    //   },
+    // });
+    let usAggregateData = {
+      state:"United States",
+      dailyCases:0,
+      twoWeekChangeCases:0,
+      testPositivity:0,
+
+      hospitaliedDaily:0,
+
+      hospitalizedPer100k:0,
+      twoWeekChangeHospitalized:0,
+      deathsDailyAvg:0,
+      deathsPer100k:0,
+      per100k:0,
+      fullyVaccinated:0,
+
+    }
+
+    
     const sampleData = [
       {
         id:1,
@@ -198,12 +244,27 @@ export class TableComponent implements OnInit {
       }
     ];
 
+
+    
+    sampleData[0].data.forEach((element:any)=>{
+      usAggregateData.dailyCases += element.dailyCases;
+      usAggregateData.twoWeekChangeCases += element.twoWeekChangeCases;
+      usAggregateData.testPositivity += element.testPositivity;
+      usAggregateData.hospitaliedDaily += element.hospitaliedDaily;
+      usAggregateData.fullyVaccinated += element.fullyVaccinated;
+      usAggregateData.hospitalizedPer100k += element.hospitalizedPer100k;
+      usAggregateData.twoWeekChangeHospitalized += element.twoWeekChangeHospitalized;
+      usAggregateData.deathsDailyAvg += element.deathsDailyAvg;
+      usAggregateData.deathsPer100k += element.deathsPer100k;
+      usAggregateData.per100k += element.per100k;
+    })
+
+    sampleData[0].data.unshift(usAggregateData);
+    
+
     this.data = sampleData[0].data;
 
-  }
-
-
-  createTable(){
+    
 
   }
 
