@@ -60,7 +60,12 @@ export class CasesCountries implements OnInit {
   startDate = new Date(2023, 3, 1);
   endDate = new Date(2023, 3, 15);
 
-
+  sliderOptions: Options = {
+    showSelectionBar: true,
+    getSelectionBarColor: (value: number): string => {
+      return "red"
+    }
+  }
 
 
   //for the slider
@@ -78,6 +83,14 @@ export class CasesCountries implements OnInit {
     }),
     translate: (value: number, label: LabelType): string => {
       return new Date(value).toDateString();
+    },
+    showSelectionBar: true,
+    selectionBarGradient: {
+      from: 'blue',
+      to: 'blue'
+    },
+    getPointerColor: (value: number): string => {
+      return 'blue'
     }
   
   };
@@ -121,31 +134,44 @@ export class CasesCountries implements OnInit {
   }
 
   updateDatasets(event: any){
-    console.log(event);
-    // let newDataset = [];
    
-    // this.highcharts.series.forEach((element:any) => {
-    //   element.setData([]);
-    // });
 
-    // if(event.length < 1){
-    //   this.highcharts.update({
-    //     series: this.dataFromAPI
-    //   });
-    // }
-    // else {
-    //   for(let i = 0;i<event.length;i++){
-    //     for(let j = 0;j<this.dataFromAPI.length;j++){
-    //       if(this.dataFromAPI[j].datasetID === event[i]){
-    //         newDataset.push(this.dataFromAPI[j]);
-    //       }
-    //     }
-    //   }
-    //   console.log(newDataset)
-    //   this.highcharts.update({
-    //     series: newDataset
-    //   })
-    // }
+    //clear all data
+    this.highcharts.series.forEach((element:any) => {
+      element.remove();
+    });
+    this.highcharts.series.forEach((element:any) => {
+      element.setData([]);
+    });
+
+    let colors = ["red","green","blue","orange","purple"]
+    let seriesArray:  Highcharts.SeriesOptionsType[] = []
+
+
+    let randomColorIndex = Math.floor(Math.random() * colors.length);
+    let randomColor = colors[randomColorIndex];
+
+    //NONE SELECTED 
+    if(event.length < 1 || event.length == this.dataFromAPI.length / 2){
+      this.makeHighchart(this.dataFromAPI);
+      return
+    }
+    else {
+      console.log(event);
+      let selectedData = [];
+      for(var i = 0;i < event.length; i++){
+        for(var j = 0;j < this.dataFromAPI.length; j++){
+          if(String(event[i]).toLowerCase() == String(this.dataFromAPI[j].datasetID).toLowerCase()){
+            selectedData.push(this.dataFromAPI[j])
+          }
+        }
+      }
+      console.log(selectedData)
+      this.highcharts.update({
+        series:selectedData
+      });
+      this.makeHighchart(selectedData);
+    }
   }
 
   createDateRange(startDate: Date, endDate: Date): Date[] {
@@ -192,10 +218,11 @@ export class CasesCountries implements OnInit {
       this.highcharts.series.forEach((element:any) => {
         element.update({
           data: this.dataFromAPI[counter].data.slice(index,this.rightSliderIndex+1)
-
         })
         counter++;
       });
+
+      console.log(counter);
       
       this.leftSliderIndex = index;
     }
@@ -270,9 +297,10 @@ export class CasesCountries implements OnInit {
 
         let seriesItem: Highcharts.SeriesOptionsType = {
           type: "line",
-          name: this.dataFromAPI[i].label,
-          data: this.dataFromAPI[i].data,
+          name: datasets[i].label,
+          data: datasets[i].data,
           color: randomColor,
+          yAxis:0,
           zIndex:5,
           marker: {
             lineWidth: 1,
@@ -287,8 +315,8 @@ export class CasesCountries implements OnInit {
         }
         let seriesItem: Highcharts.SeriesOptionsType = {
           type: "column",
-          name: this.dataFromAPI[i].label,
-          data: this.dataFromAPI[i].data,
+          name: datasets[i].label,
+          data: datasets[i].data,
           yAxis:1
         };
         seriesArray.push(seriesItem);
