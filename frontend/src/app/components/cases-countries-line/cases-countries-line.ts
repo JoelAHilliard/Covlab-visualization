@@ -1,10 +1,6 @@
-import { ChangeContext, LabelType, Options } from '@angular-slider/ngx-slider';
-import { identifierName } from '@angular/compiler';
+import {LabelType, Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'chart.js/auto';
-import { timeHours } from 'd3-time';
 import * as Highcharts from 'highcharts';
-import { SeriesOptionsType } from 'highcharts';
 
 @Component({
   selector: 'cases-countries',
@@ -13,8 +9,6 @@ import { SeriesOptionsType } from 'highcharts';
 })
 
 export class CasesCountries implements OnInit {
-
-
   highcharts: any;
 
   // x axis
@@ -43,14 +37,9 @@ export class CasesCountries implements OnInit {
   dataFromAPI = [this.realCasesData,this.modelPredictedData]
 
  //replace with dynamic data
-  startDate = new Date(2023, 3, 1);
-  endDate = new Date(2023, 3, 15);
-
-  sliderOptions: Options = {
-    showSelectionBar: true
-  }
-
-
+  startDate = new Date(2020, 1, 1);
+  endDate = new Date(2023, 2, 1);
+  
   //for the slider
   dateRange: Date[] = this.createDateRange(this.startDate,this.endDate);
 
@@ -87,35 +76,106 @@ export class CasesCountries implements OnInit {
   lastHighestValue: number = 0;
 
   ngOnInit(): void {    
-    const startDate = new Date(2023, 3, 1);
-    const endDate = new Date(2023, 3, 15);
-
-    this.days = this.setDateData(startDate,endDate);
+    this.days = this.setDateData(this.startDate,this.endDate);
 
     this.makeHighchart(this.dataFromAPI)
     
   }
+  // code that creates the chart
+  makeHighchart(datasets: any){  
+    let colors = ["red","green","blue","orange","purple"]
+    let seriesArray:  Highcharts.SeriesOptionsType[] = []
 
-  generateTweetCounts(){
 
-    let arr = [];
-    for (let i = 0; i < 15; i++) {
-      let cases = Math.floor(Math.random() * 10000);
-      arr.push(cases);
+    let randomColorIndex = Math.floor(Math.random() * colors.length);
+    let randomColor = colors[randomColorIndex];
+    let tooltip = {}
+
+    let yAxisIndex = 0;
+
+    for(let i = 0; i < datasets.length; i++) {
+      randomColorIndex = Math.floor(Math.random() * colors.length);
+      randomColor = colors[randomColorIndex];
+
+        tooltip = {
+          valueSuffix: ' positive tests'
+        }
+
+        if(datasets[i].datasetID === "modelPredicted") {
+          yAxisIndex = 1;
+        }
+
+
+        let seriesItem: Highcharts.SeriesOptionsType = {
+          type: "spline",
+          name: datasets[i].label,
+          data: datasets[i].data,
+          color: randomColor,
+          yAxis:yAxisIndex,
+          marker: {
+            lineWidth: 1,
+            lineColor: randomColor,
+            fillColor: 'white',
+            enabled:false
+          }
+        };
+        seriesArray.push(seriesItem);
     }
-    return arr;
-  }
 
+    this.highcharts = Highcharts.chart('chartContainer', {
+      scrollbar: {
+        enabled: true
+    },
+
+      plotOptions: {
+        spline: {
+          turboThreshold: 2000
+        }
+      },
+      title :{
+        text:''
+      },
+      xAxis: {
+          categories: this.days
+      },
+      yAxis: [
+        { // Primary yAxis
+        labels: {
+            
+            },
+            title: {
+                text: 'Real Cases',
+              
+            }
+        },
+        { // Primary yAxis
+          labels: {
+              
+          },
+          title: {
+              text: 'Model Predicted',
+            
+          },
+          opposite:true
+        }
+    ],
+      series: seriesArray
+    }); 
+  }
+  // fake data
   generateRawCases() {
+    let startDate = new Date(2020, 2, 1);
+    let endDate = new Date(2023, 2, 1);
     let arr = [];
-    for (let i = 0; i < 15; i++) {
-      let date = "4/" + (i + 1) + "/2023";
+    const dates: string[] = [];
+    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
       let cases = Math.floor(Math.random() * 100000);
-      arr.push([date, cases]);
+      dates.push(d.toLocaleString());
+      arr.push([d.toLocaleString(),cases])
     }
     return arr;
   }
-
+  //when user selects a new dataset
   updateDatasets(event: any){
    
 
@@ -148,25 +208,23 @@ export class CasesCountries implements OnInit {
           }
         }
       }
-      console.log(selectedData)
       this.highcharts.update({
         series:selectedData
       });
       this.makeHighchart(selectedData);
     }
   }
-
+ //left in date form
   createDateRange(startDate: Date, endDate: Date): Date[] {
     const dates: Date[] = [];
-    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+    let tempStartDate = new Date(startDate)
+    for (let d = tempStartDate; d <= endDate; d.setDate(d.getDate() + 1)) {
       dates.push(new Date(d));
     }
     return dates;
   }
-
-
+ //when the range slider is moved
   updateData(event: any) {
-    
     //a fresh copy of the days array (this will be extracted dynamically)
     let daysCopy = new Array(this.days)[0];
       // copy of data (this assumes that all data lengths are equal)
@@ -181,8 +239,10 @@ export class CasesCountries implements OnInit {
       
       //find correct index to slice the dataset at
       for (let i = 0;i<data.length;i++){
-        if(data[i][0] === date.toLocaleDateString()){
+       
+        if(data[i][0] === date.toLocaleString()){
           index = i;
+          break;
         }
       }
       // update the x axis labels
@@ -203,8 +263,6 @@ export class CasesCountries implements OnInit {
         })
         counter++;
       });
-
-      console.log(counter);
       
       this.leftSliderIndex = index;
     }
@@ -215,12 +273,15 @@ export class CasesCountries implements OnInit {
       let date = new Date(event.highValue);
       // copy of data (this is just for the x axis. it will be stripped when data is receieved)
 
-      for (let i = 0;i<data.length;i++){
-        if(data[i][0] === date.toLocaleDateString()){
+      //reverse order loop
+      for (let i = data.length - 1; i > 0; i--){
+        if(data[i][0] === date.toLocaleString()){
           index = i;
+          break;
         }
       }
 
+      console.log(index)
       if(index == 0){
         index = this.rightSliderIndex;
       }
@@ -247,7 +308,7 @@ export class CasesCountries implements OnInit {
     this.lastHighestValue = event.lastHighestValue;
     this.highcharts.redraw();
   }
-
+  // left in string form
   setDateData(startDate: Date, endDate: Date){
     var days = []
     for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
@@ -255,91 +316,10 @@ export class CasesCountries implements OnInit {
     }
     return days;
   }
-  
-  // code that creates the chart
-
-  makeHighchart(datasets: any){  
-    let colors = ["red","green","blue","orange","purple"]
-    let seriesArray:  Highcharts.SeriesOptionsType[] = []
-
-
-    let randomColorIndex = Math.floor(Math.random() * colors.length);
-    let randomColor = colors[randomColorIndex];
-    let tooltip = {}
-
-    let yAxisIndex = 0;
-
-    for(let i = 0; i < datasets.length; i++) {
-      randomColorIndex = Math.floor(Math.random() * colors.length);
-      randomColor = colors[randomColorIndex];
-
-        tooltip = {
-          valueSuffix: ' positive tests'
-        }
-
-        if(datasets[i].datasetID === "modelPredicted") {
-          yAxisIndex = 1;
-        }
-
-
-        let seriesItem: Highcharts.SeriesOptionsType = {
-          type: "spline",
-          name: datasets[i].label,
-          data: datasets[i].data,
-          color: randomColor,
-          yAxis:yAxisIndex,
-          zIndex:5,
-          marker: {
-            lineWidth: 1,
-            lineColor: randomColor,
-            fillColor: 'white',
-            enabled:false
-          }
-        };
-        seriesArray.push(seriesItem);
-    }
-
-    this.highcharts = Highcharts.chart('chartContainer', {
-      plotOptions: {
-        spline: {
-          turboThreshold: 2000
-        }
-      },
-      title :{
-        text:''
-      },
-      
-      navigator : {
-          enabled:true
-      },
-      rangeSelector :{
-        verticalAlign:'top',
-        x:0,
-        y:0,
-        enabled:true
-      },
-      xAxis: {
-          categories: this.days
-      },
-      yAxis: [{ // Primary yAxis
-          labels: {
-              
-          },
-          title: {
-              text: 'Real Cases',
-            
-          }
-      },{ // Primary yAxis
-      labels: {
-          
-      },
-      title: {
-          text: 'Model Predicted',
-         
-      },
-      opposite:true
-      }],
-      series: seriesArray
-    }); 
+  // add days to a date
+  addDays(date:Date, days:number) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 }
