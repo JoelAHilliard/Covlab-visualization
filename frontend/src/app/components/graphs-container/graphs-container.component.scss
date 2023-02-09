@@ -1,0 +1,7 @@
+.graphSize {
+    min-height: 100px;
+    @media screen and (min-width: 1300px) {
+        width: 85%;
+        margin:auto;
+    }
+}

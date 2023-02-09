@@ -18,14 +18,27 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { CasesCountries } from './components/cases-countries-line/cases-countries-line';
+import { GraphsContainerComponent } from './components/graphs-container/graphs-container.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { TableComponent } from './table/table.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { TableGraphComponent } from './table-graph/table-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     LineChartComponent,
-    RelatedWordsComponent
+    RelatedWordsComponent,
+    CasesCountries,
+    GraphsContainerComponent,
+    PieChartComponent,
+    TableComponent,
+    TableGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +54,11 @@ import { MatIconModule } from '@angular/material/icon'
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatSliderModule,
+    NgxSliderModule,
+    NgxDatatableModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

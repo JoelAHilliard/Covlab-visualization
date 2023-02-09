@@ -3,7 +3,6 @@ import * as am5core from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy'
 import * as am5map from '@amcharts/amcharts5/map';
 import * as am5geodata_usaLow from '@amcharts/amcharts5-geodata/usaLow';
-//import am5themes_Animated from '@amcharts/amcharts5/themes/animated';
 import { CovidTrackingService } from 'src/app/services/covid-tracking.service';
 import { CovidData, TwitterData } from 'src/app/interfaces/covid-data';
 
@@ -24,11 +23,10 @@ export class MapComponent implements OnInit {
     this.CovidData.forEach(element => {
       data.push({
         id: "US-" + element.state,
-        value: type == "positive"
-          ? element.positive
-          : type == "negative"
-            ? element.negative
-            : element.probableCases
+        value: type == "positive" ? 
+        element.positive : 
+        type == "negative" ? element.negative : 
+        type == "probable" ? element.probableCases : Math.floor(Math.random() * 101)
       });
     });
     //console.log(this.CovidData);

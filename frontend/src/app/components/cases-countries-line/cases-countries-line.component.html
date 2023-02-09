@@ -1,0 +1,24 @@
+<div>
+    <div style="margin-left: auto; width: 100%;">
+        <div id="selector">
+            <div style="display: flex; flex-flow: row; justify-content: space-between;">
+                <h2>Covlab Data</h2>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select Dataset</mat-label>
+                    <!-- <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select"> -->
+                    <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select">
+                        <mat-option  name="option" value="modelPredicted">Model Predicted</mat-option>
+                        <mat-option  name="option" value="realCases">Real Cases</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        
+        <div ngClass="graph" id="chartContainer" style="overflow: visible !important;"></div>
+    </div>
+
+    <div style="display: flex; flex-flow: row; justify-content: center;">
+        <ngx-slider style="width: 70%;"  [value]="minValue" [highValue]="maxValue" [options]="options"  (userChange)="updateData($event)" ></ngx-slider>
+    </div>
+    
+</div>
+
