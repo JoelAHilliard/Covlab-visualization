@@ -22,49 +22,32 @@ export class CasesCountries implements OnInit {
 
   
 
-  dataAmerican = {
+  realCasesData = {
     type:'spline',
-    label: 'America',
+    label: 'Real Cases Number',
     data: this.generateRawCases(),
-    datasetID:"america"
+    datasetID:"realCases"
   }
 
-  tweetCountAmerican = {
-    type:'bar',
-    label: 'USA Tweets',
-    data: this.generateRawCases(),
-    datasetID:"america"
-  }
-
-  tweetCountUK = {
-    type:'bar',
-    label: 'UK Tweets',
-    data: this.generateRawCases(),
-    datasetID:"unitedKingdom"
-    
-  }
   
-  dataUK = {
+  modelPredictedData = {
     type:'spline',
-    label: 'United Kingdom',
+    label: 'Model Predicted',
     data:this.generateRawCases(),
-    datasetID:"unitedKingdom"
+    datasetID:"modelPredicted"
   }
 
 
 
   //replace with dynamic data
-  dataFromAPI = [this.dataAmerican,this.dataUK,this.tweetCountAmerican,this.tweetCountUK]
+  dataFromAPI = [this.realCasesData,this.modelPredictedData]
 
  //replace with dynamic data
   startDate = new Date(2023, 3, 1);
   endDate = new Date(2023, 3, 15);
 
   sliderOptions: Options = {
-    showSelectionBar: true,
-    getSelectionBarColor: (value: number): string => {
-      return "red"
-    }
+    showSelectionBar: true
   }
 
 
@@ -152,12 +135,11 @@ export class CasesCountries implements OnInit {
     let randomColor = colors[randomColorIndex];
 
     //NONE SELECTED 
-    if(event.length < 1 || event.length == this.dataFromAPI.length / 2){
+    if(event.length < 1){
       this.makeHighchart(this.dataFromAPI);
       return
     }
     else {
-      console.log(event);
       let selectedData = [];
       for(var i = 0;i < event.length; i++){
         for(var j = 0;j < this.dataFromAPI.length; j++){
@@ -285,49 +267,48 @@ export class CasesCountries implements OnInit {
     let randomColor = colors[randomColorIndex];
     let tooltip = {}
 
+    let yAxisIndex = 0;
+
     for(let i = 0; i < datasets.length; i++) {
       randomColorIndex = Math.floor(Math.random() * colors.length);
       randomColor = colors[randomColorIndex];
-      if(datasets[i].type == "spline"){
 
         tooltip = {
           valueSuffix: ' positive tests'
         }
 
+        if(datasets[i].datasetID === "modelPredicted") {
+          yAxisIndex = 1;
+        }
+
 
         let seriesItem: Highcharts.SeriesOptionsType = {
-          type: "line",
+          type: "spline",
           name: datasets[i].label,
           data: datasets[i].data,
           color: randomColor,
-          yAxis:0,
+          yAxis:yAxisIndex,
           zIndex:5,
           marker: {
             lineWidth: 1,
             lineColor: randomColor,
-            fillColor: 'white'
+            fillColor: 'white',
+            enabled:false
           }
         };
         seriesArray.push(seriesItem);
-     } else {
-        tooltip = {
-          valueSuffix: ' tweets'
-        }
-        let seriesItem: Highcharts.SeriesOptionsType = {
-          type: "column",
-          name: datasets[i].label,
-          data: datasets[i].data,
-          yAxis:1
-        };
-        seriesArray.push(seriesItem);
-     }
     }
 
     this.highcharts = Highcharts.chart('chartContainer', {
-      title: {
-          text: 'Covtech Data',
-          align: 'left'
+      plotOptions: {
+        spline: {
+          turboThreshold: 2000
+        }
       },
+      title :{
+        text:''
+      },
+      
       navigator : {
           enabled:true
       },
@@ -345,7 +326,7 @@ export class CasesCountries implements OnInit {
               
           },
           title: {
-              text: 'Positive Cases',
+              text: 'Real Cases',
             
           }
       },{ // Primary yAxis
@@ -353,7 +334,7 @@ export class CasesCountries implements OnInit {
           
       },
       title: {
-          text: 'Tweets',
+          text: 'Model Predicted',
          
       },
       opposite:true
