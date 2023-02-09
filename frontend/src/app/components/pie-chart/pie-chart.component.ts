@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import * as Highcharts from 'highcharts';
 import Drilldown from 'highcharts/modules/drilldown';
+import { PieChartData } from 'src/app/interfaces/covid-data';
+import { PieChartService } from 'src/app/services/pie-chart.service';
 Drilldown(Highcharts);
 @Component({
   selector: 'app-pie-chart',
@@ -12,29 +14,30 @@ export class PieChartComponent implements OnInit {
 
   chart: any;
 
+  data: PieChartData = {
+    modelPosCount: 0,
+    totalTweetCount: 0,
+    totalLabelledCount: 0
+  };
+
   totalNumTweets: number | undefined;
 
-  constructor() { }
+  constructor(private pieChartService: PieChartService) { }
+
 
   ngOnInit(): void {
 
+    this.fetchData();
     this.createChart(null);
 
-    // const tweetdata: number[] = [30, 20, 50];
+  }
 
-    // const pieChartData = {
-    //   labels: ['Labelled', 'Unlabeled', 'Labeled + Correct'],
-    //   datasets: [
-    //     {
-    //       data: tweetdata,
-    //       backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe']
-    //     }
-    //   ]
-    // };
 
-    // this.totalNumTweets = tweetdata.length;
+  fetchData(){
+    this.pieChartService.getData().subscribe((data:any)=>{
+      console.log(data)
+    });
 
-    // this.createChart(pieChartData);
   }
   createChart(data: any | undefined){
     Highcharts.chart({
