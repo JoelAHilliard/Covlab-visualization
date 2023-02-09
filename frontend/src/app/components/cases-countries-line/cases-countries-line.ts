@@ -11,27 +11,22 @@ import * as Highcharts from 'highcharts';
 export class CasesCountries implements OnInit {
   highcharts: any;
 
-  // x axis
+  // x axis vals
   days: string[] = [];
-
-  
 
   realCasesData = {
     type:'spline',
     label: 'Real Cases Number',
-    data: this.generateRawCases(),
+    data: this.generateRawCases(100000),
     datasetID:"realCases"
   }
 
-  
   modelPredictedData = {
     type:'spline',
     label: 'Model Predicted',
-    data:this.generateRawCases(),
+    data:this.generateRawCases(250000),
     datasetID:"modelPredicted"
   }
-
-
 
   //replace with dynamic data
   dataFromAPI = [this.realCasesData,this.modelPredictedData]
@@ -39,7 +34,7 @@ export class CasesCountries implements OnInit {
  //replace with dynamic data
   startDate = new Date(2020, 1, 1);
   endDate = new Date(2023, 2, 1);
-  
+
   //for the slider
   dateRange: Date[] = this.createDateRange(this.startDate,this.endDate);
 
@@ -81,10 +76,12 @@ export class CasesCountries implements OnInit {
     this.makeHighchart(this.dataFromAPI)
     
   }
+
   // code that creates the chart
-  makeHighchart(datasets: any){  
-    let colors = ["red","green","blue","orange","purple"]
-    let seriesArray:  Highcharts.SeriesOptionsType[] = []
+  makeHighchart(datasets: any){
+    console.log(datasets[0])
+    let colors: string[] = ["black","blue"];
+    let seriesArray:  Highcharts.SeriesOptionsType[] = [];
 
 
     let randomColorIndex = Math.floor(Math.random() * colors.length);
@@ -94,8 +91,7 @@ export class CasesCountries implements OnInit {
     let yAxisIndex = 0;
 
     for(let i = 0; i < datasets.length; i++) {
-      randomColorIndex = Math.floor(Math.random() * colors.length);
-      randomColor = colors[randomColorIndex];
+        randomColor = colors.pop() as string;
 
         tooltip = {
           valueSuffix: ' positive tests'
@@ -123,14 +119,25 @@ export class CasesCountries implements OnInit {
     }
 
     this.highcharts = Highcharts.chart('chartContainer', {
+      boost: {
+        useGPUTranslations: true,
+        seriesThreshold: 2
+    },
       scrollbar: {
         enabled: true
-    },
-
-      plotOptions: {
-        spline: {
-          turboThreshold: 2000
-        }
+      },
+      legend: {
+        y:-6,
+        x:100,
+        layout: 'vertical',
+        align:'left',
+        verticalAlign: 'top',
+        floating: true,
+        },
+        plotOptions: {
+          spline: {
+            turboThreshold: 2000
+          }
       },
       title :{
         text:''
@@ -162,19 +169,19 @@ export class CasesCountries implements OnInit {
       series: seriesArray
     }); 
   }
+
   // fake data
-  generateRawCases() {
-    let startDate = new Date(2020, 2, 1);
+  generateRawCases(multiplier:number) {
+    let startDate = new Date(2020, 1, 1);
     let endDate = new Date(2023, 2, 1);
     let arr = [];
-    const dates: string[] = [];
     for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-      let cases = Math.floor(Math.random() * 100000);
-      dates.push(d.toLocaleString());
+      let cases = Math.floor(Math.random() * multiplier);
       arr.push([d.toLocaleString(),cases])
     }
     return arr;
   }
+
   //when user selects a new dataset
   updateDatasets(event: any){
    
@@ -214,7 +221,8 @@ export class CasesCountries implements OnInit {
       this.makeHighchart(selectedData);
     }
   }
- //left in date form
+
+  //left in date form
   createDateRange(startDate: Date, endDate: Date): Date[] {
     const dates: Date[] = [];
     let tempStartDate = new Date(startDate)
@@ -223,7 +231,8 @@ export class CasesCountries implements OnInit {
     }
     return dates;
   }
- //when the range slider is moved
+
+  //when the range slider is moved
   updateData(event: any) {
     //a fresh copy of the days array (this will be extracted dynamically)
     let daysCopy = new Array(this.days)[0];
@@ -308,6 +317,7 @@ export class CasesCountries implements OnInit {
     this.lastHighestValue = event.lastHighestValue;
     this.highcharts.redraw();
   }
+
   // left in string form
   setDateData(startDate: Date, endDate: Date){
     var days = []
@@ -316,6 +326,7 @@ export class CasesCountries implements OnInit {
     }
     return days;
   }
+
   // add days to a date
   addDays(date:Date, days:number) {
     var result = new Date(date);

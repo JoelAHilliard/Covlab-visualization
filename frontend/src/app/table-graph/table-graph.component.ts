@@ -1,83 +1,82 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-table-graph',
   templateUrl: './table-graph.component.html',
   styleUrls: ['./table-graph.component.scss']
 })
-export class TableGraphComponent implements OnInit {
+export class TableGraphComponent implements AfterViewInit {
   @Input() index: string = "";
-  id: string = "myChart"
+  @Input() id: string = ""
 
   constructor() {
 
   }
+  // ngAfterViewInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
   
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     
     let newIndex = Number(this.index);
     let newId= this.id;
 
-    window.onload = function(){
 
-      for(var i = 0; i<=newIndex;i++){
+    var data = {
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      datasets: [
+        {
+          backgroundColor: "blue",
+          borderColor: "blue",
+          borderWidth: 3,
+          data: generateFakeData(),
+          fill: {
+            target: 'origin',
+            above: 'rgb(0, 0, 255, 0.25)'
+          }
+        }
+      ]
+    };
 
-        var data = {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [
-            {
-              backgroundColor: "blue",
-              borderColor: "blue",
-              borderWidth: 3,
-              data: generateFakeData(),
-              fill: {
-                target: 'origin',
-                above: 'rgb(0, 0, 255, 0.25)'
-              }
-            }
-          ]
-        };
-        new Chart(newId + i, {
-          type: "line",
-          data: data,
-          options: {
-            responsive: false,
-           maintainAspectRatio:true,
-            elements: {
-              point:{
-                  radius: 0
-              },
-              line: {
-                tension : 0.5,
-              }
-            },     
-            plugins: {
-              legend:{
-                display:false
-              },
-              tooltip: {
-                enabled:false
-              }
-              
-            },
-            scales: {
-              y:{
-                display:false
-              },
-              x:{
-                display:false
-              }
-            }
-            
-          
+    new Chart(newId + newIndex, {
+      type: "line",
+      data: data,
+      options: {
+        responsive: false,
+        maintainAspectRatio:true,
+        elements: {
+          point:{
+              radius: 0
           },
+          line: {
+            tension : 0.5,
+          }
+        },     
+        plugins: {
+          legend:{
+            display:false
+          },
+          tooltip: {
+            enabled:false
+          }
           
-        });
-      }
+        },
+        scales: {
+          y:{
+            display:false
+          },
+          x:{
+            display:false
+          }
+        }
+        
+      
+      },
+      
+    });
+     
 
-    }
   }
 
   
