@@ -18,6 +18,25 @@ export class PieChartComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.createChart(null);
+
+    // const tweetdata: number[] = [30, 20, 50];
+
+    // const pieChartData = {
+    //   labels: ['Labelled', 'Unlabeled', 'Labeled + Correct'],
+    //   datasets: [
+    //     {
+    //       data: tweetdata,
+    //       backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe']
+    //     }
+    //   ]
+    // };
+
+    // this.totalNumTweets = tweetdata.length;
+
+    // this.createChart(pieChartData);
+  }
+  createChart(data: any | undefined){
     Highcharts.chart({
       title:{
         text:"Model Labeled Tweets"
@@ -105,51 +124,6 @@ export class PieChartComponent implements OnInit {
         ]
         
       }
-    });
-
-    // const tweetdata: number[] = [30, 20, 50];
-
-    // const pieChartData = {
-    //   labels: ['Labelled', 'Unlabeled', 'Labeled + Correct'],
-    //   datasets: [
-    //     {
-    //       data: tweetdata,
-    //       backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe']
-    //     }
-    //   ]
-    // };
-
-    // this.totalNumTweets = tweetdata.length;
-
-    // this.createChart(pieChartData);
-  }
-  createChart(data: any){
-    this.chart = new Chart('canvas2', {
-      type:'pie',
-      data:data,
-    
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          subtitle: {
-            display: true,
-            text: String("Total Tweets: " + this.totalNumTweets),
-            font: {
-              size: 18
-            }
-          },
-          title: {
-            display: true,
-            text: 'Labeling Status',
-            font: {
-              size: 20
-            }
-          }
-        }
-      },
     });
   }
 }

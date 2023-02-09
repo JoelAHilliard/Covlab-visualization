@@ -1,6 +1,6 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
-import { Chart } from 'chart.js';
-
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables)
 @Component({
   selector: 'app-table-graph',
   templateUrl: './table-graph.component.html',
