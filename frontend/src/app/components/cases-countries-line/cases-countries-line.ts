@@ -42,6 +42,9 @@ export class CasesCountries implements OnInit {
   maxValue: number = this.dateRange[this.dateRange.length-1].getTime();
   
   value: number = this.dateRange[0].getTime();
+
+  currentLowVal: number = this.dateRange[0].getTime();
+  currentHighVal: number = this.dateRange[this.dateRange.length-1].getTime();
   
    
   options: Options = {
@@ -195,7 +198,6 @@ export class CasesCountries implements OnInit {
     });
 
     let colors = ["red","green","blue","orange","purple"]
-    let seriesArray:  Highcharts.SeriesOptionsType[] = []
 
 
     let randomColorIndex = Math.floor(Math.random() * colors.length);
@@ -208,10 +210,18 @@ export class CasesCountries implements OnInit {
     }
     else {
       let selectedData = [];
+      let dataCopy = new Array(this.dataFromAPI)[0]
       for(var i = 0;i < event.length; i++){
         for(var j = 0;j < this.dataFromAPI.length; j++){
           if(String(event[i]).toLowerCase() == String(this.dataFromAPI[j].datasetID).toLowerCase()){
-            selectedData.push(this.dataFromAPI[j])
+            console.log(dataCopy[j].data.length)
+            console.log(this.leftSliderIndex);
+            console.log(this.rightSliderIndex);
+            //trying to prevent the range from resetting when user selects a new dataset and the range is diffrrent
+            dataCopy[j].data.slice(this.leftSliderIndex,this.rightSliderIndex);
+            console.log(dataCopy[j].data.length)
+            console.log(dataCopy[j])
+            selectedData.push(dataCopy[j])
           }
         }
       }
@@ -315,6 +325,10 @@ export class CasesCountries implements OnInit {
 
     this.lastValue = event.value;
     this.lastHighestValue = event.lastHighestValue;
+
+    this.currentLowVal = event.value;
+    this.currentHighVal = event.highValue;
+
     this.highcharts.redraw();
   }
 

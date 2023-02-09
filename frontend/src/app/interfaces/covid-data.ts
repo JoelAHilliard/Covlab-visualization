@@ -10,3 +10,14 @@ export interface TwitterData {
     key: string,
     value?:number
 }
+
+export interface TwitterData {
+    key: string,
+    value?:number
+}
+
+export interface PieChartData {
+    modelPosCount: number,
+    totalTweetCount: number,
+    totalLabelledCount: number
+}
