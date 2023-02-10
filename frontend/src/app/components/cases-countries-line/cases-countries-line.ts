@@ -1,8 +1,7 @@
 import {LabelType, Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import axios from 'axios';
-import { LoadingComponent } from 'src/app/loading-component/loading-component.component';
 @Component({
   selector: 'cases-countries',
   templateUrl: './cases-countries-line.component.html',
@@ -90,7 +89,11 @@ export class CasesCountries implements OnInit {
   currentLowVal: number = this.dateRange[0].getTime();
   currentHighVal: number = this.dateRange[this.dateRange.length-1].getTime();
   
-   
+
+
+  @Output() newItemEvent = new EventEmitter<any>();
+
+
   options: Options = {
     stepsArray: this.dateRange.map((date: Date) => {
       return { value: date.getTime() };
@@ -119,7 +122,7 @@ export class CasesCountries implements OnInit {
 
   isDataLoading = false;
 
-   ngOnInit() {
+  ngOnInit() {
     
     this.days = this.setDateData(this.startDate,this.endDate);
     this.rightSliderIndex = this.days.length;
@@ -127,6 +130,13 @@ export class CasesCountries implements OnInit {
     this.getGraphData();    
 
   }
+
+
+  addNewItem(value: any) {
+    this.newItemEvent.emit(value);
+  }
+
+
 
   dataSwitcher(dataset:any){
 
@@ -223,9 +233,12 @@ export class CasesCountries implements OnInit {
 
         this.isDataLoading = false;
 
-        this.dataSwitcher("dailyData")
-        
 
+
+
+        this.dataSwitcher("dailyData");
+        
+        this.addNewItem([this.dailyNewCasesDataset,this.dailyNewTweetsDataset,this.weeklyNewCasesDataset,this.weeklyNewTweetsDataset,this.biWeeklyNewCasesDataset,this.biWeeklyNewTweetsDataset,this.tweetPositivityRatioDataset])
       })
       .catch(function (error) {
         console.error(error);

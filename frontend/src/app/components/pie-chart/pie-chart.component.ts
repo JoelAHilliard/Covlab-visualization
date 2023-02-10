@@ -3,7 +3,6 @@ import Chart from 'chart.js/auto';
 import * as Highcharts from 'highcharts';
 import Drilldown from 'highcharts/modules/drilldown';
 import { PieChartData } from 'src/app/interfaces/covid-data';
-import { PieChartService } from 'src/app/services/pie-chart.service';
 Drilldown(Highcharts);
 @Component({
   selector: 'app-pie-chart',
@@ -22,21 +21,18 @@ export class PieChartComponent implements OnInit {
 
   totalNumTweets: number | undefined;
 
-  constructor(private pieChartService: PieChartService) { }
+  constructor() { }
 
 
   ngOnInit(): void {
 
-    this.fetchData();
     this.createChart(null);
 
   }
 
 
   fetchData(){
-    this.pieChartService.getData().subscribe((data:any)=>{
-      console.log(data)
-    });
+  
 
   }
   createChart(data: any | undefined){

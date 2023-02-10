@@ -1,5 +1,5 @@
 import { sameBounds } from '@amcharts/amcharts5/.internal/core/util/Utils';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { Chart } from 'chart.js';
 import * as Highcharts from 'highcharts';
@@ -13,18 +13,19 @@ export class TableComponent implements OnInit {
 
   constructor() { }
 
-
+  @Input() apiData:any = []
 
   data:any = []
 
   
-  columndefs : string[] = ['state','dailyCases','per100k','twoWeekChangeCases',
-  'testPositivity','hospitaliedDaily','hospitalizedPer100k','twoWeekChangeHospitalized',
-  'deathsDailyAvg','deathsPer100k','fullyVaccinated'];
+  columndefs : string[] = ['state','weeklyAverage','weeklyNewCasesPer1k','twoWeekChange',
+  'testPositivity'];
 
  
   
   ngOnInit(): void {
+
+    console.log(this.apiData)
 
     let usAggregateData = {
       state:"United States",
@@ -252,4 +253,8 @@ export class TableComponent implements OnInit {
 
   }
 
+
+  updateData(event:any){
+
+  }
 }

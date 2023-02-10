@@ -27,7 +27,6 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { TableComponent } from './table/table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TableGraphComponent } from './table-graph/table-graph.component';
-import { LoadingComponent } from './loading-component/loading-component.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { LoadingComponent } from './loading-component/loading-component.componen
     PieChartComponent,
     TableComponent,
     TableGraphComponent,
-    LoadingComponent,
+    
   ],
   imports: [
     BrowserModule,

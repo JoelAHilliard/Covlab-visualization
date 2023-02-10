@@ -11,11 +11,18 @@ export class GraphsContainerComponent implements OnInit {
 
 
   
+  graphDataArr:any = [];
+  
 
   constructor() { }
 
   ngOnInit(): void {
     
+  }
+
+
+  graphData(event:any){
+    this.graphDataArr = event;
   }
 
 }
