@@ -18,6 +18,9 @@ export class PieChartComponent implements OnInit {
   isDataLoading = false;
 
 
+  totalTweets: number = 0;
+
+
   screenHeight: number = 0;
   screenWidth: number = 0;
 
@@ -42,6 +45,8 @@ export class PieChartComponent implements OnInit {
     .then((data:any) => {
 
       this.createChart(data);
+
+      this.totalTweets = data.data.total_related_tweets_count;
       
       this.isDataLoading = false;
     

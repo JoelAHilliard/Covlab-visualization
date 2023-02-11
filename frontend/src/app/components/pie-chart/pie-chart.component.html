@@ -1,5 +1,9 @@
-<div  style="display: flex; flex-flow:row; justify-content: space-evenly; margin: auto;">
+<div  style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto;">
     <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading? 'block': 'none','margin':'auto'}">
-    <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container" style="overflow: visible !important;"></div>
-    <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container2" style="overflow: visible !important;"></div>
+    <h1 [ngStyle]="{'display': isDataLoading ? 'none': 'block','text-align':'left'}">Covlab Data</h1>
+    <h4>Total Tweets: {{totalTweets | number:'1.0':'en-US'}}</h4>
+    <div style="display: flex; flex-flow:row; justify-content: space-evenly;">
+        <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container" style="overflow: visible !important;"></div>
+        <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container2" style="overflow: visible !important;"></div>
+    </div>
 </div>
