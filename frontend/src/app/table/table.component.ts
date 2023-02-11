@@ -18,10 +18,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.apiData);
-
-    console.log(this.apiData[this.apiData.length - 1]);
-
     let usAggregateData = {
       state:"United States",
       weeklyNewCasesPer1k:this.apiData[this.apiData.length-1].weekly_new_cases_per1k[1],

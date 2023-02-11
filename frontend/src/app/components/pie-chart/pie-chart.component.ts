@@ -55,7 +55,6 @@ export class PieChartComponent implements OnInit {
   //draw pie chart
   createChart(data:any){
 
-    console.log(data)
 
     let chartWidth = 750;
 

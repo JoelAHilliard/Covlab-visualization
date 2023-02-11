@@ -11,7 +11,7 @@ export class GraphsContainerComponent implements OnInit {
 
 
   
-  graphDataArr:any = [];
+  graphDataArr: any = [];
   
 
   constructor() { }
@@ -22,7 +22,6 @@ export class GraphsContainerComponent implements OnInit {
 
 
   graphData(event:any){
-    console.log(event)
     this.graphDataArr = event;
   }
 

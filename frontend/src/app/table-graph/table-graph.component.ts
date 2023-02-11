@@ -7,7 +7,9 @@ Chart.register(...registerables)
   styleUrls: ['./table-graph.component.scss']
 })
 export class TableGraphComponent implements AfterViewInit {
+  
   @Input() index: string = "";
+  
   @Input() id: string = ""
 
   @Input() twoWeekChange:any = [];
@@ -22,10 +24,7 @@ export class TableGraphComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     
     let newIndex = Number(this.index);
-    let newId= this.id;
-
-    console.log(this.twoWeekChange)
-
+    let newId = this.id;
 
     var data = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
