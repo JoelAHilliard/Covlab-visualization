@@ -1,4 +1,5 @@
 <div  style="display: flex; flex-flow:column; width:50%; justify-content: center; margin: auto;">
-
+    <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading? 'block': 'none','margin':'auto'}">
+    <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important;"></div>
     <div id="container"></div>
 </div>

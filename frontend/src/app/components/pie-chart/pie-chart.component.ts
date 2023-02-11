@@ -3,6 +3,7 @@ import Chart from 'chart.js/auto';
 import * as Highcharts from 'highcharts';
 import Drilldown from 'highcharts/modules/drilldown';
 import { PieChartData } from 'src/app/interfaces/covid-data';
+import axios from 'axios';
 Drilldown(Highcharts);
 @Component({
   selector: 'app-pie-chart',
@@ -13,32 +14,31 @@ export class PieChartComponent implements OnInit {
 
   chart: any;
 
-  data: PieChartData = {
-    modelPosCount: 0,
-    totalTweetCount: 0,
-    totalLabelledCount: 0
-  };
-
-  totalNumTweets: number | undefined;
+  isDataLoading = false;
 
   constructor() { }
 
-
   ngOnInit(): void {
-
-    this.createChart(null);
-
+    this.fetchData()
   }
-
-
+  //grab data from api
   fetchData(){
-  
+    this.isDataLoading = true;
+    axios.post("https://labelling.covlab.tech/statistics")
+    .then((data:any) => {
 
+      this.createChart(data);
+      
+      this.isDataLoading = false;
+    
+    })
   }
-  createChart(data: any | undefined){
+  //draw pie chart
+  createChart(data:any){
+
     Highcharts.chart({
       title:{
-        text:"Model Labeled Tweets"
+        text:"Covlab Tweet Labelling"
       },
     
       tooltip: {
@@ -53,33 +53,29 @@ export class PieChartComponent implements OnInit {
       },
       series: [
         {
-          name: "Model Labeled Tweets",
+          name: "Covlab Tweet Labelling",
           borderRadius: 10,
           type: 'pie',
           data: [
             {
-              name:"Data1",
-              y: 20,
-              drilldown:"windows-versions"
+              name:"Model Positive Tweets",
+              y: (data.data.model_positive_count / data.data.total_related_tweets_count) * 100,
+              color:'black'
             }
             ,
             {
-              name:"Data2",
-              y: 10,
-              drilldown:"test1"
-            }
-            ,
+              name:"Hand Labelled Tweets",
+              y: (data.data.labeled_count / data.data.total_related_tweets_count) * 100,
+              color:'grey'
+
+            },
             {
-              name:"Data3",
-              y: 40,
-              drilldown:"test1"
+              name:"Unlabelled Tweets",
+              y: (((data.data.total_related_tweets_count) - (data.data.labeled_count + data.data.model_positive_count)) / data.data.total_related_tweets_count) * 100,
+              color:'blue'
+
             }
-            ,
-            {
-              name:"Data4",
-              y: 30,
-              drilldown:"test1"
-            }
+            
           ]
         }
       ],
@@ -92,7 +88,6 @@ export class PieChartComponent implements OnInit {
       }
       },
       drilldown:{
-        
           series: [
             {
               name: 'Test1',
