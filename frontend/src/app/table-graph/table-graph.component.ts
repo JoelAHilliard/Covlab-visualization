@@ -10,6 +10,8 @@ export class TableGraphComponent implements AfterViewInit {
   @Input() index: string = "";
   @Input() id: string = ""
 
+  @Input() twoWeekChange:any = [];
+
   constructor() {
 
   }
@@ -21,6 +23,8 @@ export class TableGraphComponent implements AfterViewInit {
     
     let newIndex = Number(this.index);
     let newId= this.id;
+
+    console.log(this.twoWeekChange)
 
 
     var data = {

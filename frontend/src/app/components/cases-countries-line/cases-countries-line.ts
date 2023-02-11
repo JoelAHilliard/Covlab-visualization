@@ -2,6 +2,7 @@ import {LabelType, Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import axios from 'axios';
+
 @Component({
   selector: 'cases-countries',
   templateUrl: './cases-countries-line.component.html',
@@ -70,6 +71,13 @@ export class CasesCountries implements OnInit {
     datasetID:'tweetPositivity',
     data:[]
   }
+  usTableData = {
+    cases_7_day_average:0,
+    weekly_new_cases_per1k:0,
+    new_tweets_count:0,
+    positivity:0
+  }
+  
   
   //replace with dynamic data
   dataFromAPI = [this.dailyNewCasesDataset,this.dailyNewTweetsDataset]
@@ -122,6 +130,7 @@ export class CasesCountries implements OnInit {
 
   isDataLoading = false;
 
+  //
   ngOnInit() {
     
     this.days = this.setDateData(this.startDate,this.endDate);
@@ -131,13 +140,12 @@ export class CasesCountries implements OnInit {
 
   }
 
-
+  //send data to other component
   addNewItem(value: any) {
     this.newItemEvent.emit(value);
   }
 
-
-
+  //change which dataset is displayed on the graph
   dataSwitcher(dataset:any){
 
     if(dataset === 'dailyData'){
@@ -157,7 +165,7 @@ export class CasesCountries implements OnInit {
 
   }
 
-
+  //fetch graph data from API
   getGraphData(){
     this.isDataLoading = true;
     //daily
@@ -166,6 +174,7 @@ export class CasesCountries implements OnInit {
     //weekly
     let casesWeekly:any = [];
     let tweetWeekly:any = [];
+    let casesPer1kWeekly:any =[];
     //bi-weekly
     let casesBiWeekly:any = [];
     let tweetBiWeekly:any = [];
@@ -178,11 +187,11 @@ export class CasesCountries implements OnInit {
 
     axios.get('http://127.0.0.1:5000/graphData')
       .then( (response) => {
-        
         for(var i =0;i<response.data[0].length;i++){
           //daily
           casesDaily.push([response.data[0][i].date,response.data[0][i].new_cases])
           tweetDaily.push([response.data[1][i].date,response.data[1][i].new_tweets])
+          casesPer1kWeekly.push([response.data[1][i].date,response.data[1][i].weekly_new_cases_per1k])
           //weekly
           casesWeekly.push([response.data[0][i].date,response.data[0][i].cases_7_average])
           tweetWeekly.push([response.data[1][i].date,response.data[1][i].tweets_7_average])
@@ -194,6 +203,7 @@ export class CasesCountries implements OnInit {
           tweetCumulative.push([response.data[1][i].date,response.data[1][i].total_tweets])
           //tweet positivty ratio
           tweetPositivity.push([response.data[1][i].date,response.data[1][i].positive_tweets_ratio])
+          //
         }
           //set new x axis range and slider
         let len = response.data[0].length;
@@ -229,16 +239,18 @@ export class CasesCountries implements OnInit {
         //tweet positivity ratio
         this.tweetPositivityRatioDataset.data = tweetPositivity;
 
-        
+        this.usTableData.cases_7_day_average = casesWeekly[casesWeekly.length-1];
+        this.usTableData.new_tweets_count = tweetBiWeekly[tweetBiWeekly.length-1];
+        this.usTableData.positivity = tweetPositivity[tweetPositivity.length-1];
+        this.usTableData.weekly_new_cases_per1k = casesPer1kWeekly[casesPer1kWeekly.length-1];
+
+
 
         this.isDataLoading = false;
 
-
-
-
         this.dataSwitcher("dailyData");
-        
-        this.addNewItem([this.dailyNewCasesDataset,this.dailyNewTweetsDataset,this.weeklyNewCasesDataset,this.weeklyNewTweetsDataset,this.biWeeklyNewCasesDataset,this.biWeeklyNewTweetsDataset,this.tweetPositivityRatioDataset])
+
+        this.addNewItem([this.dailyNewCasesDataset,this.dailyNewTweetsDataset,this.weeklyNewCasesDataset,this.weeklyNewTweetsDataset,this.biWeeklyNewCasesDataset,this.biWeeklyNewTweetsDataset,this.tweetPositivityRatioDataset,this.usTableData])
       })
       .catch(function (error) {
         console.error(error);
@@ -247,7 +259,6 @@ export class CasesCountries implements OnInit {
   }
   // code that creates the chart
   makeHighchart(datasets: any){
-    console.log(datasets)
     let colors: string[] = ["black","blue"];
     let seriesArray:  Highcharts.SeriesOptionsType[] = [];
 
@@ -356,7 +367,8 @@ export class CasesCountries implements OnInit {
         element.setData([]);
       });
     }
-    //NONE SELECTED 
+
+    
     this.dataSwitcher(event);
   }
 
@@ -384,16 +396,13 @@ export class CasesCountries implements OnInit {
       let index = 0;  
       let counter = 0;
 
-      console.log("in here")
-      
       //find correct index to slice the dataset at
       for (let i = 0;i<data.length;i++){
        
-        let tempDate = new Date(data[i][0])
-        tempDate.setHours(0)
-        tempDate.setMinutes(0)
-        tempDate.setSeconds(0)
-
+        let tempDate = new Date(data[i][0]);
+        tempDate.setHours(0);
+        tempDate.setMinutes(0);
+        tempDate.setSeconds(0);
         if(tempDate.toLocaleString() === date.toLocaleString()){
           index = i;
           break;
@@ -426,20 +435,27 @@ export class CasesCountries implements OnInit {
       let index = 0;
       let date = new Date(event.highValue);
 
-      // copy of data (this is just for the x axis. it will be stripped when data is receieved)
-
       //reverse order loop
       for (let i = data.length - 1; i > 0; i--){
-        let tempDate = new Date(data[i][0])
-        tempDate.setHours(0)
-        tempDate.setMinutes(0)
-        tempDate.setSeconds(0)
+        let tempDate = new Date(data[i][0]);
+        tempDate.setHours(0);
+        tempDate.setMinutes(0);
+        tempDate.setSeconds(0);
 
+        //edge case, the right hand slider was moved back to original pos
+        if(i == data.length - 1){
+            if(date > tempDate){
+              index = data.length;
+              break;
+            }
+        }
+        
         if(tempDate.toLocaleString() === date.toLocaleString()){
           index = i;
           break;
         }
       }
+
 
       if(index == 0){
         index = this.rightSliderIndex;

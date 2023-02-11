@@ -1,55 +1,50 @@
-import { sameBounds } from '@amcharts/amcharts5/.internal/core/util/Utils';
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
-import { Chart } from 'chart.js';
-import * as Highcharts from 'highcharts';
-import { TableGraphComponent } from '../table-graph/table-graph.component';
+import { Component, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-
-  constructor() { }
+  @Output() twoWeekChangeData: any[] = [];
 
   @Input() apiData:any = []
 
   data:any = []
-
   
   columndefs : string[] = ['state','weeklyAverage','weeklyNewCasesPer1k','twoWeekChange',
   'testPositivity'];
-
- 
   
+  constructor() { }
+
   ngOnInit(): void {
 
-    console.log(this.apiData)
+    console.log(this.apiData);
+
+    console.log(this.apiData[this.apiData.length - 1]);
 
     let usAggregateData = {
       state:"United States",
-      dailyCases:0,
-      twoWeekChangeCases:0,
-      testPositivity:0,
-
-      hospitaliedDaily:0,
-
-      hospitalizedPer100k:0,
-      twoWeekChangeHospitalized:0,
-      deathsDailyAvg:0,
-      deathsPer100k:0,
-      per100k:0,
-      fullyVaccinated:0,
-
+      weeklyNewCasesPer1k:this.apiData[this.apiData.length-1].weekly_new_cases_per1k[1],
+      testPositivity:this.apiData[this.apiData.length-1].positivity[1],
+      weeklyAverage:this.apiData[this.apiData.length-1].cases_7_day_average[1],
+      twoWeekChange:this.apiData[this.apiData.length-1].new_tweets_count[1]
     }
 
-    
+    this.twoWeekChangeData = [{
+      pct:0,
+      last3Points: []
+    }];
+
+    for(let i = 1;i <= 3;i++){
+      this.twoWeekChangeData[0].last3Points.push();
+    }
+
     const sampleData = [
       {
         id:1,
         country: "America",
         data: [
+          usAggregateData,
           {
             state: "Tennessee",
             dailyCases: 104,
@@ -229,30 +224,9 @@ export class TableComponent implements OnInit {
       }
     ];
 
-
-    
-    sampleData[0].data.forEach((element:any)=>{
-      usAggregateData.dailyCases += element.dailyCases;
-      usAggregateData.twoWeekChangeCases += element.twoWeekChangeCases;
-      usAggregateData.testPositivity += element.testPositivity;
-      usAggregateData.hospitaliedDaily += element.hospitaliedDaily;
-      usAggregateData.fullyVaccinated += element.fullyVaccinated;
-      usAggregateData.hospitalizedPer100k += element.hospitalizedPer100k;
-      usAggregateData.twoWeekChangeHospitalized += element.twoWeekChangeHospitalized;
-      usAggregateData.deathsDailyAvg += element.deathsDailyAvg;
-      usAggregateData.deathsPer100k += element.deathsPer100k;
-      usAggregateData.per100k += element.per100k;
-    })
-
-    sampleData[0].data.unshift(usAggregateData);
-    
-
     this.data = sampleData[0].data;
 
-    
-
   }
-
 
   updateData(event:any){
 
