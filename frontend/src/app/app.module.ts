@@ -39,6 +39,7 @@ import { TableGraphComponent } from './table-graph/table-graph.component';
     PieChartComponent,
     TableComponent,
     TableGraphComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,7 @@ import { TableGraphComponent } from './table-graph/table-graph.component';
     MatIconModule,
     MatSliderModule,
     NgxSliderModule,
-    NgxDatatableModule
+    NgxDatatableModule,
 
   ],
   providers: [],

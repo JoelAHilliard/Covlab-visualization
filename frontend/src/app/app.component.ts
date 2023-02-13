@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'covid-portal';
   links = [
+    {text: 'Graphs', route: 'graphs'},
     {text: 'Related Words', route: 'related-words'},
     {text: 'Map', route: 'map'},
-    {text: 'Graphs', route: 'graphs'} 
 
   ];
   

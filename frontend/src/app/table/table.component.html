@@ -6,26 +6,27 @@
         <td mat-cell *matCellDef="let element"> {{ element.state }} </td>
       </ng-container>
     
-      <ng-container matColumnDef="dailyCases">
-        <th mat-header-cell *matHeaderCellDef>Daily Cases</th>
-        <td mat-cell *matCellDef="let element"> {{ element.dailyCases }} </td>
+      <ng-container matColumnDef="weeklyAverage">
+        <th mat-header-cell *matHeaderCellDef>Weekly Average</th>
+        <td mat-cell *matCellDef="let element"> {{ element.weeklyAverage }} </td>
       </ng-container>
     
-      <ng-container matColumnDef="per100k">
-        <th mat-header-cell *matHeaderCellDef>Per 100k</th>
-        <td mat-cell *matCellDef="let element"> {{ element.per100k }} </td>
+      <ng-container matColumnDef="weeklyNewCasesPer1k">
+        <th mat-header-cell *matHeaderCellDef>Weekly Cases Per 1k</th>
+        <td mat-cell *matCellDef="let element"> {{ element.weeklyNewCasesPer1k }} </td>
       </ng-container>
     
-      <ng-container matColumnDef="twoWeekChangeCases">
+      <ng-container matColumnDef="twoWeekChange">
 
-        <th class="tableHeaders" mat-header-cell *matHeaderCellDef>Two Week (%)</th>
+        <th class="tableHeaders" mat-header-cell *matHeaderCellDef>Two Week Change (%)</th>
         <td mat-cell *matCellDef="let element; let i = index" style="display: flex; flex-flow: column;">
           <!-- <app-map></app-map> -->
           <!-- <canvas id="myChart"></canvas> -->
           <p style="line-height: 14px; margin: 5px 0 0 0;">{{element.twoWeekChangeCases}}%</p>
           
-          <app-table-graph [index] = "i" id = "chart">
+          <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="twoWeekChangeData">
           </app-table-graph>
+
 
 
         </td>
@@ -35,43 +36,6 @@
         <th mat-header-cell *matHeaderCellDef>Test Positivity</th>
         <td mat-cell *matCellDef="let element"> {{ element.testPositivity }} </td>
       </ng-container>
-    
-      <ng-container matColumnDef="hospitaliedDaily">
-        <th mat-header-cell *matHeaderCellDef>Hospitalied Daily</th>
-        <td mat-cell *matCellDef="let element"> {{ element.hospitaliedDaily }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="hospitalizedPer100k">
-        <th mat-header-cell *matHeaderCellDef>Hospitalized Per 100k</th>
-        <td mat-cell *matCellDef="let element"> {{ element.hospitalizedPer100k }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="twoWeekChangeHospitalized">
-        <th mat-header-cell *matHeaderCellDef>2-Week Hospitalized (%)</th>
-        <td mat-cell *matCellDef="let element; let i = index">
-
-          <p style="line-height: 14px; margin: 5px 0 0 0;">{{element.twoWeekChangeHospitalized}}%</p>
-          
-          <app-table-graph [index] = "i" id = "chart(2)">
-          </app-table-graph>
-        </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="deathsDailyAvg">
-        <th mat-header-cell *matHeaderCellDef>Deaths Daily Average</th>
-        <td mat-cell *matCellDef="let element"> {{ element.deathsDailyAvg }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="deathsPer100k">
-        <th mat-header-cell *matHeaderCellDef>Deaths Per 100k</th>
-        <td mat-cell *matCellDef="let element"> {{ element.deathsPer100k }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="fullyVaccinated">
-        <th mat-header-cell *matHeaderCellDef>Fully Vaccinated</th>
-        <td mat-cell *matCellDef="let element"> {{ element.fullyVaccinated }} </td>
-      </ng-container>
-    
     
       <tr mat-header-row *matHeaderRowDef="columndefs"></tr>
       <tr mat-row *matRowDef="let row; columns: columndefs;"></tr>
