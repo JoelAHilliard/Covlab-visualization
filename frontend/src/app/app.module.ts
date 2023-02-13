@@ -27,6 +27,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { TableComponent } from './table/table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TableGraphComponent } from './table-graph/table-graph.component';
+import { WordCloudComponent } from './components/word-cloud/word-cloud.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TableGraphComponent } from './table-graph/table-graph.component';
     PieChartComponent,
     TableComponent,
     TableGraphComponent,
+    WordCloudComponent,
     
   ],
   imports: [
