@@ -29,12 +29,10 @@ export class MapComponent implements OnInit {
         type == "probable" ? element.probableCases : Math.floor(Math.random() * 101)
       });
     });
-    //console.log(this.CovidData);
     return data;
   }
 
   createMap(type: string) {
-    console.log(type);
 
     if(this.root != null)
       this.root.dispose();

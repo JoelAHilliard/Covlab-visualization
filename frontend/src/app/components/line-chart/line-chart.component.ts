@@ -228,7 +228,6 @@ export class LineChartComponent implements OnInit {
     }));
 
     let data = this.generateDatas();
-    console.log(data);
     series.data.setAll(data);
 
     // Make stuff animate on load

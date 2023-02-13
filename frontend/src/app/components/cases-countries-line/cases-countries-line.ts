@@ -185,10 +185,10 @@ export class CasesCountries implements OnInit {
     //tweet positivity
     let tweetPositivity: any = [];
 
-    axios.get('http://127.0.0.1:5000/graphData')
+    axios.get('https://covlab-backend-production.up.railway.app/graphData')
       .then( (response) => {
-        for(var i =0;i<response.data[0].length;i++){
-          //daily
+        for(var i =0;i<response.data[0].length-1;i++){
+           //daily
           casesDaily.push([response.data[0][i].date,response.data[0][i].new_cases])
           tweetDaily.push([response.data[1][i].date,response.data[1][i].new_tweets])
           casesPer1kWeekly.push([response.data[1][i].date,response.data[1][i].weekly_new_cases_per1k])
@@ -207,6 +207,8 @@ export class CasesCountries implements OnInit {
         }
           //set new x axis range and slider
         let len = response.data[0].length;
+
+        console.log(response)
 
         let tempStartDate = new Date(response.data[0][0].date);
         let tempEndDate = new Date(response.data[0][len-1].date);

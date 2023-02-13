@@ -7,7 +7,7 @@ const routes: Routes = [
   {path: 'map', component: MapComponent},
   {path: 'related-words', component: RelatedWordsComponent},
   {path: 'graphs', component: GraphsContainerComponent},
-  {path: '', redirectTo: '/related-words', pathMatch: 'full'}
+  {path: '', redirectTo: '/graphs', pathMatch: 'full'}
 ];
 
 @NgModule({
