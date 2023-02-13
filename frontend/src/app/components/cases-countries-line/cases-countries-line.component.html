@@ -1,5 +1,7 @@
-<div>
-    <div style="margin-left: auto; width: 100%;">
+<div [ngStyle]="{'min-height':'500px','display':'flex','align-items':'center'}">
+<img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading? 'block': 'none','margin':'auto'}">
+
+    <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" style="margin-left: auto; width: 100%;">
         <div id="selector">
             <div style="display: flex; flex-flow: row; justify-content: space-between;">
                 <h2>Covlab Data</h2>
@@ -12,17 +14,18 @@
                         <mat-option  name="option" value="14dayAvg">14 Day Average</mat-option>
                         <mat-option  name="option" value="cumulative">Cumulative</mat-option>
                         <mat-option  name="option" value="tweetPositivity">Tweet Positivity Ratio</mat-option>
-
+ 
                     </mat-select>
                 </mat-form-field>
             </div>
-            <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading? 'block': 'none','margin':'auto'}">
+            
         <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important;"></div>
+        <div [ngStyle]="{'display': isDataLoading? 'none': 'flex','flex-flow':'row','justify-content':'center'}">
+            <ngx-slider style="width: 70%;"  [value]="minValue" [highValue]="maxValue" [options]="options"  (userChange)="updateData($event)" ></ngx-slider>
+        </div>
     </div>
 
-    <div [ngStyle]="{'display': isDataLoading? 'none': 'flex','flex-flow':'row','justify-content':'center'}">
-        <ngx-slider style="width: 70%;"  [value]="minValue" [highValue]="maxValue" [options]="options"  (userChange)="updateData($event)" ></ngx-slider>
-    </div>
+    
     
 </div>
 

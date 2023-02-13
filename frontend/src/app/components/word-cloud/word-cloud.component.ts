@@ -20,7 +20,7 @@ export class WordCloudComponent implements OnInit {
           data: cloud_data,
           name: 'Occurrences',
           maxFontSize:45,
-          minFontSize:5,
+          minFontSize:10,
           spiral: 'square',
           placementStrategy: 'random'
         }],
