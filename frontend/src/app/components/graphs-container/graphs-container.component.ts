@@ -17,7 +17,6 @@ export class GraphsContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
   }
 
 
