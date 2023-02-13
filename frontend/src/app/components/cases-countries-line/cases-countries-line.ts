@@ -208,7 +208,6 @@ export class CasesCountries implements OnInit {
           //set new x axis range and slider
         let len = response.data[0].length;
 
-        console.log(response)
 
         let tempStartDate = new Date(response.data[0][0].date);
         let tempEndDate = new Date(response.data[0][len-1].date);
