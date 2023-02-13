@@ -26,7 +26,7 @@ export class WordCloudComponent implements OnInit {
         }],
         title: {
           text: 'Covlab Wordcloud',
-          align:'left'
+          align:'center'
         }
       });
   }
