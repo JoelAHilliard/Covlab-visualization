@@ -13,6 +13,9 @@ Drilldown(Highcharts);
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent implements OnInit {
+
+  data:any;
+
   chart: any;
 
   isDataLoading = false;
@@ -36,6 +39,11 @@ export class PieChartComponent implements OnInit {
   getScreenSize() {
         this.screenHeight = window.innerHeight;
         this.screenWidth = window.innerWidth;
+        console.log(this.screenWidth);
+        if(this.data != null){
+          this.createChart(this.data);
+        }
+
   }
   //grab data from api
   fetchData(){
@@ -43,6 +51,8 @@ export class PieChartComponent implements OnInit {
 
     axios.post("https://labelling.covlab.tech/statistics")
     .then((data:any) => {
+
+      this.data = data;
 
       this.createChart(data);
 
