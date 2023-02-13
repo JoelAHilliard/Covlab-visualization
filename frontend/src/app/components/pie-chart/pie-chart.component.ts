@@ -40,7 +40,7 @@ export class PieChartComponent implements OnInit {
         this.screenHeight = window.innerHeight;
         this.screenWidth = window.innerWidth;
         console.log(this.screenWidth);
-        if(this.data != null){
+        if(this.data != null && (this.screenWidth > 1600 || this.screenWidth < 850)){
           this.createChart(this.data);
         }
 
@@ -69,8 +69,13 @@ export class PieChartComponent implements OnInit {
     let chartWidth = 750;
 
     if(this.screenWidth < 1250){
-      chartWidth = 400
+      chartWidth = 400;
     }
+    
+    if(this.screenWidth < 850){
+      chartWidth = 250;
+    }
+
     Highcharts.chart({
       title:{
         text:""
