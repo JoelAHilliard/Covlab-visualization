@@ -68,10 +68,9 @@ export class PieChartComponent implements OnInit {
 
     let chartWidth = 750;
 
-    if(this.screenWidth < 1250){
+    if(this.screenWidth > 850){
       chartWidth = 400;
     }
-    
     if(this.screenWidth < 850){
       chartWidth = 250;
     }
