@@ -1,0 +1,15 @@
+.backgroundCss {
+    background-color: #c2b8b2;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 40px ), repeating-linear-gradient( #c2b8b2, #476c9b );
+    width: 100%;
+    height: 100%;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+h1 {
+    font-family: 'Bebas Neue',sans-serif;
+    font-size: 75px
+}
+button {
+    width:100px;
+}

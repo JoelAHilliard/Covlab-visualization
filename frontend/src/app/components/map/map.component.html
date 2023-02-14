@@ -1,3 +1,13 @@
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <h1>Covlab</h1>
+    <a mat-tab-link *ngFor="let link of links"
+       (click)="activeLink = link.text"
+       [active]="activeLink == link.text"
+       routerLink="{{link.route}}"> {{link.text}} </a>
+    <!-- <a mat-tab-link disabled>Disabled Link</a> -->
+  </nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 <mat-card class="mat-elevation-z8">
 <div>
     <mat-radio-group aria-label="Select an option" (change)="createMap($event.value)">

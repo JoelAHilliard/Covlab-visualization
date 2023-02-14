@@ -13,7 +13,5 @@ export class AppComponent {
     {text: 'Map', route: 'map'},
 
   ];
-  
-  activeLink = this.links[0].text;
-
+  activeLink = "";
 }

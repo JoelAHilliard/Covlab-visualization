@@ -24,10 +24,11 @@ import { GraphsContainerComponent } from './components/graphs-container/graphs-c
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './components/table/table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { TableGraphComponent } from './table-graph/table-graph.component';
+import { TableGraphComponent } from './components/table-graph/table-graph.component';
 import { WordCloudComponent } from './components/word-cloud/word-cloud.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { WordCloudComponent } from './components/word-cloud/word-cloud.component
     TableComponent,
     TableGraphComponent,
     WordCloudComponent,
+    LandingPageComponent,
     
   ],
   imports: [
