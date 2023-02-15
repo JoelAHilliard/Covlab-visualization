@@ -12,14 +12,6 @@ export class GraphsContainerComponent implements OnInit {
 
   
   graphDataArr: any = [];
-  
-  links = [
-    {text: 'Graphs', route: '/graphs'},
-    {text: 'Related Words', route: '/related-words'},
-    {text: 'Map', route: '/map'},
-
-  ];
-  activeLink = "";
 
   constructor() { }
 

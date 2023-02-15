@@ -13,13 +13,7 @@ export class RelatedWordsComponent implements OnInit {
 
   value = '';
 
-  links = [
-    {text: 'Graphs', route: '/graphs'},
-    {text: 'Related Words', route: '/related-words'},
-    {text: 'Map', route: '/map'},
 
-  ];
-  activeLink = "";
 
   constructor(private fb: FormBuilder, private twitterDataService : TwitterDataService) { }
 

@@ -17,13 +17,7 @@ export class MapComponent implements OnInit {
   root: any;
   constructor(private trackingSevice: CovidTrackingService) { }
 
-  links = [
-    {text: 'Graphs', route: '/graphs'},
-    {text: 'Related Words', route: '/related-words'},
-    {text: 'Map', route: '/map'},
-
-  ];
-  activeLink = "";
+ 
 
   fillCovidData(type: string): any[] {
     let data: any[] = [];
