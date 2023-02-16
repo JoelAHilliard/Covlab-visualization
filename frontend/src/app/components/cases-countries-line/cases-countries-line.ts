@@ -160,6 +160,7 @@ export class CasesCountries implements OnInit {
       this.dataFromAPI = [this.tweetPositivityRatioDataset]
     }
 
+    // reset slider here
 
     this.makeHighchart(this.dataFromAPI);
 
@@ -217,8 +218,29 @@ export class CasesCountries implements OnInit {
         
         
         //set new x axis range
+        console.log(tempStartDate)
+
         this.days = this.setDateData(tempStartDate, tempEndDate);
 
+        this.dateRange = this.createDateRange(tempStartDate,tempEndDate);
+
+        this.options = {
+          stepsArray: this.dateRange.map((date: Date) => {
+            return { value: date.getTime() };
+          }),
+          translate: (value: number, label: LabelType): string => {
+            return new Date(value).toDateString();
+          },
+          showSelectionBar: true,
+          selectionBarGradient: {
+            from: 'blue',
+            to: 'blue'
+          },
+          getPointerColor: (value: number): string => {
+            return 'blue'
+          }
+        
+        };
 
         //set our data
         //daily data
@@ -303,11 +325,11 @@ export class CasesCountries implements OnInit {
 
 
     this.highcharts = Highcharts.chart('chartContainer', {
- 
+     
       boost: {
         useGPUTranslations: true,
         seriesThreshold: 2
-    },
+      },
       scrollbar: {
         enabled: true
       },
@@ -318,8 +340,8 @@ export class CasesCountries implements OnInit {
         align:'left',
         verticalAlign: 'top',
         floating: true,
-        },
-        plotOptions: {
+      },
+      plotOptions: {
           spline: {
             turboThreshold: 2000
           }
@@ -328,10 +350,22 @@ export class CasesCountries implements OnInit {
         text:''
       },
       xAxis: {
-          categories: this.days
+          categories: this.days,
+          tickInterval:10,
+          labels:{
+            step:10,
+            rotation:-20,
+            y:25,    
+          },
+          crosshair:{
+            width:3,
+            color:"black"
+          }
+        
       },
       yAxis: [
         { // Primary yAxis
+          gridLineWidth:0,
         labels: {
             
             },
@@ -339,9 +373,15 @@ export class CasesCountries implements OnInit {
                 text: datasets[0].label,
               
             },
-          min:0
+          min:0,
+          crosshair:{
+            width:3,
+            color:"black"
+          }
         },
         { // Primary yAxis
+          gridLineWidth:0,
+
           labels: {
               
           },
@@ -349,9 +389,14 @@ export class CasesCountries implements OnInit {
               text: datasets.length == 1 ? "" : datasets[1].label,
           },
           min:0,
-          opposite:true
+          opposite:true,
+          crosshair:{
+            width:3,
+            color:"black"
+          },
+          
         }
-    ],
+      ],
       series: seriesArray
     }); 
   }
@@ -390,21 +435,19 @@ export class CasesCountries implements OnInit {
       // copy of data (this assumes that all data lengths are equal)
 
     let data = new Array(this.dataFromAPI[0].data)[0];
-
     // left hand was moved
     if(event.pointerType == 0){
       let date = new Date(event.value);
       let index = 0;  
       let counter = 0;
-
       //find correct index to slice the dataset at
       for (let i = 0;i<data.length;i++){
        
         let tempDate = new Date(data[i][0]);
-        tempDate.setHours(0);
-        tempDate.setMinutes(0);
-        tempDate.setSeconds(0);
-        if(tempDate.toLocaleString() === date.toLocaleString()){
+    
+        if(tempDate.getFullYear() === date.getFullYear() &&
+    tempDate.getMonth() === date.getMonth() &&
+    tempDate.getDate() === date.getDate()){
           index = i;
           break;
         }
@@ -439,9 +482,7 @@ export class CasesCountries implements OnInit {
       //reverse order loop
       for (let i = data.length - 1; i > 0; i--){
         let tempDate = new Date(data[i][0]);
-        tempDate.setHours(0);
-        tempDate.setMinutes(0);
-        tempDate.setSeconds(0);
+ 
 
         //edge case, the right hand slider was moved back to original pos
         if(i == data.length - 1){
@@ -450,12 +491,15 @@ export class CasesCountries implements OnInit {
               break;
             }
         }
-        
-        if(tempDate.toLocaleString() === date.toLocaleString()){
+
+        if(tempDate.getFullYear() === date.getFullYear() &&
+        tempDate.getMonth() === date.getMonth() &&
+        tempDate.getDate() === date.getDate()){
           index = i;
           break;
         }
       }
+
 
 
       if(index == 0){
@@ -492,7 +536,8 @@ export class CasesCountries implements OnInit {
   // left in string form
   setDateData(startDate: Date, endDate: Date){
     var days = []
-    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+    let tempStartDate = new Date(startDate);
+    for (let d = tempStartDate; d <= endDate; d.setDate(d.getDate() + 1)) {
       days.push(d.toLocaleDateString());
     }
     return days;

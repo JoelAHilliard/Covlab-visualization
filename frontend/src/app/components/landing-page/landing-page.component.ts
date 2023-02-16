@@ -1,8 +1,6 @@
-import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterModule, Routes } from '@angular/router';
-import { GraphsContainerComponent } from '../graphs-container/graphs-container.component';
-import { MapComponent } from '../map/map.component';
-import { RelatedWordsComponent } from '../related-words/related-words.component';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import axios from 'axios';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,17 +10,22 @@ import { RelatedWordsComponent } from '../related-words/related-words.component'
 
 export class LandingPageComponent implements OnInit {
 
-   
-  @Output() output = new EventEmitter<string>();
+  updatedString: string = ""
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(window.location.pathname)
+    this.getLatestData()
   }
   goToApp(){
-    this.router.navigate(['graphs'],{state:{showing:false}})
-    //send data to ap.component.ts that this was clicked and set 'onHome' to false.
-    this.output.emit("false");
+    this.router.navigate(['graphs'])
+  }
+
+  getLatestData() {
+    axios.get('https://covlab-backend-production.up.railway.app/latest')
+      .then( (response) => {
+        this.updatedString = "Last updated: " + response.data['date']
+      }
+    )
   }
 }
