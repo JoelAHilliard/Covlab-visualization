@@ -29,7 +29,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TableGraphComponent } from './components/table-graph/table-graph.component';
 import { WordCloudComponent } from './components/word-cloud/word-cloud.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
