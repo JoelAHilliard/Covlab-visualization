@@ -8,7 +8,24 @@ a {
     height: 100%;
     align-self: center;
 }
+h1 {
+    margin: 0 10px 0 0;
+    align-self: center;
+}
 mat-card{
     width:90%;
     margin: 10px;
+}
+.mat-tab-link {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 24px;
+  }
+.mat-tab-link.active-tab {
+    color: white;
+    border-bottom: 2px solid blue;
+}
+.mat-tab-link:hover {
+    background-color: grey;
 }

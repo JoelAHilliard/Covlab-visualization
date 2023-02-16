@@ -325,7 +325,9 @@ export class CasesCountries implements OnInit {
 
 
     this.highcharts = Highcharts.chart('chartContainer', {
-     
+      chart:{
+        animation:false
+      },
       boost: {
         useGPUTranslations: true,
         seriesThreshold: 2
@@ -342,6 +344,7 @@ export class CasesCountries implements OnInit {
         floating: true,
       },
       plotOptions: {
+        
           spline: {
             turboThreshold: 2000
           }
@@ -358,7 +361,7 @@ export class CasesCountries implements OnInit {
             y:25,    
           },
           crosshair:{
-            width:3,
+            width:2,
             color:"black"
           }
         
@@ -375,7 +378,7 @@ export class CasesCountries implements OnInit {
             },
           min:0,
           crosshair:{
-            width:3,
+            width:2,
             color:"black"
           }
         },
@@ -391,7 +394,7 @@ export class CasesCountries implements OnInit {
           min:0,
           opposite:true,
           crosshair:{
-            width:3,
+            width:2,
             color:"black"
           },
           
@@ -427,46 +430,43 @@ export class CasesCountries implements OnInit {
     }
     return dates;
   }
+  //returns an index
+  bSearchDates(dates: Date[], target: Date){
+    let left = 0;
+    let right = dates.length - 1;
+    while (left <= right) {
+      let mid = Math.floor((left + right) / 2);
+      if (dates[mid].getTime() === target.getTime()) {
+        return mid;
+      } else if (dates[mid] < target) {
+        left = mid + 1;
+      } else {
+        right = mid - 1;
+      }
+    }
+    return dates.length - 1;
+  }
 
   //when the range slider is moved
   updateData(event: any) {
     //a fresh copy of the days array (this will be extracted dynamically)
     let daysCopy = new Array(this.days)[0];
-      // copy of data (this assumes that all data lengths are equal)
 
-    let data = new Array(this.dataFromAPI[0].data)[0];
     // left hand was moved
     if(event.pointerType == 0){
       let date = new Date(event.value);
-      let index = 0;  
       let counter = 0;
-      //find correct index to slice the dataset at
-      for (let i = 0;i<data.length;i++){
-       
-        let tempDate = new Date(data[i][0]);
-    
-        if(tempDate.getFullYear() === date.getFullYear() &&
-    tempDate.getMonth() === date.getMonth() &&
-    tempDate.getDate() === date.getDate()){
-          index = i;
-          break;
-        }
-      }
+
+      let index = this.bSearchDates(this.dateRange,date);
+
       // update the x axis labels
       this.highcharts.xAxis[0].update({
-        categories:daysCopy.slice(index,this.rightSliderIndex+1)
+        categories:daysCopy.slice(index,this.rightSliderIndex)
       })
-
-      //update the series'
-      counter = 0
-
-      //counter iterates through the data sets assuming that the 
-      //number of datasets is equal and in the same order
-      //as the series in the chart=
 
       this.highcharts.series.forEach((element:any) => {
         element.update({
-          data: this.dataFromAPI[counter].data.slice(index,this.rightSliderIndex+1)
+          data: this.dataFromAPI[counter].data.slice(index,this.rightSliderIndex)
         })
         counter++;
       });
@@ -476,46 +476,25 @@ export class CasesCountries implements OnInit {
     
     // right hand was moved
     if(event.pointerType == 1){
-      let index = 0;
       let date = new Date(event.highValue);
 
-      //reverse order loop
-      for (let i = data.length - 1; i > 0; i--){
-        let tempDate = new Date(data[i][0]);
- 
+      let index = this.bSearchDates(this.dateRange,date);
 
-        //edge case, the right hand slider was moved back to original pos
-        if(i == data.length - 1){
-            if(date > tempDate){
-              index = data.length;
-              break;
-            }
-        }
-
-        if(tempDate.getFullYear() === date.getFullYear() &&
-        tempDate.getMonth() === date.getMonth() &&
-        tempDate.getDate() === date.getDate()){
-          index = i;
-          break;
-        }
-      }
-
+      let counter = 0;
 
 
       if(index == 0){
         index = this.rightSliderIndex;
       }
-      let counter = 0;
+
       //update the x axis
       this.highcharts.xAxis[0].update({
-        categories:daysCopy.slice(this.leftSliderIndex,index+1)
+        categories:daysCopy.slice(this.leftSliderIndex,index)
       })
-
       //update the series'
-      counter = 0
       this.highcharts.series.forEach((element:any) => {
         element.update({
-          data: this.dataFromAPI[counter].data.slice(this.leftSliderIndex,index+1)
+          data: this.dataFromAPI[counter].data.slice(this.leftSliderIndex,index)
 
         })
         counter++;
@@ -530,7 +509,6 @@ export class CasesCountries implements OnInit {
     this.currentLowVal = event.value;
     this.currentHighVal = event.highValue;
 
-    this.highcharts.redraw();
   }
 
   // left in string form
@@ -541,12 +519,5 @@ export class CasesCountries implements OnInit {
       days.push(d.toLocaleDateString());
     }
     return days;
-  }
-
-  // add days to a date
-  addDays(date:Date, days:number) {
-    var result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
   }
 }
