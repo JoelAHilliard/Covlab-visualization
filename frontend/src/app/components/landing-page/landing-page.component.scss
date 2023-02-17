@@ -27,11 +27,47 @@ p {
     p {
         font-size: 25px;
     }
+    .landingPageData{
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        gap:15px;
+    }
+
+    .landingPageData p{
+        font-size: 15px;
+    }
+
+    h4 {
+        color:white;
+        text-align: center;
+        font-size: 30px;
+        margin: 0;
+    }
 }
 @media only screen and (min-device-width: 600px) {
     p {
         width: 100%;
         font-size: 30px;
+    }
+    .landingPageData{
+        width: 50%;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        gap:15px;
+    }
+
+    .landingPageData p{
+        font-size: 15px;
+    }
+
+    h4 {
+        color:white;
+        text-align: center;
+        font-size: 30px;
+        margin: 0;
     }
 }
 .team_header-title {
@@ -53,21 +89,4 @@ p {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-}
-.landingPageData{
-    width: 50%;
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    gap:15px;
-}
-.landingPageData p{
-    font-size: 15px;
-}
-
-h4 {
-    color:white;
-    text-align: center;
-    font-size: 30px;
-    margin: 0;
 }
