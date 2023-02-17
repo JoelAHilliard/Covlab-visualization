@@ -282,7 +282,7 @@ export class CasesCountries implements OnInit {
   }
   // code that creates the chart
   makeHighchart(datasets: any){
-    let colors: string[] = ["black","blue"];
+    let colors: string[] = ["orange","blue"];
     let seriesArray:  Highcharts.SeriesOptionsType[] = [];
 
 
