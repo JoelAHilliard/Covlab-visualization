@@ -2,7 +2,7 @@
     <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading? 'block': 'none','margin':'auto'}">
     <!-- <h1 [ngStyle]="{'display': isDataLoading ? 'none': 'block','text-align':'left'}">Covlab Data</h1> -->
     <h4 [ngStyle]="{'display': isDataLoading ? 'none': 'block','text-align':'left'}">Total Tweets: {{totalTweets | number:'1.0':'en-US'}}</h4>
-    <div style="display: flex; flex-flow: row; justify-content: center;" id="pieContainer">
+    <div style="display: flex; flex-flow: row; justify-content: center; gap: 5px;width: 100%;" id="pieContainer">
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container" style="overflow: visible !important;"></div>
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container2" style="overflow: visible !important;"></div>
     </div>

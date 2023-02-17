@@ -74,6 +74,9 @@ export class PieChartComponent implements OnInit {
     if(this.screenWidth < 850){
       chartWidth = 250;
     }
+    if(this.screenWidth < 500){
+      chartWidth = 175;
+    }
 
     Highcharts.chart({
       title:{
