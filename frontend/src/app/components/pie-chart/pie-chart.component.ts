@@ -27,6 +27,8 @@ export class PieChartComponent implements OnInit {
   screenHeight: number = 0;
   screenWidth: number = 0;
 
+  previousWidth:number = 0;
+
   constructor() {
     this.getScreenSize();
   }
@@ -40,8 +42,12 @@ export class PieChartComponent implements OnInit {
         this.screenHeight = window.innerHeight;
         this.screenWidth = window.innerWidth;
         console.log(this.screenWidth);
+        if(this.screenWidth == this.previousWidth){
+          return
+        }
         if(this.data != null && (this.screenWidth > 1600 || this.screenWidth < 850)){
           this.createChart(this.data);
+          this.previousWidth = this.screenWidth;
         }
 
   }
