@@ -1,11 +1,31 @@
-
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
 <div class="backgroundCss">
-    
-    <p class="Covlab" style="padding-top: 15px;">Covlab</p>
-    <p>Uncover the connection: Explore COVID-19 cases through tweets.</p>
-    <br>
-    <p class="lastUpdated">{{updatedString}}</p>
-    <button mat-raised-button color="primary" (click)="goToApp()">Go to app</button>
+    <app-nav-bar style="width: 100%;"></app-nav-bar>
+    <div class="background-overlay">
+        <p class="Covlab" style="padding-top: 15px;">Covlab</p>
+        <p>Uncover the connection: Explore COVID-19 cases through tweets.</p>
+        <br>
+        <div class="landingPageData" *ngIf="!isLoading">
+            <div>
+                <p style="font-family: 'Roboto';">Total Tweets</p>
+                <h4>{{totalTweets | shortNumber}}</h4>
+
+            </div>
+            <div>
+                <p>Model Positive Tweets</p>
+                <h4>{{modelPosTweets | shortNumber}}</h4>
+            </div>
+            <div>
+                <p>Cases 14-day Avg</p>
+                <h4>{{cases14Change | shortNumber}}</h4>
+            </div>
+            
+        </div>
+        <br>
+        <p class="lastUpdated" *ngIf="!isLoading">{{updatedString}}</p>
+    </div>
 </div>
 <!-- <div style="background-color: white;">
     <p class="team_header-title">Meet the team.</p>
