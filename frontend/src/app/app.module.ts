@@ -31,7 +31,6 @@ import { WordCloudComponent } from './components/word-cloud/word-cloud.component
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ShortNumberPipe } from './pipes/number-abbreviation.pipe';
-
 @NgModule({
   declarations: [
     AppComponent,

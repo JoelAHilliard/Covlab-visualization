@@ -1,15 +1,4 @@
-.backgroundCss {
-    display: flex; 
-    flex-flow:column; 
-    justify-content: center; 
-    align-items: center;
-    height: 100%;
-    background-image: url("/assets/images/image.png");
-    background-size: auto;
-    background-position: center;
-    overflow: hidden;
-    font-family: 'Roboto', sans-serif;
-}
+
 .lastUpdated {
     font-size: 13px; 
 }
@@ -22,8 +11,14 @@ p {
     text-align: center;
     margin:0;
 }
+.textContainer {
+}
 //mobile
 @media only screen and (max-device-width: 600px) {
+    .lastUpdated {
+        margin-top:10px;
+        font-size: 13px; 
+    }
     p {
         font-size: 25px;
     }
@@ -33,6 +28,8 @@ p {
         flex-flow: row;
         justify-content: center;
         gap:15px;
+        height: 50px;
+        margin-top: 20px;
     }
 
     .landingPageData p{
@@ -45,8 +42,40 @@ p {
         font-size: 30px;
         margin: 0;
     }
+    .backgroundCss {
+        display: flex; 
+        flex-flow:column; 
+        justify-content: center; 
+        height: 100%;
+        background-image: url("/assets/images/image.png");
+        background-size: auto;
+        background-position: center;
+        overflow: hidden;
+        font-family: 'Avenir', sans-serif;
+    }
+    .background-overlay {
+        background-color: rgba(26,25,25,0.7);
+        height: 100%;
+        width: 100%;
+        background-size: auto;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    }
 }
 @media only screen and (min-device-width: 600px) {
+    .backgroundCss {
+        display: flex; 
+        flex-flow:column; 
+        justify-content: center; 
+        align-items: center;
+        height: 100%;
+        background-image: url("/assets/images/image.png");
+        background-size: auto;
+        background-position: center;
+        overflow: hidden;
+        font-family: 'Avenir', sans-serif;
+    }
     p {
         width: 100%;
         font-size: 30px;
@@ -57,17 +86,28 @@ p {
         flex-flow: row;
         justify-content: center;
         gap:15px;
+        align-items: center;
+        height:100px;
     }
 
     .landingPageData p{
         font-size: 15px;
     }
-
     h4 {
         color:white;
         text-align: center;
         font-size: 30px;
         margin: 0;
+    }
+    .background-overlay {
+        background-color: rgba(26,25,25,0.7);
+        height: 100%;
+        width: 100%;
+        background-size: auto;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 .team_header-title {
@@ -80,13 +120,4 @@ p {
     font-size:45px;
     padding-top: 15px;
 }
-.background-overlay {
-    background-color: rgba(26,25,25,0.7);
-    height: 100%;
-    width: 100%;
-    background-size: auto;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-}
+

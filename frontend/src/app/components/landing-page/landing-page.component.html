@@ -4,27 +4,26 @@
 <div class="backgroundCss">
     <app-nav-bar style="width: 100%;"></app-nav-bar>
     <div class="background-overlay">
-        <p class="Covlab" style="padding-top: 15px;">Covlab</p>
-        <p>Uncover the connection: Explore COVID-19 cases through tweets.</p>
-        <br>
-        <div class="landingPageData" *ngIf="!isLoading">
-            <div>
-                <p style="font-family: 'Roboto';">Total Tweets</p>
-                <h4>{{totalTweets | shortNumber}}</h4>
-
-            </div>
-            <div>
-                <p>Model Positive Tweets</p>
-                <h4>{{modelPosTweets | shortNumber}}</h4>
-            </div>
-            <div>
-                <p>Cases 14-day Avg</p>
-                <h4>{{cases14Change | shortNumber}}</h4>
-            </div>
-            
+        <div class="titleContainer" >
+            <p class="Covlab" style="padding-top: 15px;">Covlab</p>
+            <p>Uncover the connection: Explore COVID-19 cases through tweets.</p>
         </div>
-        <br>
-        <p class="lastUpdated" *ngIf="!isLoading">{{updatedString}}</p>
+        <br *ngIf="isLoading">
+        <div class="landingPageData">
+            <div *ngIf="!isLoading" [@slideInOut]>
+                <p style="font-family: 'Roboto';">Total Tweets</p>
+                <h4 >{{totalTweets | shortNumber}}</h4>
+            </div>
+            <div *ngIf="!isLoading" [@slideInOut]>
+                <p>Model Positive Tweets</p>
+                <h4 >{{modelPosTweets | shortNumber}}</h4>
+            </div>
+            <div *ngIf="!isLoading" [@slideInOut]>
+                <p>Cases 14-day Avg</p>
+                <h4 >{{cases14Change | shortNumber}}</h4>
+            </div>
+        </div>
+        <p *ngIf="!isLoading" [@slideInOut] class="lastUpdated" >{{updatedString}}</p>
     </div>
 </div>
 <!-- <div style="background-color: white;">
