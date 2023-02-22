@@ -46,7 +46,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   getLatestData() {
-    const latestDataPromise = axios.get('https://covlab-backend-production.up.railway.app/latest');
+    const latestDataPromise = axios.get('https://covlab-backend.onrender.com/latest');
     const statisticsPromise = axios.post('https://labelling.covlab.tech/statistics');
   
     Promise.all([latestDataPromise, statisticsPromise]).then((responses) => {
