@@ -1,5 +1,5 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 import axios from 'axios';
 
@@ -15,14 +15,14 @@ import axios from 'axios';
     transition(':leave', [
       animate('200ms ease-in', style({ transform: 'translateY(100%)' }))
     ])
-  ]),trigger('slideOut', [
-    transition(':leave', [
-      animate('200ms ease-in', style({ 
-        transform: 'translateY(-100%)',
-        zIndex:-5
-      }))
-    ])
-  ])]
+    ]),trigger('slideOut', [
+      transition(':leave', [
+        animate('200ms ease-in', style({ 
+          transform: 'translateY(-100%)',
+          zIndex:-5
+        }))
+      ])
+    ])]
 })
 
 export class LandingPageComponent implements OnInit {
@@ -35,16 +35,43 @@ export class LandingPageComponent implements OnInit {
 
   isLoading: boolean = true;
 
+  animationState = ""
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getLatestData();
+    this.animationState = 'hidden';
+    window.addEventListener('scroll', this.onScroll.bind(this));
+
   }
   goToApp(){
     this.router.navigate(['graphs']);
   }
+  onScroll() {
+    const descriptions = document.querySelectorAll('.description');
+    for (let i = 0; i < descriptions.length; i++) {
 
+      const description = descriptions[i];
+      const top = description.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+  
+      if (top < windowHeight) {
+        if (!description.hasAttribute('data-visible')) {
+          description.setAttribute('data-visible', 'true');
+          description.animate([
+            { opacity: 0, transform: 'translateY(-50px)' },
+            { opacity: 1, transform: 'translateY(0px)' }
+          ], {
+            duration: 1000,
+            fill: 'forwards'
+          });
+        }
+      }
+    }
+  }
+  
+  
   getLatestData() {
     const latestDataPromise = axios.get('https://covlab-backend.onrender.com/latest');
     const statisticsPromise = axios.post('https://labelling.covlab.tech/statistics');

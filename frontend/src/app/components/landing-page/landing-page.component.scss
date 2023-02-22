@@ -1,123 +1,166 @@
-
 .lastUpdated {
-    font-size: 13px; 
-}
-h1 {
-    font-family: 'Bebas Neue',sans-serif;
-    font-size: 75px
-}
-p {
+    font-size: 13px;
+  }
+  
+  h1 {
+    font: 75px 'Bebas Neue', sans-serif;
+  }
+  
+  p {
     color: white;
     text-align: center;
-    margin:0;
-}
-.textContainer {
-}
-//mobile
-@media only screen and (max-device-width: 600px) {
-    .lastUpdated {
-        margin-top:10px;
-        font-size: 13px; 
-    }
-    p {
-        font-size: 25px;
-    }
-    .landingPageData{
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-        justify-content: center;
-        gap:15px;
-        height: 50px;
-        margin-top: 20px;
-    }
-
-    .landingPageData p{
-        font-size: 15px;
-    }
-
-    h4 {
-        color:white;
-        text-align: center;
-        font-size: 30px;
-        margin: 0;
-    }
-    .backgroundCss {
-        display: flex; 
-        flex-flow:column; 
-        justify-content: center; 
-        height: 100%;
-        background-image: url("/assets/images/image.png");
-        background-size: auto;
-        background-position: center;
-        overflow: hidden;
-        font-family: 'Avenir', sans-serif;
-    }
-    .background-overlay {
-        background-color: rgba(26,25,25,0.7);
-        height: 100%;
-        width: 100%;
-        background-size: auto;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-    }
-}
-@media only screen and (min-device-width: 600px) {
-    .backgroundCss {
-        display: flex; 
-        flex-flow:column; 
-        justify-content: center; 
-        align-items: center;
-        height: 100%;
-        background-image: url("/assets/images/image.png");
-        background-size: auto;
-        background-position: center;
-        overflow: hidden;
-        font-family: 'Avenir', sans-serif;
-    }
-    p {
-        width: 100%;
-        font-size: 30px;
-    }
-    .landingPageData{
-        width: 50%;
-        display: flex;
-        flex-flow: row;
-        justify-content: center;
-        gap:15px;
-        align-items: center;
-        height:100px;
-    }
-
-    .landingPageData p{
-        font-size: 15px;
-    }
-    h4 {
-        color:white;
-        text-align: center;
-        font-size: 30px;
-        margin: 0;
-    }
-    .background-overlay {
-        background-color: rgba(26,25,25,0.7);
-        height: 100%;
-        width: 100%;
-        background-size: auto;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
-    }
-}
-.team_header-title {
-    font-size: 20px;
-    text-align: left; 
     margin: 0;
-    color:black;
-}
-.Covlab { 
-    font-size:45px;
-    padding-top: 15px;
-}
+  }
+  .description{
+    width: 50%;
+
+  }
+  .infoWrapper {
+    display: flex;
+    align-items: center;
+    /* default setting for larger screens */
+    flex-flow: row;
+  }
+  .imgContainer{
+    width:50%;
+  }
+  .dataTitle{
+    font-size:15px;
+  }
+  #secondCard {
+    flex-flow: row-reverse;
+  }
+  @media only screen and (max-width: 1000px) {
+    .infoWrapper.infoWrapper {
+      flex-flow: column;
+    }
+    #secondCard {
+      flex-flow: column;
+    }
+    .description {
+        width: 100%;
+        font-size:10px;
+
+    }
+    .imgContainer{
+        width: 100%;
+    }
+   
+  }
+  
+  #secondCard {
+    min-height: 275px;
+  }
+  
+  .backgroundCss {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-image: url("/assets/images/image.png");
+    background-size: auto;
+    background-position: center;
+    overflow: hidden;
+    font-family: 'Avenir', sans-serif;
+  }
+  
+  .background-overlay {
+    background-color: rgba(26, 25, 25, 0.7);
+    height: 100%;
+    width: 100%;
+    background-size: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media only screen and (max-device-width: 600px) {
+    .imgContainer {
+      background-color: grey;
+      text-align: center;
+      border-radius: 5px;
+      height: 100%;
+    }
+    .imgContainer img {
+      background-color: aqua;
+      max-width: 150px;
+      align-items: center;
+    }
+    p {
+      font-size: 25px;
+    }
+    .landingPageData {
+      width: 100%;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      gap: 15px;
+      height: 50px;
+      margin-top: 20px;
+    }
+    .landingPageData p {
+      font-size: 15px;
+      color:red;
+    }
+    h4 {
+      color: white;
+      text-align: center;
+      font-size: 30px;
+      margin: 0;
+    }
+  }
+  
+  @media only screen and (min-device-width: 600px) {
+    .imgContainer {
+      background-color: grey;
+      text-align: center;
+      border-radius: 5px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .imgContainer img {
+      background-color: aqua;
+      max-width: 450px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+    p {
+      width: 100%;
+      font-size: 30px;
+    }
+    .landingPageData {
+      width: 50%;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      gap: 15px;
+      align-items: center;
+      height: 100px;
+    }
+    h4 {
+      color: white;
+      text-align: center;
+      font-size: 30px;
+      margin: 0;
+    }
+  }
+  
+  .team_header-title {
+    font-size: 20px;
+    text-align: left;
+    margin: 0;
+    color: black;
+  }
+  
+  .Covlab {
+    font-size: 45px;
+    padding-top:5px
+  }
+
+
+
 

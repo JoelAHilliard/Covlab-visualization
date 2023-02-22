@@ -1,5 +1,6 @@
+
 <nav mat-tab-nav-bar>
-  <h1>Covlab</h1>
+  <div class="logo" (click)="goHome()"></div>
   <a mat-tab-link
      *ngFor="let link of links"
      [routerLink]="link.route"

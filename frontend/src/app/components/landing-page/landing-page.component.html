@@ -4,28 +4,64 @@
 <div class="backgroundCss">
     <app-nav-bar style="width: 100%;"></app-nav-bar>
     <div class="background-overlay">
-        <div class="titleContainer" >
+        <div class="titleContainer" *ngIf="!isLoading" [@slideInOut]>
             <p class="Covlab" style="padding-top: 15px;">Covlab</p>
             <p>Uncover the connection: Explore COVID-19 cases through tweets.</p>
+            <div style="display: flex; flex-flow: row; width: 100%; justify-content: center; gap: 15px;">
+                <div>
+                    <p class="dataTitle" style="font-family: 'Roboto';">Total Tweets</p>
+                    <h4 >{{totalTweets | shortNumber}}</h4>
+                </div>
+                <div>
+                    <p class="dataTitle" >Model Positive Tweets</p>
+                    <h4 >{{modelPosTweets | shortNumber}}</h4>
+                </div>
+                <div>
+                    <p class="dataTitle">Cases 14-day Avg</p>
+                    <h4 >{{cases14Change | shortNumber}}</h4>
+                </div>
+            </div>
+            <p class="lastUpdated" >{{updatedString}}</p>
         </div>
-        <br *ngIf="isLoading">
-        <div class="landingPageData">
-            <div *ngIf="!isLoading" [@slideInOut]>
-                <p style="font-family: 'Roboto';">Total Tweets</p>
-                <h4 >{{totalTweets | shortNumber}}</h4>
-            </div>
-            <div *ngIf="!isLoading" [@slideInOut]>
-                <p>Model Positive Tweets</p>
-                <h4 >{{modelPosTweets | shortNumber}}</h4>
-            </div>
-            <div *ngIf="!isLoading" [@slideInOut]>
-                <p>Cases 14-day Avg</p>
-                <h4 >{{cases14Change | shortNumber}}</h4>
-            </div>
-        </div>
-        <p *ngIf="!isLoading" [@slideInOut] class="lastUpdated" >{{updatedString}}</p>
+    
     </div>
 </div>
-<!-- <div style="background-color: white;">
-    <p class="team_header-title">Meet the team.</p>
-</div> -->
+<!-- Preview -->
+<div style="background-color: rgba(26,25,25,0.7);">
+    <br>
+    <mat-card class="mat-elevation-z8" style=" width:95%; margin:auto; padding: 5px;">
+        <div class="infoWrapper">
+            <div class="description" >
+                <p style="color: black;  text-align: center; font-size: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <div class="imgContainer">
+                <img src="../../../assets/images/line-graph.jpg">
+            </div>   
+        </div>
+    </mat-card>
+    <br>
+    <mat-card class="mat-elevation-z8" style="width:95%; display: flex; margin:auto; padding: 5px; align-content: center;">
+        <div class="infoWrapper" id="secondCard">
+            <div class="description" >
+                <p style="color: black;  text-align: center; font-size: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div> 
+            <div class="imgContainer">
+                <img src="../../../assets/images/pieChart.jpg">
+            </div>   
+               
+        </div>
+    </mat-card>
+    <br>
+    <mat-card class="mat-elevation-z8" style=" width:95%; margin:auto; padding: 5px;">
+        <div class="infoWrapper">
+            <div class="description">
+                <p style="color: black;  text-align: center; font-size: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>  
+            <div class="imgContainer">
+                <img src="../../../assets/images/usMap.jpg">
+            </div>    
+        </div>
+    </mat-card>
+    <br>
+</div>
+<!-- <app-footer></app-footer> -->

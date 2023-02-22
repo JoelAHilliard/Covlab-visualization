@@ -37,4 +37,15 @@ mat-card{
         margin: 0 2px 0 0;
         align-self: center;
     }
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{
+        display: none;
+    }
+}
+.logo {
+    background-image: url("/assets/images/covlabLogos/covlabLogoBW.png");
+    background-position: center;
+    background-color: black;
+    background-size: cover;
+    min-width: 100px;
+    cursor: pointer;
 }
