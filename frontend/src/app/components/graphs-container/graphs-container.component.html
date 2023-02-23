@@ -17,9 +17,11 @@
 <br>
 <div>
     <mat-card class="mat-elevation-z8" style="width:95%; margin:auto; ">
-    <app-word-cloud></app-word-cloud>
+        <app-word-cloud></app-word-cloud>
     </mat-card>
 </div>
-<div style="width:97%; margin:auto; margin-top:5px">
-    <app-table *ngIf="graphDataArr.length > 1" [apiData]="graphDataArr"></app-table>
-</div>
+<mat-card class="mat-elevation-z8" style="width:95%;  margin:auto; margin-top:15px; min-height: 200px;">
+    <div style="width:97%; margin:auto; margin-top:5px">
+        <app-table *ngIf="graphDataArr.length > 1" [apiData]="graphDataArr"></app-table>
+    </div>
+</mat-card>

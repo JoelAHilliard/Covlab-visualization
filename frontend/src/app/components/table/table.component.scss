@@ -1,9 +1,12 @@
 td, th{
-    text-align: left;
+    text-align: center;
     
 }
+table {
+    box-shadow: none;
+}
 th.mat-header-cell {
-    text-align: left;
+    text-align: center;
 }
 
 tr.mat-row:first-child > td{

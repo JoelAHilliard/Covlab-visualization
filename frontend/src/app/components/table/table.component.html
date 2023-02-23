@@ -1,19 +1,20 @@
 <div style="margin-bottom:20px">
-  <table style="width: 100%; margin-bottom:20px;" mat-table [dataSource]="data" class="mat-elevation-z8">
+  <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isLoading?  'block': 'none','margin':'auto'}">
+  <table style="width: 100%; margin-bottom:20px;" mat-table [dataSource]="data" class="mat-elevation-z8" [ngStyle]="{'display': !isLoading ? 'table': 'none', 'flex-flow':'column'}">
       
     <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element"> {{ element.state }} </td>
+        <th mat-header-cell *matHeaderCellDef>State</th>
+        <td style="font-size:20px" mat-cell *matCellDef="let element"> {{ element.state }} </td>
       </ng-container>
     
       <ng-container matColumnDef="weeklyAverage">
         <th mat-header-cell *matHeaderCellDef>Weekly Average</th>
-        <td mat-cell *matCellDef="let element"> {{ element.cases_7_sum }} </td>
+        <td style="font-size:20px" mat-cell *matCellDef="let element"> {{ element.cases_7_sum }} </td>
       </ng-container>
     
       <ng-container matColumnDef="weeklyNewCasesPer1k">
         <th mat-header-cell *matHeaderCellDef>Weekly Cases Per 1k</th>
-        <td mat-cell *matCellDef="let element" > 
+        <td style="font-size:20px" mat-cell *matCellDef="let element" > 
           <div *ngIf="element.weekly_new_cases_per1k !== 'N/A'">
             {{ element.weekly_new_cases_per1k  * 100 | number }}
           </div>
@@ -28,11 +29,11 @@
       <ng-container matColumnDef="twoWeekChange">
 
         <th class="tableHeaders" mat-header-cell *matHeaderCellDef>Two Week Change (%)</th>
-        <td mat-cell *matCellDef="let element; let i = index" style="display: flex; flex-flow: column;">
+        <td style="font-size:20px" mat-cell *matCellDef="let element; let i = index" style="display: flex; flex-flow: column;">
           <!-- <app-map></app-map> -->
           <!-- <canvas id="myChart"></canvas> -->
-          <p *ngIf="element.cases_14_days_change != 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">{{element.cases_14_days_change.percentage | number}}%</p>
-          <p *ngIf="element.cases_14_days_change == 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">N/A</p>
+          <p *ngIf="element.cases_14_days_change.percentage !== 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">{{element.cases_14_days_change.percentage | number}}%</p>
+          <p *ngIf="element.cases_14_days_change.percentage == 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">N/A</p>
           
 
           <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="element.cases_14_days_change">
@@ -45,11 +46,11 @@
     
       <ng-container matColumnDef="testPositivity">
         <th mat-header-cell *matHeaderCellDef>Test Positivity</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="element.positivity">
+        <td style="font-size:20px" mat-cell *matCellDef="let element">
+          <div *ngIf="element.positivity != 'N/A'">
            {{element.positivity * 100 | number}} 
           </div>
-          <div *ngIf="!element.positivity">
+          <div *ngIf="element.positivity == 'N/A'">
             {{"N/A"}} 
            </div>
         </td>
