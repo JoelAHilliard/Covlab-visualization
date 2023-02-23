@@ -8,12 +8,21 @@
     
       <ng-container matColumnDef="weeklyAverage">
         <th mat-header-cell *matHeaderCellDef>Weekly Average</th>
-        <td mat-cell *matCellDef="let element"> {{ element.weeklyAverage }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.cases_7_sum }} </td>
       </ng-container>
     
       <ng-container matColumnDef="weeklyNewCasesPer1k">
         <th mat-header-cell *matHeaderCellDef>Weekly Cases Per 1k</th>
-        <td mat-cell *matCellDef="let element"> {{ element.weeklyNewCasesPer1k }} </td>
+        <td mat-cell *matCellDef="let element" > 
+          <div *ngIf="element.weekly_new_cases_per1k !== 'N/A'">
+            {{ element.weekly_new_cases_per1k  * 100 | number }}
+          </div>
+          <div *ngIf="element.weekly_new_cases_per1k == 'N/A'">
+            {{element.weekly_new_cases_per1k}}
+          </div>
+        </td>
+        <td mat-cell *matCellDef="let element"> N/A </td>
+
       </ng-container>
     
       <ng-container matColumnDef="twoWeekChange">
@@ -22,9 +31,11 @@
         <td mat-cell *matCellDef="let element; let i = index" style="display: flex; flex-flow: column;">
           <!-- <app-map></app-map> -->
           <!-- <canvas id="myChart"></canvas> -->
-          <p style="line-height: 14px; margin: 5px 0 0 0;">{{element.twoWeekChangeCases}}%</p>
+          <p *ngIf="element.cases_14_days_change != 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">{{element.cases_14_days_change.percentage | number}}%</p>
+          <p *ngIf="element.cases_14_days_change == 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">N/A</p>
           
-          <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="twoWeekChangeData">
+
+          <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="element.cases_14_days_change">
           </app-table-graph>
 
 
@@ -34,7 +45,14 @@
     
       <ng-container matColumnDef="testPositivity">
         <th mat-header-cell *matHeaderCellDef>Test Positivity</th>
-        <td mat-cell *matCellDef="let element"> {{ element.testPositivity }} </td>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.positivity">
+           {{element.positivity * 100 | number}} 
+          </div>
+          <div *ngIf="!element.positivity">
+            {{"N/A"}} 
+           </div>
+        </td>
       </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="columndefs"></tr>

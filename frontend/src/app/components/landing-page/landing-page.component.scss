@@ -18,8 +18,8 @@
   .infoWrapper {
     display: flex;
     align-items: center;
-    /* default setting for larger screens */
     flex-flow: row;
+    overflow: hidden;
   }
   .imgContainer{
     width:50%;
@@ -29,7 +29,10 @@
   }
   #secondCard {
     flex-flow: row-reverse;
+    min-height: 275px;
+
   }
+
   @media only screen and (max-width: 1000px) {
     .infoWrapper.infoWrapper {
       flex-flow: column;
@@ -48,10 +51,7 @@
    
   }
   
-  #secondCard {
-    min-height: 275px;
-  }
-  
+
   .backgroundCss {
     display: flex;
     flex-flow: column;

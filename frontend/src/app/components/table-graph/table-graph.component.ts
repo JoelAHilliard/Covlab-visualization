@@ -1,5 +1,5 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Chart, ChartData, registerables } from 'chart.js';
 Chart.register(...registerables)
 @Component({
   selector: 'app-table-graph',
@@ -12,7 +12,7 @@ export class TableGraphComponent implements AfterViewInit {
   
   @Input() id: string = ""
 
-  @Input() twoWeekChange:any = [];
+  @Input() twoWeekChange: any;
 
   constructor() {
 
@@ -25,26 +25,46 @@ export class TableGraphComponent implements AfterViewInit {
     
     let newIndex = Number(this.index);
     let newId = this.id;
-
-    var data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      datasets: [
-        {
-          backgroundColor: "blue",
-          borderColor: "blue",
-          borderWidth: 3,
-          data: generateFakeData(),
-          fill: {
-            target: 'origin',
-            above: 'rgb(0, 0, 255, 0.25)'
+    let data;
+    if(this.twoWeekChange == "N/A"){
+      data = {
+        //last two weeks
+        labels: ["January", "February", "March", "April", "May", "June", "July", "July", "May", "June", "July", "July"],
+        datasets: [
+          {
+            backgroundColor: "red",
+            borderColor: "red",
+            borderWidth: 3,
+            data: generateFakeData(),
+            fill: {
+              target: 'origin',
+              above: 'rgb(0, 0, 255, 0.25)'
+            }
           }
-        }
-      ]
-    };
-
+        ]
+      };
+    }
+    else {
+      data = {
+        //last two weeks
+        labels: this.twoWeekChange['14DayData'].labels,
+        datasets: [
+          {
+            backgroundColor: "blur",
+            borderColor: "blue",
+            borderWidth: 3,
+            data: this.twoWeekChange['14DayData'].data,
+            fill: {
+              target: 'origin',
+              above: 'rgb(0, 0, 255, 0.25)'
+            }
+          }
+        ]
+      };
+    }
     new Chart(newId + newIndex, {
       type: "line",
-      data: data,
+      data: data as ChartData,
       options: {
         responsive: false,
         maintainAspectRatio:true,
@@ -82,14 +102,10 @@ export class TableGraphComponent implements AfterViewInit {
 
   }
 
-  
-
-
-
 }
 function generateFakeData() {
   let fakeData = []
-  for(var i =0;i<5;i++){
+  for(var i =0;i<12;i++){
     fakeData.push(Math.random() * 10)
   }
   return fakeData
