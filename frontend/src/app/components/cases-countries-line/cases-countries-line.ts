@@ -221,8 +221,6 @@ export class CasesCountries implements OnInit {
 
         this.days = this.setDateData(tempStartDate, tempEndDate);
 
-        console.log(this.days)
-
         this.dateRange = this.createDateRange(tempStartDate,tempEndDate);
 
         this.options = {
