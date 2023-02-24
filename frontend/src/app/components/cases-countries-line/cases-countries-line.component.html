@@ -4,7 +4,7 @@
     <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" style="margin-left: auto; width: 100%;">
         <div id="selector">
             <div style="display: flex; flex-flow: row; justify-content: space-between;">
-                <h2>Covlab Data</h2>
+                <h2>Real Cases and Predicted Cases</h2>
                 <mat-form-field appearance="fill">
                     <mat-label>Select Dataset</mat-label>
                     <!-- <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select"> -->
@@ -13,6 +13,8 @@
                         <mat-option  name="option" value="7dayAvg">7 Day Average</mat-option>
                         <mat-option  name="option" value="14dayAvg">14 Day Average</mat-option>
                         <mat-option  name="option" value="cumulative">Cumulative</mat-option>
+                        <mat-option  name="option" value="tweetPositivity">Tweet Positivity</mat-option>
+
                     </mat-select>
                 </mat-form-field>
             </div>
