@@ -32,6 +32,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ShortNumberPipe } from './pipes/number-abbreviation.pipe';
 import { FooterComponent } from './components/footer/footer.component';
+import { TweetLineComponent } from './components/tweet-line/tweet-line.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LandingPageComponent,
     NavBarComponent,
     ShortNumberPipe,
-    FooterComponent
+    FooterComponent,
+    TweetLineComponent
   ],
   imports: [
     BrowserModule,

@@ -192,7 +192,7 @@ export class CasesCountries implements OnInit {
            //daily
           casesDaily.push([response.data[0][i].date,response.data[0][i].new_cases])
           tweetDaily.push([response.data[1][i].date,response.data[1][i].new_tweets])
-          casesPer1kWeekly.push([response.data[1][i].date,response.data[1][i].weekly_new_cases_per1k])
+          casesPer1kWeekly.push([response.data[1][i].date,response.data[1][i].weekly_new_cases_per10m])
           //weekly
           casesWeekly.push([response.data[0][i].date,response.data[0][i].cases_7_average])
           tweetWeekly.push([response.data[1][i].date,response.data[1][i].tweets_7_average])
@@ -218,9 +218,10 @@ export class CasesCountries implements OnInit {
         
         
         //set new x axis range
-        console.log(tempStartDate)
 
         this.days = this.setDateData(tempStartDate, tempEndDate);
+
+        console.log(this.days)
 
         this.dateRange = this.createDateRange(tempStartDate,tempEndDate);
 

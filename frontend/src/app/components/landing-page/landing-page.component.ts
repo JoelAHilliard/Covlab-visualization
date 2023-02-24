@@ -48,6 +48,9 @@ export class LandingPageComponent implements OnInit {
   goToApp(){
     this.router.navigate(['graphs']);
   }
+  goToMap(){
+    this.router.navigate(['map']);
+  }
   onScroll() {
     const descriptions = document.querySelectorAll('.description');
     for (let i = 0; i < descriptions.length; i++) {

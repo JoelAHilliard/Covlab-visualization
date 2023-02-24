@@ -78,7 +78,6 @@
   
   @media only screen and (max-device-width: 600px) {
     .imgContainer {
-      background-color: grey;
       text-align: center;
       border-radius: 5px;
       height: 100%;
@@ -86,6 +85,7 @@
     .imgContainer img {
       background-color: aqua;
       max-width: 150px;
+      cursor: pointer;
       align-items: center;
     }
     p {
@@ -98,7 +98,6 @@
       justify-content: center;
       gap: 15px;
       height: 50px;
-      margin-top: 20px;
     }
     .landingPageData p {
       font-size: 15px;
@@ -114,7 +113,6 @@
   
   @media only screen and (min-device-width: 600px) {
     .imgContainer {
-      background-color: grey;
       text-align: center;
       border-radius: 5px;
       height: 100%;
@@ -126,6 +124,7 @@
       background-color: aqua;
       max-width: 450px;
       margin: 5px;
+      cursor: pointer;
       border-radius: 5px;
     }
     p {

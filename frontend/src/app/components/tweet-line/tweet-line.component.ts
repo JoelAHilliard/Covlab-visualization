@@ -156,13 +156,11 @@ export class TweetLineComponent implements OnInit {
 
     //tweet positivity
 
-    axios.get('http://127.0.0.1:5001/graphData1')
+    axios.get('https://covlab-backend-production.up.railway.app/graphData1')
       .then( (response) => {
-        console.log(response)
         for(var i =0;i<response.data.length-1;i++){
            //daily
            new_tweets_count.push([response.data[i].date,response.data[i].new_tweets_count])
-           console.log([response.data[i].date,response.data[i].new_tweets_count])
            total_tweets_count.push([response.data[i].date,response.data[i].total_tweets_count])
           //weekly
           tweets_14_average.push([response.data[i].date,response.data[i].tweets_14_average])
@@ -170,7 +168,6 @@ export class TweetLineComponent implements OnInit {
           tweets_7_average.push([response.data[i].date,response.data[i].tweets_7_average])
         }
 
-        console.log(new_tweets_count)
           //set new x axis range and slider
         let len = response.data.length;
 
@@ -180,12 +177,9 @@ export class TweetLineComponent implements OnInit {
         this.minValue = tempStartDate.getTime();
         this.maxValue = tempEndDate.getTime();
         
-        
         //set new x axis range
-        console.log(tempStartDate)
 
         this.days = this.setDateData(tempStartDate, tempEndDate);
-
         this.dateRange = this.createDateRange(tempStartDate,tempEndDate);
 
         this.options = {
@@ -260,7 +254,6 @@ export class TweetLineComponent implements OnInit {
 
 
         yAxisLabels.push(datasets[i].label)
-        console.log(datasets[i])
         let seriesItem: Highcharts.SeriesOptionsType = {
           type: "spline",
           name: datasets[i].label,
@@ -276,7 +269,6 @@ export class TweetLineComponent implements OnInit {
         };
         seriesArray.push(seriesItem);
     }
-
 
     this.highcharts = Highcharts.chart('chartContainer1', {
       chart:{
