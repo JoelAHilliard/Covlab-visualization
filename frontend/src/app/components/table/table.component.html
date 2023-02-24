@@ -13,16 +13,15 @@
       </ng-container>
     
       <ng-container matColumnDef="weeklyNewCasesPer1k">
-        <th mat-header-cell *matHeaderCellDef>Weekly Cases Per 1k</th>
+        <th mat-header-cell *matHeaderCellDef>Weekly Cases Per 10m</th>
         <td style="font-size:20px" mat-cell *matCellDef="let element" > 
-          <div *ngIf="element.weekly_new_cases_per1k !== 'N/A'">
-            {{ element.weekly_new_cases_per1k  * 100 | number }}
+          <div *ngIf="element.weekly_new_cases_per10M !== 'N/A'">
+            {{ element.weekly_new_cases_per10m | number:'1.3-3'}}
           </div>
-          <div *ngIf="element.weekly_new_cases_per1k == 'N/A'">
-            {{element.weekly_new_cases_per1k}}
+          <div *ngIf="element.weekly_new_cases_per10m == 'N/A'">
+            {{"N/A"}}
           </div>
         </td>
-        <td mat-cell *matCellDef="let element"> N/A </td>
 
       </ng-container>
     
@@ -36,7 +35,7 @@
           <p *ngIf="element.cases_14_days_change.percentage == 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">N/A</p>
           
 
-          <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="element.cases_14_days_change">
+          <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="element.cases_14_days_change ">
           </app-table-graph>
 
 
@@ -48,7 +47,7 @@
         <th mat-header-cell *matHeaderCellDef>Test Positivity</th>
         <td style="font-size:20px" mat-cell *matCellDef="let element">
           <div *ngIf="element.positivity != 'N/A'">
-           {{element.positivity * 100 | number}} 
+           {{element.positivity| number:'1.3-3'}} 
           </div>
           <div *ngIf="element.positivity == 'N/A'">
             {{"N/A"}} 

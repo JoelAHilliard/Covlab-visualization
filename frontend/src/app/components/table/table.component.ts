@@ -20,7 +20,7 @@ export class TableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    axios.get('https://covlab-backend.onrender.com/tableData')
+    axios.get('https://covlab-backend-production.up.railway.app/tableData')
       .then( (response) => {
         this.data = response.data;
         this.isLoading = false;

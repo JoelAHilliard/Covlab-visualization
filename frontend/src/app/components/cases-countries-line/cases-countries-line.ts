@@ -186,7 +186,7 @@ export class CasesCountries implements OnInit {
     //tweet positivity
     let tweetPositivity: any = [];
 
-    axios.get('https://covlab-backend.onrender.com/graphData')
+    axios.get('https://covlab-backend-production.up.railway.app/graphData')
       .then( (response) => {
         for(var i =0;i<response.data[0].length-1;i++){
            //daily
