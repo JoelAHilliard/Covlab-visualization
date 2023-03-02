@@ -1,7 +1,13 @@
 .lastUpdated {
     font-size: 13px;
   }
-  
+.externalLink {
+  z-index: 10;
+  position: absolute;
+  bottom:0;
+  right:0;
+  height: 10%;
+}
   h1 {
     font: 75px 'Bebas Neue', sans-serif;
   }
@@ -83,7 +89,6 @@
       height: 100%;
     }
     .imgContainer img {
-      background-color: aqua;
       max-width: 150px;
       cursor: pointer;
       align-items: center;
@@ -121,7 +126,6 @@
       align-items: center;
     }
     .imgContainer img {
-      background-color: aqua;
       max-width: 450px;
       margin: 5px;
       cursor: pointer;

@@ -5,6 +5,7 @@ import * as am5map from '@amcharts/amcharts5/map';
 import * as am5geodata_usaLow from '@amcharts/amcharts5-geodata/usaLow';
 import { CovidTrackingService } from 'src/app/services/covid-tracking.service';
 import { CovidData, TwitterData } from 'src/app/interfaces/covid-data';
+import axios from 'axios';
 
 @Component({
   selector: 'app-map',
@@ -14,21 +15,29 @@ import { CovidData, TwitterData } from 'src/app/interfaces/covid-data';
 export class MapComponent implements OnInit {
 
   CovidData: CovidData[] = [];
+
+  MapData: any = [];
   root: any;
   constructor(private trackingSevice: CovidTrackingService) { }
 
  
+  grabMapData(){
+    axios.get("https://covlab-backend-production.up.railway.app/mapData")
+    .then((data:any) => {
+      this.MapData = data['data'];
+      this.createMap("positive");
+    })
+  }
+
 
   fillCovidData(type: string): any[] {
     let data: any[] = [];
-
-    this.CovidData.forEach(element => {
+    console.log(this.MapData)
+    this.MapData.forEach((element:any) => {
+      console.log(element)
       data.push({
         id: "US-" + element.state,
-        value: type == "positive" ? 
-        element.positive : 
-        type == "negative" ? element.negative : 
-        type == "probable" ? element.probableCases : Math.floor(Math.random() * 101)
+        value: element.positive
       });
     });
     return data;
@@ -107,10 +116,12 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
         
-    this.trackingSevice.getData().subscribe((data: CovidData[]) => {
-      this.CovidData = data;
-      this.createMap("positive");
-    });
+    // this.trackingSevice.getData().subscribe((data: CovidData[]) => {
+    //   this.CovidData = data;
+    //   this.createMap("positive");
+    // });
+
+    this.grabMapData();
 
    // this.trackingSevice.readJson();
 
