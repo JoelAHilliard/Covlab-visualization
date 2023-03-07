@@ -4,9 +4,9 @@
     <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" style="margin-left: auto; width: 100%;">
         <div id="selector">
             <div style="display: flex; flex-flow: row; justify-content: space-between;">
-                <h2>Real Cases and Predicted Cases</h2>
+                <h2 style="margin: 0;">Real Cases and Predicted Cases</h2>
                 <mat-form-field appearance="fill">
-                    <mat-label>Select Dataset</mat-label>
+                    <mat-label>Select Filter</mat-label>
                     <!-- <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select"> -->
                     <mat-select disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select" [(value)]="selected">
                         <mat-option  name="option" value="dailyData" selected>Daily</mat-option>

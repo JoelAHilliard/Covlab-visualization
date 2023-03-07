@@ -29,13 +29,13 @@
 <!-- Preview -->
 <div style="background-color: #471f1e;">
     <br>
-    <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px;">
+    <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px; ">
         <div class="infoWrapper">
             <div class="description" >
                 <p style="color: white;  text-align: center; font-size: 20px;">Based on manual-labeled tweets, we trained a Natural Language Processing (NLP) model to select the description of the self-reported covid positive tweets. The comparison with real daily cases has shown in the graph.</p>
             </div>
             <div class="imgContainer">
-                <img (click)="goToApp()" src="../../../assets/images/line-graph.jpg">
+                <img id="graphImage" (click)="goToApp()" src="../../../assets/images/line-graph.jpg">
                 <img (click)="goToApp()" class="externalLink" src="../../../assets/images/externalLink.png" alt="">
             </div>   
         </div>
@@ -47,7 +47,7 @@
                 <p style="color: white;  text-align: center; font-size: 20px;">The pie chart shows the total collected tweets sum, model predicted positive percentage and the current labelling status percentage.</p>
             </div> 
             <div class="imgContainer">
-               <img (click)="goToApp()" src="../../../assets/images/pieChart.jpg">
+               <img id="graphImage" (click)="goToApp()" src="../../../assets/images/pieChart.jpg">
                <img (click)="goToApp()" class="externalLink" src="../../../assets/images/externalLink.png" alt="">
 
             </div>   
@@ -61,7 +61,7 @@
                 <p style="text-align: center; font-size: 20px;">The US map shows the model predicted positive cases distribution of each state. Users can move cursor to each state to check the details. The darker color means the more people infected in that state.</p>
             </div>  
             <div  class="imgContainer">
-                <img (click)="goToMap()" src="../../../assets/images/usMap.jpg">
+                <img id="graphImage" (click)="goToMap()" src="../../../assets/images/usMap.jpg">
                 <img (click)="goToMap()" class="externalLink" src="../../../assets/images/externalLink.png" alt="">
 
             </div>    
@@ -69,4 +69,4 @@
     </mat-card>
     <br>
 </div>
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>

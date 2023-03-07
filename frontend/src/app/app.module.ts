@@ -33,6 +33,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ShortNumberPipe } from './pipes/number-abbreviation.pipe';
 import { FooterComponent } from './components/footer/footer.component';
 import { TweetLineComponent } from './components/tweet-line/tweet-line.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { TeamComponent } from './components/team/team.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,9 @@ import { TweetLineComponent } from './components/tweet-line/tweet-line.component
     NavBarComponent,
     ShortNumberPipe,
     FooterComponent,
-    TweetLineComponent
+    TweetLineComponent,
+    AboutUsComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,

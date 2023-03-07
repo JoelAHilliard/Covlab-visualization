@@ -7,163 +7,176 @@
   bottom:0;
   right:0;
   height: 10%;
+  min-height: 38px;
 }
-  h1 {
-    font: 75px 'Bebas Neue', sans-serif;
-  }
-  
-  p {
-    color: white;
-    text-align: center;
-    margin: 0;
-  }
-  .description{
-    width: 50%;
+h1 {
+  font: 75px 'Bebas Neue', sans-serif;
+}
 
-  }
-  .infoWrapper {
-    display: flex;
-    align-items: center;
-    flex-flow: row;
-    overflow: hidden;
-  }
-  .imgContainer{
-    width:50%;
-  }
-  .dataTitle{
-    font-size:15px;
+p {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+.description{
+  width: 50%;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+}
+.infoWrapper {
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  overflow: hidden;
+}
+.imgContainer{
+  width:50%;
+}
+.dataTitle{
+  font-size:15px;
+}
+#secondCard {
+  flex-flow: row-reverse;
+  min-height: 275px;
+
+}
+
+@media only screen and (max-width: 1100px) {
+  .infoWrapper.infoWrapper {
+    flex-flow: column;
   }
   #secondCard {
-    flex-flow: row-reverse;
-    min-height: 275px;
-
-  }
-
-  @media only screen and (max-width: 1000px) {
-    .infoWrapper.infoWrapper {
-      flex-flow: column;
-    }
-    #secondCard {
-      flex-flow: column;
-    }
-    .description {
-        width: 100%;
-        font-size:10px;
-
-    }
-    .imgContainer{
-        width: 100%;
-    }
-   
-  }
-  
-
-  .backgroundCss {
-    display: flex;
     flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-image: url("/assets/images/image.png");
-    background-size: auto;
-    background-position: center;
-    overflow: hidden;
-    font-family: 'Avenir', sans-serif;
+  }
+  .description {
+      width: 100%;
+      font-size:10px;
+      display: flex;
+      align-items: center;
+  }
+  .imgContainer{
+      width: 100%;
   }
   
-  .background-overlay {
-    background-color: rgba(26, 25, 25, 0.7);
+}
+
+
+.backgroundCss {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url("/assets/images/image.png");
+  background-size: auto;
+  background-position: center;
+  overflow: hidden;
+  font-family: 'Avenir', sans-serif;
+  max-height: 1000px;
+}
+
+.background-overlay {
+  background-color: rgba(26, 25, 25, 0.7);
+  height: 100%;
+  width: 100%;
+  background-size: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-device-width: 600px) {
+  .imgContainer {
+    text-align: center;
+    border-radius: 5px;
     height: 100%;
+
+  }
+  .imgContainer img {
+    max-width: 150px;
+    cursor: pointer;
+    align-items: center;
+  }
+  p {
+    font-size: 25px;
+  }
+  .landingPageData {
     width: 100%;
-    background-size: auto;
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    flex-flow: row;
     justify-content: center;
+    gap: 15px;
+    height: 50px;
   }
-  
-  @media only screen and (max-device-width: 600px) {
-    .imgContainer {
-      text-align: center;
-      border-radius: 5px;
-      height: 100%;
-    }
-    .imgContainer img {
-      max-width: 150px;
-      cursor: pointer;
-      align-items: center;
-    }
-    p {
-      font-size: 25px;
-    }
-    .landingPageData {
-      width: 100%;
-      display: flex;
-      flex-flow: row;
-      justify-content: center;
-      gap: 15px;
-      height: 50px;
-    }
-    .landingPageData p {
-      font-size: 15px;
-      color:red;
-    }
-    h4 {
-      color: white;
-      text-align: center;
-      font-size: 30px;
-      margin: 0;
-    }
+  .landingPageData p {
+    font-size: 15px;
+    color:red;
   }
-  
-  @media only screen and (min-device-width: 600px) {
-    .imgContainer {
-      text-align: center;
-      border-radius: 5px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .imgContainer img {
-      max-width: 450px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    p {
-      width: 100%;
-      font-size: 30px;
-    }
-    .landingPageData {
-      width: 50%;
-      display: flex;
-      flex-flow: row;
-      justify-content: center;
-      gap: 15px;
-      align-items: center;
-      height: 100px;
-    }
-    h4 {
-      color: white;
-      text-align: center;
-      font-size: 30px;
-      margin: 0;
-    }
-  }
-  
-  .team_header-title {
-    font-size: 20px;
-    text-align: left;
+  h4 {
+    color: white;
+    text-align: center;
+    font-size: 30px;
     margin: 0;
-    color: black;
   }
-  
-  .Covlab {
-    font-size: 45px;
-    padding-top:5px
+}
+@media only screen and (min-device-width: 600px) {
+  .imgContainer {
+    text-align: center;
+    border-radius: 5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 
+  .imgContainer img {
+    max-width: 450px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
 
+  }
+  p {
+    width: 100%;
+    font-size: 30px;
+  }
+  .landingPageData {
+    width: 50%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    height: 100px;
+  }
+  h4 {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    margin: 0;
+  }
+}
 
+.team_header-title {
+  font-size: 20px;
+  text-align: left;
+  margin: 0;
+  color: black;
+}
+
+.Covlab {
+  font-size: 45px;
+  padding-top:5px
+}
+
+#graphImage{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px 8px;
+  overflow: visible;
+}
+
+.cards {
+}
 

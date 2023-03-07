@@ -49,3 +49,6 @@ mat-card{
     min-width: 100px;
     cursor: pointer;
 }
+::ng-deep .mat-tab-header-pagination {
+    display: none !important;
+}

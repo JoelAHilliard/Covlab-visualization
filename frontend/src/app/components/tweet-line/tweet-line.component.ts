@@ -18,7 +18,7 @@ export class TweetLineComponent implements OnInit {
   // x axis vals
   days: string[] = [];
 
-  selected:string = "dailyData";
+  selected:string = "New Tweets Count";
 
   new_tweets_count_dataset = {
     type:'spline',
