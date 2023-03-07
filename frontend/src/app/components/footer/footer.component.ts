@@ -16,6 +16,8 @@ export class FooterComponent implements OnInit {
 
   goToPage(location:string){
     this.router.navigate([location])
+    window.scrollTo(0,0);
+
   }
 
 }

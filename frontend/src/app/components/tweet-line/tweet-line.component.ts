@@ -1,6 +1,6 @@
 
 import {LabelType, Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import axios from 'axios';
 @Component({
@@ -77,7 +77,6 @@ export class TweetLineComponent implements OnInit {
   
 
 
-  @Output() newItemEvent = new EventEmitter<any>();
 
 
   options: Options = {
@@ -117,12 +116,6 @@ export class TweetLineComponent implements OnInit {
     this.getGraphData();    
 
   }
-
-  //send data to other component
-  addNewItem(value: any) {
-    this.newItemEvent.emit(value);
-  }
-
   //change which dataset is displayed on the graph
   dataSwitcher(dataset:any){
 

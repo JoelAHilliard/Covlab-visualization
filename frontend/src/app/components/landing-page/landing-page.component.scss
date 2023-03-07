@@ -61,7 +61,23 @@ p {
   
 }
 
+.previewContainer{
 
+    background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(1.5em 6.28571em at -0.45em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 1.5em 5.5em, radial-gradient(2.3em 4.57143em at 2.99em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(2.3em 4.57143em at -0.69em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 2.3em 4em, radial-gradient(3.5em 6.28571em at 4.55em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(3.5em 6.28571em at -1.05em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 3.5em 5.5em, radial-gradient(#471F1E, #471F1E);
+    background-image: radial-gradient(1.5em 6.28571em at 1.95em center, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%), radial-gradient(1.5em 6.28571em at -0.45em center, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%), radial-gradient(2.3em 4.57143em at 2.99em center, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%), radial-gradient(2.3em 4.57143em at -0.69em center, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%), radial-gradient(3.5em 6.28571em at 4.55em center, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%), radial-gradient(3.5em 6.28571em at -1.05em center, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%), radial-gradient(rgb(71, 31, 30), rgb(71, 31, 30));
+    background-position-x: 0px, 1.5em, 0px, 2.3em, 0px, 3.5em, initial;
+    background-position-y: 0px, 5.5em, 0px, 4em, 0px, 5.5em, initial;
+    background-size: initial, initial, initial, initial, initial, initial, initial;
+    background-repeat-x: initial, initial, initial, initial, initial, initial, initial;
+    background-repeat-y: initial, initial, initial, initial, initial, initial, initial;
+    background-attachment: initial, initial, initial, initial, initial, initial, initial;
+    background-origin: initial, initial, initial, initial, initial, initial, initial;
+    background-clip: initial, initial, initial, initial, initial, initial, initial;
+    background-color: initial;
+    background-color: #471F1E;
+    background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
+    background-repeat: repeat;
+}
 .backgroundCss {
   display: flex;
   flex-flow: column;

@@ -96,11 +96,6 @@ export class CasesCountries implements OnInit {
 
   currentLowVal: number = this.dateRange[0].getTime();
   currentHighVal: number = this.dateRange[this.dateRange.length-1].getTime();
-  
-
-
-  @Output() newItemEvent = new EventEmitter<any>();
-
 
   options: Options = {
     stepsArray: this.dateRange.map((date: Date) => {
@@ -138,11 +133,6 @@ export class CasesCountries implements OnInit {
     //starter dataset
     this.getGraphData();    
 
-  }
-
-  //send data to other component
-  addNewItem(value: any) {
-    this.newItemEvent.emit(value);
   }
 
   //change which dataset is displayed on the graph
@@ -272,7 +262,6 @@ export class CasesCountries implements OnInit {
 
         this.dataSwitcher("dailyData");
 
-        this.addNewItem([this.dailyNewCasesDataset,this.dailyNewTweetsDataset,this.weeklyNewCasesDataset,this.weeklyNewTweetsDataset,this.biWeeklyNewCasesDataset,this.biWeeklyNewTweetsDataset,this.tweetPositivityRatioDataset,this.usTableData])
       })
       .catch(function (error) {
         console.error(error);

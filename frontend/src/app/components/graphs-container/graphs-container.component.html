@@ -5,7 +5,7 @@
 </mat-card>
 <mat-card class="mat-elevation-z8" style="width:95%; margin:auto; margin-top: 15px; min-height: 500px;"> 
     <div class="graphSize">
-    <cases-countries (newItemEvent)="graphData($event)" style="max-height: 200px;"></cases-countries>
+    <cases-countries style="max-height: 200px;"></cases-countries>
     </div>   
 </mat-card>
 <br>
@@ -22,7 +22,7 @@
 </div>
 <mat-card class="mat-elevation-z8" style="width:95%;  margin:auto; margin-top:15px; min-height: 200px;">
     <div style="width:97%; margin:auto; margin-top:5px">
-        <app-table *ngIf="graphDataArr.length > 1" [apiData]="graphDataArr"></app-table>
+        <app-table></app-table>
     </div>
 </mat-card>
 <app-footer></app-footer>
