@@ -15,7 +15,9 @@ import axios from 'axios';
 export class MapComponent implements OnInit {
 
   CovidData: CovidData[] = [];
+  isDataLoading = false;
 
+  didDataLoad = true;
   MapData: any = [];
   root: any;
   constructor(private trackingSevice: CovidTrackingService) { }
@@ -26,6 +28,11 @@ export class MapComponent implements OnInit {
     .then((data:any) => {
       this.MapData = data['data'];
       this.createMap("positive");
+      this.isDataLoading = false;
+    })
+    .catch( (error) => {
+      console.error(error);
+      this.didDataLoad = false;
     })
   }
 

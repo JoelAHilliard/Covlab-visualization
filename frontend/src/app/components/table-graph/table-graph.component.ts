@@ -1,42 +1,56 @@
-import { Component, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import { Chart, ChartData, registerables } from 'chart.js';
-import { isEmpty } from 'rxjs';
 Chart.register(...registerables)
+
 @Component({
   selector: 'app-table-graph',
   templateUrl: './table-graph.component.html',
   styleUrls: ['./table-graph.component.scss']
 })
-export class TableGraphComponent implements AfterViewInit {
+export class TableGraphComponent implements AfterViewInit, OnDestroy {
   
   @Input() index: string = "";
   
-  @Input() id: string = ""
+  @Input() id: string = "";
 
   @Input() twoWeekChange: any;
+
+  private charts: Chart[] = [];
 
   constructor() {
 
   }
-  // ngAfterViewInit(): void {
-  //   throw new Error('Method not implemented.');
-  // }
-  
+
   ngAfterViewInit(): void {
-    
-    let newIndex = Number(this.index);
-    let newId = this.id;
+    this.createChart()
+  }
+
+  ngOnDestroy(): void {
+    // Change all chart ids
+    this.charts.forEach(c => {
+        c.canvas.id = ""
+      }
+    );
+  }
+
+
+  createChart(){
+    let sIndex = Number(this.index);
     let data;
-    if(this.twoWeekChange == "N/A"){
+
+    if(this.twoWeekChange == "N/A")
+    {
       data = {
         //last two weeks
         
       };
-    }
-    else {
+    } 
+    else 
+    {
       var labels:any = [];
       var dataVals:any = [];
-      try{
+      try 
+      {
         for(var i=0;i<this.twoWeekChange['14DayData'].data.length;i++){
           labels[i] = (this.twoWeekChange['14DayData'].data[i][0])
           dataVals[i] = (this.twoWeekChange['14DayData'].data[i][1])
@@ -57,20 +71,21 @@ export class TableGraphComponent implements AfterViewInit {
             }
           ]
         };
-      }catch{
-
-      }
-      
+      } 
+      catch {}
     }
-    new Chart(newId + newIndex, {
+
+
+    const chart = new Chart(String(sIndex), {
       type: "line",
       data: data as ChartData,
       options: {
         responsive: false,
+        animation: false,
         maintainAspectRatio:true,
         elements: {
           point:{
-              radius: 0
+              radius: 0.1
           },
           line: {
             tension : 0.5,
@@ -93,14 +108,11 @@ export class TableGraphComponent implements AfterViewInit {
             display:false
           }
         }
-        
-      
-      },
-      
+      }
     });
-     
 
+    // Add chart instance to array
+    this.charts.push(chart);
+    }
   }
-
-}
 

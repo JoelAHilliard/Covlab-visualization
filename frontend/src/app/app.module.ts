@@ -35,6 +35,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TweetLineComponent } from './components/tweet-line/tweet-line.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TeamComponent } from './components/team/team.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,7 @@ import { TeamComponent } from './components/team/team.component';
     MatSliderModule,
     NgxSliderModule,
     NgxDatatableModule,
-
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

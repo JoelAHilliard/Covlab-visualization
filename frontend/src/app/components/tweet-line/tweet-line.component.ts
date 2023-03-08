@@ -10,11 +10,9 @@ import axios from 'axios';
 })
 export class TweetLineComponent implements OnInit {
 
-
-
-
   highcharts: any;
-
+  // used to display error msg
+  didDataLoad = true;
   // x axis vals
   days: string[] = [];
 
@@ -215,8 +213,9 @@ export class TweetLineComponent implements OnInit {
 
         // this.addNewItem([this.new_tweets_count_dataset,this.total_tweets_count_dataset,this.tweets_7_average_dataset,this.usTableData])
       })
-      .catch(function (error) {
+      .catch( (error) => {
         console.error(error);
+        this.didDataLoad = false;
       });
       
   }

@@ -1,7 +1,8 @@
-<div [ngStyle]="{'min-height':'300px'}">
-<img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading? 'block': 'none','margin':'auto','margin-top':'150px'}">
+<div [ngStyle]="{'min-height':'150px','text-align':'center'}" style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto; align-items: center;">
+<img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
+<p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto'}">Failed to load</p>
 
-    <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" style="margin-left: auto; width: 100%;">
+    <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" style="margin-left: auto; width: 100%; text-align: center;">
         <div id="selector">
             <div style="display: flex; flex-flow: row; justify-content: space-between;">
                 <h2 style="margin: 0;">Real Cases and Predicted Cases</h2>
@@ -19,8 +20,8 @@
                 </mat-form-field>
             </div>
             
-        <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important;"></div>
-        <div [ngStyle]="{'display': isDataLoading? 'none': 'flex','flex-flow':'row','justify-content':'center'}">
+        <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important;"></div>
+        <div [ngStyle]="{'display': isDataLoading ? 'none': 'flex','flex-flow':'row','justify-content':'center'}">
             <ngx-slider style="width: 70%;"  [value]="minValue" [highValue]="maxValue" [options]="options" (userChange)="updateData($event)" ></ngx-slider>
         </div>
     </div>

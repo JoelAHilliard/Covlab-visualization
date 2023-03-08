@@ -1,6 +1,8 @@
-<div style="margin-bottom:20px">
-  <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isLoading?  'block': 'none','margin':'auto'}">
-  <table style="width: 100%; margin-bottom:20px;" mat-table [dataSource]="data" class="mat-elevation-z8" [ngStyle]="{'display': !isLoading ? 'table': 'none', 'flex-flow':'column'}">
+<div [ngStyle]="{'min-height':'150px','text-align':'center'}" style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto; align-items: center;">
+
+  <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
+    <p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto','text-align':'center'}">Failed to load</p>
+  <table style="width: 100%; margin-bottom:20px;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" [ngStyle]="{'display': !isLoading ? 'table': 'none', 'flex-flow':'column'}">
       
     <ng-container matColumnDef="state">
         <th mat-header-cell *matHeaderCellDef>State</th>
@@ -35,7 +37,7 @@
           <p *ngIf="element.cases_14_days_change.percentage == 'N/A'" style="line-height: 14px; margin: 5px 0 0 0;">N/A</p>
           
 
-          <app-table-graph [index] = "i" id = "chart" [twoWeekChange]="element.cases_14_days_change ">
+          <app-table-graph [index] = "i" [twoWeekChange]="element.cases_14_days_change ">
           </app-table-graph>
 
 
@@ -59,5 +61,6 @@
       <tr mat-row *matRowDef="let row; columns: columndefs;"></tr>
     
   </table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
   <br>
 </div> 

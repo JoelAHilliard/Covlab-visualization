@@ -13,21 +13,23 @@ Drilldown(Highcharts);
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
 
-  data:any;
+  chartData: any;
 
   chart: any;
 
   isDataLoading = false;
 
-
   totalTweets: number = 0;
-
 
   screenHeight: number = 0;
   screenWidth: number = 0;
 
   previousWidth:number = 0;
+  // used to display error msg
+
+  didDataLoad = true;
 
   constructor() {
     this.getScreenSize();
@@ -37,7 +39,6 @@ export class PieChartComponent implements OnInit {
     this.fetchData()
   }
 
-  @HostListener('window:resize', ['$event'])
   getScreenSize() {
         this.screenHeight = window.innerHeight;
         this.screenWidth = window.innerWidth;
@@ -45,8 +46,8 @@ export class PieChartComponent implements OnInit {
         if(this.screenWidth == this.previousWidth){
           return
         }
-        if(this.data != null && (this.screenWidth > 1600 || this.screenWidth < 850)){
-          this.createChart(this.data);
+        if(this.chartData != null && (this.screenWidth > 1600 || this.screenWidth < 850)){
+          this.createChart(this.chartData);
           this.previousWidth = this.screenWidth;
         }
 
@@ -58,7 +59,7 @@ export class PieChartComponent implements OnInit {
     axios.post("https://labelling.covlab.tech/statistics")
     .then((data:any) => {
 
-      this.data = data;
+      this.chartData = data;
 
       this.createChart(data);
 
@@ -66,7 +67,11 @@ export class PieChartComponent implements OnInit {
       
       this.isDataLoading = false;
     
-    })
+    }) 
+    .catch( (error) => {
+      console.error(error);
+      this.didDataLoad = false;
+    });
   }
   //draw pie chart
   createChart(data:any){

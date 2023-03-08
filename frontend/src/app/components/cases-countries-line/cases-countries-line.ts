@@ -125,6 +125,8 @@ export class CasesCountries implements OnInit {
 
   isDataLoading = false;
 
+  didDataLoad = true;
+
   //
   ngOnInit() {
     
@@ -263,8 +265,9 @@ export class CasesCountries implements OnInit {
         this.dataSwitcher("dailyData");
 
       })
-      .catch(function (error) {
+      .catch( (error) => {
         console.error(error);
+        this.didDataLoad = false;
       });
       
   }
