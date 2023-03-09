@@ -1,6 +1,6 @@
 <div [ngStyle]="{'min-height':'150px','text-align':'center'}" style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto; align-items: center;">
 
-  <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
+  <img src="../../../assets/images/loading.gif" [ngStyle]="{'display': isLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
     <p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto','text-align':'center'}">Failed to load</p>
   <table style="width: 100%; margin-bottom:20px;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" [ngStyle]="{'display': !isLoading ? 'table': 'none', 'flex-flow':'column'}">
       

@@ -1,5 +1,5 @@
 <div [ngStyle]="{'min-height': !didDataLoad? '150px' :'0px'}" style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto; align-items: center;">
-    <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
+    <img src="../../../assets/images/loading.gif" [ngStyle]="{'display': isDataLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
     <p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto','text-align':'center'}">Failed to load</p>
     
         <div [ngStyle]="{'display': isDataLoading? 'none': 'block'}" style="margin-left: auto; width: 100%;">
