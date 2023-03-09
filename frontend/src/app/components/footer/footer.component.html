@@ -1,7 +1,7 @@
 <hr>
-<div class="wrapper">
-    <div style="display: flex; flex-flow: row; justify-content: space-evenly; gap:55px; margin: 10px;">
-        <div style="display: flex; flex-flow: column; justify-content: space-between;">
+<div style="color: white;">
+    <div class="wrapper">
+        <div class="column">
             <h4>Covlab</h4>
             <p (click)="goToPage('aboutus')">About us</p>
             <p (click)="goToPage('team')">Team</p>
@@ -9,7 +9,7 @@
             <p>To be annotators</p>
             <p>Privacy Policy</p>
         </div>
-        <div style="display: flex; flex-flow: column;">
+        <div class="column">
             <h4 >Related Links</h4>
             <a style="text-decoration: none; color: white;" href="https://digbio.missouri.edu/">
                 <p>Mizzou DBL</p>
@@ -18,8 +18,9 @@
                 <p>Johns Hopkins Global Cases</p>
             </a>
         </div>
-        <img style="width: 90px; height: 90px;" src="../../../assets/images/mizzouLogoNoBg.png">
+        <div class="column">
+            <img style="width: 90px; height: 90px;" src="../../../assets/images/mizzouLogoNoBg.png">
+        </div>
     </div>
     <h4 style="margin-left: 10px;">Copyright © 2023 by Digital Biology Lab. All rights reserved.</h4>
-
 </div>

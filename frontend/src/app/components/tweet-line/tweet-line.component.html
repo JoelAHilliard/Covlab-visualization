@@ -7,13 +7,13 @@
                 <div style="display: flex; flex-flow: row; justify-content: space-between;">
                     <h2 style="margin:0;">Overview of the Collected Raw Tweets</h2>
                     <mat-form-field appearance="fill">
-                        <mat-label>Select Filter</mat-label>
+                        <mat-label style="color: black">Select Filter</mat-label>
                         <!-- <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select"> -->
                         <mat-select disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select" [(value)]="selected">
-                            <mat-option  name="option" value="New Tweets Count" selected>New Tweets Count</mat-option>
-                            <mat-option  name="option" value="Total Tweets Count">Total Tweets Count</mat-option>
-                            <mat-option  name="option" value="14dayAvg">14 Day Average</mat-option>
-                            <mat-option  name="option" value="7dayAvg">7 Day Average</mat-option>
+                            <mat-option style="color: black" name="option" value="New Tweets Count" selected>New Tweets Count</mat-option>
+                            <mat-option style="color: black" name="option" value="Total Tweets Count">Total Tweets Count</mat-option>
+                            <mat-option style="color: black" name="option" value="14dayAvg">14 Day Average</mat-option>
+                            <mat-option style="color: black" name="option" value="7dayAvg">7 Day Average</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

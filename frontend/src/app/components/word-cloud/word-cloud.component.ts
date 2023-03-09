@@ -25,7 +25,7 @@ export class WordCloudComponent implements OnInit {
         name: 'Occurrences',
         maxFontSize:45,
         minFontSize:13,
-        colors:["black","blue","grey"]
+        colors:["black","darkred","grey"]
       }],
       title: {
         text: 'Covlab Wordcloud',

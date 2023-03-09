@@ -119,7 +119,7 @@ export class PieChartComponent implements OnInit {
             {
               name:"Hand Labelled Tweets",
               y: (data.data.labeled_count / data.data.total_related_tweets_count) * 100,
-              color:'#ffc154'
+              color:'blue'
 
             },
             
@@ -159,13 +159,13 @@ export class PieChartComponent implements OnInit {
             {
               name:"Model Positive Tweets",
               y: (data.data.model_positive_count / data.data.total_related_tweets_count) * 100,
-              color:'#EC6B56'
+              color:'blue'
             }
             ,
             {
               name:"Model Irrelevant Tweets",
               y: ((data.data.total_related_tweets_count - data.data.model_positive_count )/ data.data.total_related_tweets_count) * 100,
-              color:'blue'
+              color:'darkred'
 
             }
             

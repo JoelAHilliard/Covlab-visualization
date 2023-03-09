@@ -1,3 +1,31 @@
 mat-slider {
     width: 100%;
   }
+/* Define a custom class for the slider */
+.custom-slider {
+  margin-top: 5px;
+  width: 70%;
+}
+/* Change the color of the selected tick */
+
+::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
+  background-color: #ff726f!important;
+}
+::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active {
+  background-color: darkred!important;
+  &:focus { outline: 2px solid #ff726f !important; }
+
+}
+span.ngx-slider .ngx-slider-bar-wrapper {
+  padding-top:25px;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple{
+  background-color: red;
+}
+::ng-deep .mat-form-field-ripple {
+  background-color: lightgray !important;
+  color:lightgray !important;
+}
+::ng-deep .mat-form-field-underline {
+  background-color: lightgray !important;
+}

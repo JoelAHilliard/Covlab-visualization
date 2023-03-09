@@ -1,7 +1,11 @@
 .wrapper{
-    color:white;
+    color:white; display: flex; flex-flow: row; justify-content: space-evenly; gap:55px; margin: 10px;
 }
 p:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.column {
+    display: flex; flex-flow: column; width: 33%;
 }

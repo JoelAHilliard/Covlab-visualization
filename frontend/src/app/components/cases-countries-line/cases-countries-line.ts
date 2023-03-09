@@ -97,6 +97,8 @@ export class CasesCountries implements OnInit {
   currentLowVal: number = this.dateRange[0].getTime();
   currentHighVal: number = this.dateRange[this.dateRange.length-1].getTime();
 
+
+  //slider options
   options: Options = {
     stepsArray: this.dateRange.map((date: Date) => {
       return { value: date.getTime() };
@@ -106,11 +108,11 @@ export class CasesCountries implements OnInit {
     },
     showSelectionBar: true,
     selectionBarGradient: {
-      from: 'blue',
-      to: 'blue'
+      from: 'darkred',
+      to: 'darkred'
     },
     getPointerColor: (value: number): string => {
-      return 'blue'
+      return 'darkred'
     }
   
   };
@@ -224,11 +226,11 @@ export class CasesCountries implements OnInit {
           },
           showSelectionBar: true,
           selectionBarGradient: {
-            from: 'blue',
-            to: 'blue'
+            from: 'darkred',
+            to: 'darkred'
           },
           getPointerColor: (value: number): string => {
-            return 'blue'
+            return 'darkred'
           }
         
         };
@@ -273,7 +275,7 @@ export class CasesCountries implements OnInit {
   }
   // code that creates the chart
   makeHighchart(datasets: any){
-    let colors: string[] = ["orange","blue"];
+    let colors: string[] = ["darkred","blue"];
     let seriesArray:  Highcharts.SeriesOptionsType[] = [];
 
 

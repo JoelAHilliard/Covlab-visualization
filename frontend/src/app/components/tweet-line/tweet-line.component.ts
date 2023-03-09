@@ -86,11 +86,11 @@ export class TweetLineComponent implements OnInit {
     },
     showSelectionBar: true,
     selectionBarGradient: {
-      from: 'blue',
-      to: 'blue'
+      from: 'darkred',
+      to: 'darkred'
     },
     getPointerColor: (value: number): string => {
-      return 'blue'
+      return 'darkred'
     }
   
   };
@@ -182,11 +182,11 @@ export class TweetLineComponent implements OnInit {
           },
           showSelectionBar: true,
           selectionBarGradient: {
-            from: 'blue',
-            to: 'blue'
+            from: 'darkred',
+            to: 'darkred'
           },
           getPointerColor: (value: number): string => {
-            return 'blue'
+            return 'darkred'
           }
         
         };
@@ -222,7 +222,7 @@ export class TweetLineComponent implements OnInit {
   
   // code that creates the chart
   makeHighchart(datasets: any){
-    let colors: string[] = ["orange","blue"];
+    let colors: string[] = ["bl","darkred"];
     let seriesArray:  Highcharts.SeriesOptionsType[] = [];
 
 

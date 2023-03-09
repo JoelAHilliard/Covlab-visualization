@@ -7,22 +7,22 @@
             <div style="display: flex; flex-flow: row; justify-content: space-between;">
                 <h2 style="margin: 0;">Real Cases and Predicted Cases</h2>
                 <mat-form-field appearance="fill">
-                    <mat-label>Select Filter</mat-label>
+                    <mat-label style="color: black">Select Filter</mat-label>
                     <!-- <mat-select multiple disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select"> -->
                     <mat-select disableRipple (selectionChange)="updateDatasets($event.value)" aria-label="Select" [(value)]="selected">
-                        <mat-option  name="option" value="dailyData" selected>Daily</mat-option>
-                        <mat-option  name="option" value="7dayAvg">7 Day Average</mat-option>
-                        <mat-option  name="option" value="14dayAvg">14 Day Average</mat-option>
-                        <mat-option  name="option" value="cumulative">Cumulative</mat-option>
-                        <mat-option  name="option" value="tweetPositivity">Tweet Positivity</mat-option>
+                        <mat-option style="color: black" name="option" value="dailyData" selected>Daily</mat-option>
+                        <mat-option style="color: black" name="option" value="7dayAvg">7 Day Average</mat-option>
+                        <mat-option style="color: black" name="option" value="14dayAvg">14 Day Average</mat-option>
+                        <mat-option style="color: black" name="option" value="cumulative">Cumulative</mat-option>
+                        <mat-option style="color: black" name="option" value="tweetPositivity">Tweet Positivity</mat-option>
 
                     </mat-select>
                 </mat-form-field>
             </div>
             
-        <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important;"></div>
+        <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important; "></div>
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'flex','flex-flow':'row','justify-content':'center'}">
-            <ngx-slider style="width: 70%;"  [value]="minValue" [highValue]="maxValue" [options]="options" (userChange)="updateData($event)" ></ngx-slider>
+            <ngx-slider class="custom-slider" style="width: 70%;"  [value]="minValue" [highValue]="maxValue" [options]="options" (userChange)="updateData($event)" ></ngx-slider>
         </div>
     </div>
 

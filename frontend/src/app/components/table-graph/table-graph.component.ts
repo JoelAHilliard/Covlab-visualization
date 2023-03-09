@@ -61,12 +61,12 @@ export class TableGraphComponent implements AfterViewInit, OnDestroy {
           datasets: [
             {
               backgroundColor: "blur",
-              borderColor: "blue",
+              borderColor: "darkred",
               borderWidth: 3,
               data: dataVals,
               fill: {
                 target: 'origin',
-                above: 'rgb(0, 0, 255, 0.25)'
+                above: 'rgb(139, 0, 0, 0.25)'
               }
             }
           ]
@@ -85,7 +85,7 @@ export class TableGraphComponent implements AfterViewInit, OnDestroy {
         maintainAspectRatio:true,
         elements: {
           point:{
-              radius: 0.1
+              radius: 0
           },
           line: {
             tension : 0.5,
