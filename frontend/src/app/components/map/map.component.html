@@ -1,23 +1,27 @@
 <app-nav-bar></app-nav-bar>
 <div [ngStyle]="{'min-height':'150px','text-align':'center'}" >
 
-    <img src="../../../assets/images/Blocks-1s-200px.gif" [ngStyle]="{'display': isDataLoading && didDataLoad ? 'block': 'none','margin':'auto','margin-top':'150px'}">
+    <img src="../../../assets/images/loading.gif" [ngStyle]="{'display': isDataLoading && didDataLoad ? 'block': 'none','margin':'auto','margin-top':'150px'}">
     
     <p [ngStyle]="{'display': ! didDataLoad ? 'block': 'none','margin':'auto','text-align':'center'}">Failed to load</p>
     
     <mat-card class="mat-elevation-z8" [ngStyle]="{'display': ! didDataLoad ? 'none': 'block'}">
     
     
-    <div [ngStyle]="{'display': ! didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">
-        <mat-radio-group aria-label="Select an option" (change)="createMap($event.value)">
-            <mat-radio-button value="positive" checked="true">Positive</mat-radio-button>
-            <!-- <mat-radio-button value="negative">Negative</mat-radio-button>
-            <mat-radio-button value="probable">Probable</mat-radio-button>
-            <mat-radio-button value="model">Model Predicted</mat-radio-button> -->
-        </mat-radio-group>
-    </div>
-    <mat-card-title [ngStyle]="{'display': !didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">Cases by States</mat-card-title>
-    <div [ngStyle]="{'display': !didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}" id="mapdiv" style="width: 100%; height: 500px"><span style="float:right;margin-right: 120px; margin-left: 5px;"> - No Value</span><span style="float: right; background-color: #548dcc; width: 30px; height: 20px;"></span></div>
+        <div [ngStyle]="{'display': ! didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">
+            <mat-radio-group aria-label="Select an option" (change)="createMap($event.value)">
+                <mat-radio-button value="positive" checked="true">Positive</mat-radio-button>
+                <!-- <mat-radio-button value="negative">Negative</mat-radio-button>
+                <mat-radio-button value="probable">Probable</mat-radio-button>
+                <mat-radio-button value="model">Model Predicted</mat-radio-button> -->
+            </mat-radio-group>
+        </div>
+        <mat-card-title [ngStyle]="{'display': !didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">Cases by States</mat-card-title>
+        
+        <div [ngStyle]="{'display': !didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}" id="mapdiv" style="width: 100%; height: 500px">
+            <span style="float:right; margin-right: 120px; margin-left: 5px;"> - No Value</span>
+            <span style="float: right; background-color: #548dcc; width: 30px; height: 20px;"></span>
+        </div>
 
 
     </mat-card>
