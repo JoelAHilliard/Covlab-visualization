@@ -22,6 +22,7 @@ p {
   min-height: 140px;
   display: flex;
   align-items: center;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
 }
 .infoWrapper {
   display: flex;
@@ -53,6 +54,7 @@ p {
       font-size:10px;
       display: flex;
       align-items: center;
+      text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
   }
   .imgContainer{
       width: 100%;
@@ -92,6 +94,9 @@ p {
 }
 
 @media only screen and (max-device-width: 600px) {
+  .hook {
+    font-size: 20px;
+  }
   .imgContainer {
     text-align: center;
     border-radius: 5px;
