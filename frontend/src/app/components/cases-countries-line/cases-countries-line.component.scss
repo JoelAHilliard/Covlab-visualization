@@ -29,8 +29,10 @@ span.ngx-slider .ngx-slider-bar-wrapper {
 ::ng-deep .mat-form-field-underline {
   background-color: lightgray !important;
 }
-
-@media only screen and (max-device-width: 600px) {
+.filterTab {
+  width: 20%;
+}
+@media only screen and (min-width: 600px) {
   .title {
     display: flex;
     align-items: center;
@@ -40,8 +42,25 @@ span.ngx-slider .ngx-slider-bar-wrapper {
     margin:2px;
   }
   .filterTab {
-    width:40%;
+    width:100%;
     margin:auto;
     margin-top:4px;
+  }
+  .container {
+    display: flex; flex-flow: row; justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 600px) {
+
+  .title {
+    
+  }
+  .container {
+    display: flex; 
+    flex-flow: column; 
+    justify-content: space-between;
+  }
+  .filterTab {
+    width: 100%;
   }
 }
