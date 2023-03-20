@@ -7,21 +7,24 @@
         <div class="titleContainer">
             <p class="Covlab" style="padding-top: 15px;">Covlab</p>
             <p>Uncover the connection: Explore COVID-19 cases through tweets.</p>
-            <div style="display: flex; flex-flow: row; width: 100%; justify-content: center; gap: 15px;">
-                <div *ngIf="!isLoading" [@slideInOut]>
-                    <p class="dataTitle" style="font-family: 'Roboto';">Total Tweets</p>
-                    <h4 >{{totalTweets | shortNumber}}</h4>
-                </div >
-                <div *ngIf="!isLoading" [@slideInOut]>
-                    <p class="dataTitle" >Model Positive Tweets</p>
-                    <h4 >{{modelPosTweets | shortNumber}}</h4>
+            <div>
+                <div style="display: flex; flex-flow: row; width: 100%; justify-content: center; gap: 15px;">
+                    <div *ngIf="!isLoading" [@slideInOut]>
+                        <p class="dataTitle" style="font-family: 'Roboto';">Total Tweets</p>
+                        <h4 >{{totalTweets | shortNumber}}</h4>
+                    </div >
+                    <div *ngIf="!isLoading" [@slideInOut]>
+                        <p class="dataTitle" >Model Positive Tweets</p>
+                        <h4 >{{modelPosTweets | shortNumber}}</h4>
+                    </div>
+                    <div *ngIf="!isLoading" [@slideInOut]>
+                        <p class="dataTitle">Cases 14-day Avg</p>
+                        <h4 >{{cases14Change | shortNumber}}</h4>
+                    </div>
+
                 </div>
-                <div *ngIf="!isLoading" [@slideInOut]>
-                    <p class="dataTitle">Cases 14-day Avg</p>
-                    <h4 >{{cases14Change | shortNumber}}</h4>
-                </div>
+                <p class="lastUpdated" *ngIf="!isLoading" [@slideInOut]>{{updatedString}}</p>
             </div>
-            <p class="lastUpdated" *ngIf="!isLoading" [@slideInOut]>{{updatedString}}</p>
         </div>
     
     </div>

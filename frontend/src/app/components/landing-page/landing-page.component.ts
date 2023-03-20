@@ -9,20 +9,29 @@ import axios from 'axios';
   styleUrls: ['./landing-page.component.scss'],
   animations: [trigger('slideInOut', [
     transition(':enter', [
-      style({ transform: 'translateY(140%)' }),
-      animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
+      style({ 
+        transform: 'translateY(140%)', 
+        opacity:1 
+      }),
+      animate('200ms ease-in', style({ 
+        transform: 'translateY(0%)', 
+        opacity: 1
+      }))
     ]),
     transition(':leave', [
-      animate('200ms ease-in', style({ transform: 'translateY(100%)' }))
+      animate('200ms ease-in', style({ transform: 'translateY(100%)',  opacity:1}))
     ])
-    ]),trigger('slideOut', [
+    ]),
+    trigger('slideOut', [
       transition(':leave', [
         animate('200ms ease-in', style({ 
           transform: 'translateY(-100%)',
-          zIndex:-5
+          zIndex:-5,
+          opacity: 1
         }))
       ])
-    ])]
+    ])
+  ]
 })
 
 export class LandingPageComponent implements OnInit {

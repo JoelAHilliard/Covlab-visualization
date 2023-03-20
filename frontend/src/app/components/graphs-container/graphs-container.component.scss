@@ -4,3 +4,16 @@
         margin:auto;
     }
 }
+
+
+@media screen and (max-width: 600px) {
+    .graphCard {
+        margin:auto;
+        padding: 0;
+    }
+}
+@media screen and (min-width: 600px) {
+    .graphCard {
+        width:95%; margin:auto; margin-top: 15px;
+    }
+}

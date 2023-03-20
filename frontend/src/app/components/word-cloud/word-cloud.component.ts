@@ -10,7 +10,9 @@ Wordcloud(Highcharts);
   styleUrls: ['./word-cloud.component.scss']
 })
 export class WordCloudComponent implements OnInit {
- 
+  isDataLoading = false;
+
+  didDataLoad = true;
   constructor() { }
 
   ngOnInit(): void {
@@ -20,9 +22,11 @@ export class WordCloudComponent implements OnInit {
   }
 
   grabWordCloudData(){
+    this.isDataLoading = true;
     axios.get("https://covlab-backend-production.up.railway.app/wordCloudData")
     .then((res:any) => {
-      this.createWordCloud(res.data)
+      this.createWordCloud(res.data);
+      this.isDataLoading = false;
     })
   }
 
@@ -40,6 +44,7 @@ export class WordCloudComponent implements OnInit {
         align:'center'
       }
     });
+    this.didDataLoad = true;
   }
 
-}
+}  
