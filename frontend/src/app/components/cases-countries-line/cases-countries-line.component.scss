@@ -34,7 +34,7 @@ span.ngx-slider .ngx-slider-bar-wrapper {
   margin: 5px;
 
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 953px) {
   .title {
     display: flex;
     align-items: center;
@@ -53,7 +53,7 @@ span.ngx-slider .ngx-slider-bar-wrapper {
     display: flex; flex-flow: row; justify-content: space-between;
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 953px) {
 
   .title {
     text-align: center;
@@ -69,6 +69,7 @@ span.ngx-slider .ngx-slider-bar-wrapper {
     justify-content: space-between;
   }
   .filterTab {
-    width: 98%;
+    margin: auto;
+    width: 88%;
   }
 }

@@ -13,7 +13,7 @@
   margin: 5px;
 
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 953px) {
   .title {
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
     display: flex; flex-flow: row; justify-content: space-between;
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 953px) {
 
   .title {
     text-align: center;
@@ -48,6 +48,7 @@
     justify-content: space-between;
   }
   .filterTab {
-    width: 98%;
+    margin: auto;
+    width: 88%;
   }
 }
