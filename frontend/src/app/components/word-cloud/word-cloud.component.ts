@@ -41,7 +41,12 @@ export class WordCloudComponent implements OnInit {
       }],
       title: {
         text: 'Covlab Wordcloud',
-        align:'center'
+        align:'center',
+        style: {
+          fontFamily:'avenir',
+          fontSize:'22px',
+          fontWeight:'bold'
+        }
       }
     });
     this.didDataLoad = true;

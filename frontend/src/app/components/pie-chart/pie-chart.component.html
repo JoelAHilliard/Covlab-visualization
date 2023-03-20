@@ -5,7 +5,7 @@
     <p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto'}">Failed to load</p>
 
     <!-- <h1 [ngStyle]="{'display': isDataLoading ? 'none': 'block','text-align':'left'}">Covlab Data</h1> -->
-    <h4 [ngStyle]="{'display': isDataLoading ? 'none': 'block','text-align':'left'}">Total Tweets: {{totalTweets | number:'1.0':'en-US'}}</h4>
+    <h4 [ngStyle]="{'display': isDataLoading ? 'none': 'block','text-align':'left', 'font-family':'avenir', 'font-size':'22px'}">Total Tweets: {{totalTweets | number:'1.0':'en-US'}}</h4>
     <div style="display: flex; flex-flow: row; justify-content: center; gap: 5px; width: 100%;" id="pieContainer">
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container" style="overflow: visible !important;"></div>
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="container2" style="overflow: visible !important;"></div>

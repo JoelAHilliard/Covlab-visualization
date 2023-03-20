@@ -10,6 +10,8 @@
 // }
 .filterTab {
     width: 20%;
+    margin: 5px;
+
   }
   @media only screen and (min-width: 600px) {
     .title {
@@ -24,6 +26,8 @@
       width:100%;
       margin:auto;
       margin-top:4px;
+  font-family: 'Avenir', sans-serif;
+
     }
     .container {
       display: flex; flex-flow: row; justify-content: space-between;
@@ -33,7 +37,11 @@
   
     .title {
       text-align: center;
-      font-size:22px
+      font-size:21px;
+      font-family: 'Avenir', sans-serif;
+      margin: 5px;
+
+
     }
     .container {
       display: flex; 
@@ -41,6 +49,6 @@
       justify-content: space-between;
     }
     .filterTab {
-      width: 100%;
+      width: 98%;
     }
   }
