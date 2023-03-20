@@ -22,5 +22,5 @@ export class GraphsContainerComponent implements OnInit {
   graphData(event:any){
     this.graphDataArr = event;
   }
-
+ 
 }

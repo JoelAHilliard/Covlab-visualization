@@ -1,0 +1,18 @@
+.popup {
+    position: fixed;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    z-index: 100;
+    transition: opacity 3.5s ease-in-out;
+  }
+  
+  .message {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    transition: opacity 3.5s ease-in-out;
+  }
+  

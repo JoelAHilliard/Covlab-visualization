@@ -36,6 +36,7 @@ import { TweetLineComponent } from './components/tweet-line/tweet-line.component
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TeamComponent } from './components/team/team.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { PopupComponent } from './popup/popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     FooterComponent,
     TweetLineComponent,
     AboutUsComponent,
-    TeamComponent
+    TeamComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,
