@@ -355,7 +355,8 @@ export class CasesCountries implements OnInit {
           },
           crosshair:{
             width:2,
-            color:"black"
+            color:"black",
+            dashStyle:"Dash"
           }
         
       },
@@ -372,7 +373,8 @@ export class CasesCountries implements OnInit {
           min:0,
           crosshair:{
             width:2,
-            color:"black"
+            color:"black",
+            dashStyle:"Dash"
           }
         },
         { // Primary yAxis
@@ -388,7 +390,8 @@ export class CasesCountries implements OnInit {
           opposite:true,
           crosshair:{
             width:2,
-            color:"black"
+            color:"black",
+            dashStyle:"Dash"
           },
           
         }
