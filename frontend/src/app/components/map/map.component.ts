@@ -39,9 +39,7 @@ export class MapComponent implements OnInit {
 
   fillCovidData(type: string): any[] {
     let data: any[] = [];
-    console.log(this.MapData)
     this.MapData.forEach((element:any) => {
-      console.log(element)
       data.push({
         id: "US-" + element.state,
         value: element.positive
