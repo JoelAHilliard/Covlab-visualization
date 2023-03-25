@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
-  @Input() message: string = 'This web-app is not be fully optimized for mobile devices.';
+  @Input() message: string = 'For the best experience, view on desktop.';
   @Input() backgroundColor: string = '#f8d7da';
 
 
