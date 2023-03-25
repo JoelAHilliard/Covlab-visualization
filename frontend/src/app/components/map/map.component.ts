@@ -65,7 +65,9 @@ export class MapComponent implements OnInit {
       panX: "rotateX",
       panY: "none",
       projection: am5map.geoAlbersUsa(),
-      layout: this.root.horizontalLayout
+      layout: this.root.horizontalLayout,
+      maxZoomLevel: 1, 
+      minZoomLevel: 1  
     }));
 
     // Create polygon series

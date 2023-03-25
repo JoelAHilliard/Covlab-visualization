@@ -100,6 +100,7 @@ export class CasesCountries implements OnInit {
 
   //slider options
   options: Options = {
+    //x-axis vals
     stepsArray: this.dateRange.map((date: Date) => {
       return { value: date.getTime() };
     }),

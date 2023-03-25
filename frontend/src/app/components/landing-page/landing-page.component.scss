@@ -15,7 +15,7 @@ h1 {
 p {
   color: white;
   text-align: center;
-  margin: 0;
+  margin: 5px;
 }
 .description{
   width: 50%;
@@ -23,6 +23,7 @@ p {
   display: flex;
   align-items: center;
   text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+  margin:5px;
 }
 .infoWrapper {
   display: flex;

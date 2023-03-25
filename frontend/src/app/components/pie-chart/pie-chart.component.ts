@@ -42,7 +42,6 @@ export class PieChartComponent implements OnInit {
   getScreenSize() {
         this.screenHeight = window.innerHeight;
         this.screenWidth = window.innerWidth;
-        console.log(this.screenWidth);
         if(this.screenWidth == this.previousWidth){
           return
         }

@@ -6,18 +6,26 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
-  @Input() message: string = 'This webapp is not be fully optimized for mobile devices.';
+  @Input() message: string = 'This web-app is not be fully optimized for mobile devices.';
   @Input() backgroundColor: string = '#f8d7da';
+
+
+  @Input() hasCloseButton: boolean = true;
+
+  @Input() popUpTime: number = 3000;
+
   opacity: number = 0;
 
   ngOnInit() {
-    if(this.isMobile()){
-      this.closePopup();
+    if (this.isMobile()) {
+        this.closePopup();
     }
+    console.log(this.popUpTime)
     setTimeout(() => {
-      this.fadeOut();
-    }, 3000);
+        this.fadeOut();
+    }, this.popUpTime);
   }
+
 
   fadeIn() {
     this.opacity = 1;
@@ -26,11 +34,11 @@ export class PopupComponent implements OnInit {
   fadeOut() {
     this.opacity = 0;
     setTimeout(() => {
-      this.closePopup();
-    }, 3500);
+        this.closePopup();
+    }, 0); // Use a constant value or a new @Input() property
   }
+
   isMobile(): boolean {
-    console.log(window.innerWidth >= 420)
     return window.innerWidth >= 420;
   }
   closePopup() {

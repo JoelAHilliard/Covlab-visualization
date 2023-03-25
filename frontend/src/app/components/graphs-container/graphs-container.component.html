@@ -1,6 +1,6 @@
 
 <app-nav-bar></app-nav-bar>
-<app-popup style="z-index: 5; margin: auto; font-size: 10px;" backgroundColor="#f8d7da"></app-popup>
+<app-popup style="z-index: 5; margin: auto; font-size: 10px;" backgroundColor="#f8d7da" [hasCloseButton]="true" [popUpTime]="10000"></app-popup>
 <br>
 <mat-card class="mat-elevation-z8" class="graphCard"> 
 <app-tweet-line></app-tweet-line>
@@ -13,9 +13,7 @@
 </mat-card>
 <br>
 <mat-card class="mat-elevation-z8" class="graphCard">
-    
     <app-pie-chart></app-pie-chart>
- 
 </mat-card>
 <br>
 <div>
@@ -29,4 +27,10 @@
         <app-table></app-table>
     </div>
 </mat-card>
+<br>
+<!-- <mat-card class="mat-elevation-z8" class="graphCard">
+    <div style="width:97%; margin:auto;">
+        <app-symptom-relationship></app-symptom-relationship>
+    </div>
+</mat-card> -->
 <app-footer></app-footer>

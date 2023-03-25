@@ -1,73 +1,72 @@
 mat-slider {
-    width: 100%;
-  }
-/* Define a custom class for the slider */
+  width: 100%;
+}
+
 .custom-slider {
   margin-top: 5px;
   width: 70%;
 }
-/* Change the color of the selected tick */
 
-::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
-  background-color: #ff726f!important;
-}
 ::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active {
-  background-color: darkred!important;
-  &:focus { outline: 2px solid #ff726f !important; }
+  background-color: darkred !important;
+}
 
+::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:after,
+::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:focus {
+  background-color: #ff726f !important;
+  outline: 2px solid #ff726f !important;
 }
+
 span.ngx-slider .ngx-slider-bar-wrapper {
-  padding-top:25px;
+  padding-top: 25px;
 }
-.mat-form-field.mat-focused .mat-form-field-ripple{
-  background-color: red;
-}
-::ng-deep .mat-form-field-ripple {
-  background-color: lightgray !important;
-  color:lightgray !important;
-}
+
+::ng-deep .mat-form-field-ripple,
 ::ng-deep .mat-form-field-underline {
   background-color: lightgray !important;
 }
+
 .filterTab {
   width: 20%;
   margin: 5px;
-
 }
+
+.title {
+  font-size: 20px;
+  margin: 2px;
+  font-family: 'Avenir', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (min-width: 953px) {
   .title {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
     text-align: left;
-    margin:2px;
   }
-  .filterTab {
-    width:20%;
-    margin-top:4px;
-    font-family: 'Avenir', sans-serif;
 
-  }
-  .container {
-    display: flex; flex-flow: row; justify-content: space-between;
+  .filterTab {
+    width: 20%;
+    margin-top: 4px;
   }
 }
-@media only screen and (max-width: 953px) {
 
+@media only screen and (max-width: 953px) {
   .title {
     text-align: center;
-    font-size:21px;
-    font-family: 'Avenir', sans-serif;
+    font-size: 21px;
     margin: 5px;
-
-
   }
+
   .container {
-    display: flex; 
-    flex-flow: column; 
-    justify-content: space-between;
+    flex-flow: column;
   }
+
   .filterTab {
     margin: auto;
     width: 88%;

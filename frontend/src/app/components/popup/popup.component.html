@@ -1,6 +1,7 @@
 <div style="display: flex; flex-flow: row; justify-content: center;">
     <div class="popup" [style.background-color]="backgroundColor" [style.opacity]="opacity" (transitionend)="closePopup()">
+        <button class="close-btn" *ngIf="hasCloseButton" (click)="closePopup()">x</button>
         <p class="message" [style.opacity]="opacity">Note:</p>
-        <p class="message" [style.opacity]="opacity">{{ message }}</p>
+        <p class="message" [style.opacity]="opacity">{{ message }}</p>  
     </div>
 </div>

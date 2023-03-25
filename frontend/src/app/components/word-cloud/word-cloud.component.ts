@@ -36,7 +36,8 @@ export class WordCloudComponent implements OnInit {
         type: 'wordcloud',
         data: cloud_data,
         name:"Occurrances",
-        minFontSize:8,
+        minFontSize: 3,
+        maxFontSize: 22,
         colors:["black","darkred","grey"]
       }],
       title: {

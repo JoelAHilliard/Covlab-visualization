@@ -16,4 +16,14 @@
     color: #333;
     transition: opacity 3.5s ease-in-out;
   }
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
   

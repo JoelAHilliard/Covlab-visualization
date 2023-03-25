@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  
 
   constructor(private router: Router) { }
 
@@ -18,6 +19,9 @@ export class FooterComponent implements OnInit {
     this.router.navigate([location])
     window.scrollTo(0,0);
 
+  }
+  goToAnnotators() {
+    window.open("https://forms.gle/2TQaY7tWAi72Mjs78","_blank");
   }
 
 }

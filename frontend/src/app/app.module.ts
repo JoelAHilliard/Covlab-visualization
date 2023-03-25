@@ -36,7 +36,8 @@ import { TweetLineComponent } from './components/tweet-line/tweet-line.component
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TeamComponent } from './components/team/team.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { PopupComponent } from './popup/popup.component';
+import { PopupComponent } from './components/popup/popup.component';
+import { SymptomRelationshipComponent } from './components/symptom-relationship/symptom-relationship.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { PopupComponent } from './popup/popup.component';
     TweetLineComponent,
     AboutUsComponent,
     TeamComponent,
-    PopupComponent
+    PopupComponent,
+    SymptomRelationshipComponent
   ],
   imports: [
     BrowserModule,
