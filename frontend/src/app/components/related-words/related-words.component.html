@@ -1,7 +1,7 @@
 <app-nav-bar></app-nav-bar>
 
-
-<mat-card class="mat-elevation-z8">
+<br>
+<mat-card class="mat-elevation-z8" style="background-color: grey;">
     <h1>Please input a keyword to find related words</h1>
     <form [formGroup]="relatedWordsForm" (ngSubmit)="searchRealtedWords()">        
         <mat-form-field appearance="fill">
@@ -40,4 +40,5 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 </mat-card>
+<br>
 <app-footer></app-footer>
