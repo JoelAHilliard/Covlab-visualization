@@ -14,6 +14,10 @@ Drilldown(Highcharts);
 })
 export class PieChartComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
+    onResize(event: any) {
+      this.getScreenSize();
+    }
+
 
   chartData: any;
 
