@@ -37,7 +37,7 @@ export class RelatedWordsComponent implements OnInit {
       this.dataSource = null;
       this.RelatedWords= [];
       //this.mlService.getRelatedWords(this.relatedWordsForm.value.word);
-      this.twitterDataService.getRelatedWords(this.relatedWordsForm.value.word).subscribe(
+      this.twitterDataService.getRelatedWords(String(this.relatedWordsForm.value.word)).subscribe(
         (response: any[]) => {
         var i = 0;
         response.forEach(element => {
