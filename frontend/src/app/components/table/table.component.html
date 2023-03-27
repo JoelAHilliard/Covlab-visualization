@@ -58,9 +58,9 @@
       </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="columndefs"></tr>
-      <tr mat-row *matRowDef="let row; columns: columndefs;"></tr>
+      <tr mat-row *matRowDef="let row; columns: columndefs; let i = index" [ngClass]="{'first-row': i === 0 && paginator.pageIndex === 0}"></tr>
     
   </table>
-  <mat-paginator style="color: black;" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+  <mat-paginator #paginator style="color: black;" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
   <br>
 </div> 

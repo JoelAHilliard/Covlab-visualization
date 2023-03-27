@@ -11,21 +11,11 @@ th.mat-header-cell {
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
     color: red !important;
 }
-tr.mat-row:first-child > td{
-    font-weight:bold;
+
+.first-row {
+    font-weight: bold;
     font-size: 1000;
     background-color: #F1F1F1;
     padding-left: 12px;
-
-    // background-color:#a9a9a9;
-
-}
-tr.mat-row:not(:first-child) > td {
-    padding-left: 12px;
-}
-th.mat-header-cell {
-    padding-left: 12px;
-}
-.mat-paginator-page-link.mat-paginator-current {
-    color: black;
-}
+  }
+  
