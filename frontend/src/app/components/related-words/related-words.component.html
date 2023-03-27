@@ -1,8 +1,9 @@
 <app-nav-bar></app-nav-bar>
 
-<br>
 <div class="wrapper">
   <div class="content">
+<br>
+
     <mat-card class="mat-elevation-z8" style="background-color: grey;">
       <h1>Please input a keyword to find related words</h1>
       <form [formGroup]="relatedWordsForm" (ngSubmit)="searchRealtedWords()">        
