@@ -9,6 +9,9 @@
   height: 10%;
   min-height: 38px;
 }
+.mat-card {
+  font-family: 'Nunito', sans-serif;
+}
 h1 {
   font: 75px 'Bebas Neue', sans-serif;
 }
@@ -79,7 +82,6 @@ p {
   background-size: auto;
   background-position: center;
   overflow: hidden;
-  font-family: 'Avenir', sans-serif;
   max-height: 1000px;
 }
 
@@ -110,7 +112,6 @@ p {
     align-items: center;
   }
   p {
-    font-family: 'Avenir', sans-serif;
 
     font-size: 35px;
   }
@@ -154,7 +155,6 @@ p {
   p {
     width: 100%;
     font-size: 40px;
-    font-family: 'Avenir', sans-serif;
 
   }
   .landingPageData {

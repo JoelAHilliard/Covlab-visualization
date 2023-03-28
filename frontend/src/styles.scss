@@ -3,9 +3,10 @@
 html, body {
     height: 100%;
     margin: 0;
+    font-family: 'Nunito', sans-serif;
   }
   
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: black; }
+body { margin: 0; font-family: 'Nunito', sans-serif; background-color: black; }
 .wrapper {
     display: flex;
     flex-direction: column;

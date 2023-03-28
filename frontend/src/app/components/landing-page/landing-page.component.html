@@ -10,7 +10,7 @@
             <div>
                 <div style="display: flex; flex-flow: row; width: 100%; justify-content: center; gap: 15px;">
                     <div *ngIf="!isLoading" [@slideInOut]>
-                        <p class="dataTitle" style="font-family: 'Roboto';">Total Tweets</p>
+                        <p class="dataTitle">Total Tweets</p>
                         <h4 >{{totalTweets | shortNumber}}</h4>
                     </div >
                     <div *ngIf="!isLoading" [@slideInOut]>
