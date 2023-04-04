@@ -100,6 +100,9 @@ export class PieChartComponent implements OnInit {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
         pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
       },
+      credits:{
+        enabled:false
+      },
       chart: {
         type: "pie",
         renderTo: "container",
@@ -142,6 +145,9 @@ export class PieChartComponent implements OnInit {
     Highcharts.chart({
       title:{
         text:""
+      },
+      credits:{
+        enabled:false
       },  
       tooltip: {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',

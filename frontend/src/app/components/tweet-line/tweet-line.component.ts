@@ -290,6 +290,9 @@ export class TweetLineComponent implements OnInit {
       title :{
         text:''
       },
+      credits:{
+        enabled:false
+      },
       xAxis: {
           categories: this.days,
           tickInterval:10,

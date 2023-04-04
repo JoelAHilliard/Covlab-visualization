@@ -42,6 +42,9 @@ export class WordCloudComponent implements OnInit {
 
   createWordCloud(cloud_data:any[]){
     Highcharts.chart('wordcloud', {
+      credits:{
+        enabled:false
+      },
       series: [{
         type: 'wordcloud',
         data: cloud_data,
