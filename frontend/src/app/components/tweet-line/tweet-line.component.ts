@@ -290,8 +290,8 @@ export class TweetLineComponent implements OnInit {
       title :{
         text:''
       },
-      credits:{
-        enabled:false
+      credits: {
+        text:"covlab.tech"
       },
       xAxis: {
           categories: this.days,

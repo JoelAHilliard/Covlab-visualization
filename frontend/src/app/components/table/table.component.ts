@@ -29,6 +29,7 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     axios.get('https://covlab-backend-production.up.railway.app/tableData')
       .then( (response) => {
+        console.log(response.data)
         this.data = response.data;
         this.dataSource = new MatTableDataSource<TableEntry>(this.data);
         this.isLoading = false;

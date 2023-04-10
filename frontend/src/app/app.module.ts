@@ -38,6 +38,11 @@ import { TeamComponent } from './components/team/team.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PopupComponent } from './components/popup/popup.component';
 import { SymptomRelationshipComponent } from './components/symptom-relationship/symptom-relationship.component';
+import { SymptomsPiechartComponent } from './components/symptoms-piechart/symptoms-piechart.component';
+import { RecoveryTimeChartComponent } from './components/recovery-time-chart/recovery-time-chart.component';
+import { AllSymtpomsPieChartComponent } from './components/all-symtpoms-pie-chart/all-symtpoms-pie-chart.component';
+import { ReinfectionProportionGraphComponent } from './components/reinfection-proportion-graph/reinfection-proportion-graph.component';
+import { ReinfectionSymptomsDurationChartComponent } from './components/reinfection-symptoms-duration-chart/reinfection-symptoms-duration-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +64,8 @@ import { SymptomRelationshipComponent } from './components/symptom-relationship/
     TeamComponent,
     PopupComponent,
     SymptomRelationshipComponent
-  ],
+  , SymptomsPiechartComponent
+  , RecoveryTimeChartComponent, AllSymtpomsPieChartComponent, ReinfectionProportionGraphComponent, ReinfectionSymptomsDurationChartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

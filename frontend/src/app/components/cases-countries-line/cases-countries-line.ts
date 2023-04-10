@@ -322,8 +322,8 @@ export class CasesCountries implements OnInit {
       chart:{
         animation:false
       },
-      credits:{
-        enabled:false
+      credits: {
+        text:"covlab.tech"
       },
       boost: {
         useGPUTranslations: true,

@@ -35,6 +35,7 @@ export class WordCloudComponent implements OnInit {
     this.isDataLoading = true;
     axios.get("https://covlab-backend-production.up.railway.app/wordCloudData")
     .then((res:any) => {
+      console.log(res)
       this.createWordCloud(res.data);
       this.isDataLoading = false;
     })
@@ -42,8 +43,8 @@ export class WordCloudComponent implements OnInit {
 
   createWordCloud(cloud_data:any[]){
     Highcharts.chart('wordcloud', {
-      credits:{
-        enabled:false
+      credits: {
+        text:"covlab.tech"
       },
       series: [{
         type: 'wordcloud',

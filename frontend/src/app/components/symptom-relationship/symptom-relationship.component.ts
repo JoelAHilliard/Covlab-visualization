@@ -39,6 +39,9 @@ export class SymptomRelationshipComponent {
       text: 'Related Symptoms',
       
   },
+  credits: {
+    text:"covlab.tech"
+  },
   boost:{
     enabled:true
   },

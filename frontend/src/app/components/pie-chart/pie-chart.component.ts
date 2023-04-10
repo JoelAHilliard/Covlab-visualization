@@ -100,8 +100,8 @@ export class PieChartComponent implements OnInit {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
         pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
       },
-      credits:{
-        enabled:false
+      credits: {
+        text:"covlab.tech"
       },
       chart: {
         type: "pie",
