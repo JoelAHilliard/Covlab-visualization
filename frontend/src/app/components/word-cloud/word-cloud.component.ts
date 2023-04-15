@@ -30,7 +30,17 @@ export class WordCloudComponent implements OnInit {
       this.minFont = 3;
     }
   }
-
+  normalizeWeights(data:any) {
+    const minWeight = Math.min(...data.map((item:any) => Math.log(item.weight)));
+    const maxWeight = Math.max(...data.map((item:any) => Math.log(item.weight)));
+  
+    return data.map((item:any) => {
+      const normalizedWeight = Math.floor((Math.log(item.weight) - minWeight) / (maxWeight - minWeight) * 100);
+      return [item.name, normalizedWeight];
+    });
+  }
+  
+  
   grabWordCloudData(){
     this.isDataLoading = true;
     axios.get("https://covlab-backend-production.up.railway.app/wordCloudData")
@@ -42,17 +52,25 @@ export class WordCloudComponent implements OnInit {
   }
 
   createWordCloud(cloud_data:any[]){
+
+    let data = this.normalizeWeights(cloud_data);
+
     Highcharts.chart('wordcloud', {
       credits: {
         text:"covlab.tech"
       },
       series: [{
         type: 'wordcloud',
-        data: cloud_data,
+        data: data,
         name:"Occurrances",
-        minFontSize: 3,
-        maxFontSize: this.maxFont,
-        colors:["black","darkred","grey"]
+        minFontSize: 10,
+        maxFontSize: 30,
+        colors:["black","darkred","grey"],
+        rotation: {
+          from: 0,
+          to: 0,
+          orientations: 5
+        }
       }],
       title: {
         text: 'Covlab Wordcloud',

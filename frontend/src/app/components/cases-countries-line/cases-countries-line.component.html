@@ -22,7 +22,7 @@
             
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'block'}" ngClass="graph" id="chartContainer" style="overflow: visible !important; "></div>
         <div [ngStyle]="{'display': isDataLoading ? 'none': 'flex','flex-flow':'row','justify-content':'center'}">
-            <ngx-slider class="custom-slider" style="width: 85%;"  [value]="minValue" [highValue]="maxValue" [options]="options" (userChange)="updateData($event)" ></ngx-slider>
+            <ngx-slider class="custom-slider" [value]="minValue" [highValue]="maxValue" [options]="options" (userChange)="updateData($event)" ></ngx-slider>
         </div>
     </div>
 

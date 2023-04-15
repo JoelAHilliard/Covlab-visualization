@@ -31,9 +31,22 @@ export class TableComponent implements OnInit {
       .then( (response) => {
         console.log(response.data)
         this.data = response.data;
+
+        let usPositivity = 0;
+
+        //this should be done server side. or db side.
+        for(let i = 1; i<this.data.length; i++){
+          if(this.data[i].positivity != "N/A"){
+            usPositivity += Number(this.data[i].positivity)
+          } 
+        }
+
+
+        this.data[0].positivity = usPositivity / this.data.length - 1;
+
         this.dataSource = new MatTableDataSource<TableEntry>(this.data);
         this.isLoading = false;
-        this.dataSource.paginator = this.paginator
+        this.dataSource.paginator = this.paginator        
       })
       .catch( (error) =>{
         console.error(error)

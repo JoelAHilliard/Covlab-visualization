@@ -1,4 +1,4 @@
-<div [ngStyle]="{'min-height':'150px','text-align':'center'}" style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto; align-items: center;">
+<div class="tableContainer" [ngStyle]="{'min-height':'150px','text-align':'center'}" style="display: flex; flex-flow:column; justify-content: space-evenly; margin: auto; align-items: center;">
 
   <img src="../../../assets/images/loading.gif" [ngStyle]="{'display': isLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
     <p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto','text-align':'center'}">Failed to load</p>

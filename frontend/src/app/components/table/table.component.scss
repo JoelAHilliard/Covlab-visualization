@@ -19,3 +19,12 @@ th.mat-header-cell {
     padding-left: 12px;
   }
   
+.tableContainer {
+    width: 80%;
+}
+
+@media screen and (max-width: 799px) {
+    .tableContainer {
+        width: 100%;
+    }
+}

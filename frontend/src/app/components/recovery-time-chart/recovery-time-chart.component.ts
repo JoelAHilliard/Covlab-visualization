@@ -53,6 +53,9 @@ export class RecoveryTimeChartComponent implements OnInit{
         crosshair: true,
         visible:false,
         labels:{
+        },
+        title:{
+          text:"Recovered Days"
         }
       }],
       yAxis: [

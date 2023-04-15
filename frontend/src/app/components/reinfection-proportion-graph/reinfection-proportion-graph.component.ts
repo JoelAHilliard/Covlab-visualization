@@ -24,7 +24,8 @@ export class ReinfectionProportionGraphComponent {
         "tooltip": {
           "valueSuffix": "%"
         },
-        "yAxis":'pct'
+        "yAxis":'pct',
+        
       }
     ]
   }
@@ -49,9 +50,14 @@ export class ReinfectionProportionGraphComponent {
       xAxis: [{
         categories: data.categories,
         crosshair: true,
-        visible:false,
+        visible:true,
         labels:{
+          
+        },
+        title:{
+          text:"Reinfection times"
         }
+        
       }],
       yAxis: [
         {

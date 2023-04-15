@@ -325,6 +325,11 @@ export class CasesCountries implements OnInit {
       credits: {
         text:"covlab.tech"
       },
+      exporting:{
+        scale:10,
+        width: 2000,
+        
+      },
       boost: {
         useGPUTranslations: true,
         seriesThreshold: 2

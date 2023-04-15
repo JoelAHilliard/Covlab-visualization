@@ -8,11 +8,7 @@
 //     border-color: red !important;
 //     &:focus { outline:0!important; }
 // }
-.filterTab {
-  width: 20%;
-  margin: 5px;
 
-}
 @media only screen and (min-width: 953px) {
   .title {
     display: flex;
@@ -44,9 +40,43 @@
     display: flex; 
     flex-flow: column; 
     justify-content: space-between;
+  }  
+}
+
+@media only screen and (min-width: 953px) {
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
   }
+
   .filterTab {
-    margin: auto;
-    width: 88%;
+    width: 20%;
+    margin-top: 4px;
+  }
+  
+  .custom-slider {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1052px) {
+  .custom-slider {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-slider {
+    width: 85%;
+  }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+  .custom-slider {
+    width: 70%;
   }
 }

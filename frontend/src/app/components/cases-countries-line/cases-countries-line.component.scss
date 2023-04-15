@@ -3,8 +3,8 @@ mat-slider {
 }
 
 .custom-slider {
-  margin-top: 5px;
-  width: 70%;
+  width: 95%;
+  margin-top: 35px;
 }
 
 ::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active {
@@ -13,8 +13,8 @@ mat-slider {
 
 ::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:after,
 ::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:focus {
-  background-color: #ff726f !important;
-  outline: 2px solid #ff726f !important;
+  background-color: white !important;
+  outline: 2px solid darkred !important;
 }
 
 span.ngx-slider .ngx-slider-bar-wrapper {
@@ -26,20 +26,39 @@ span.ngx-slider .ngx-slider-bar-wrapper {
   background-color: lightgray !important;
 }
 
-.filterTab {
-  width: 20%;
-  margin: 5px;
+@media only screen and (min-width: 953px) {
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-align: left;
+    margin:2px;
+  }
+  .filterTab {
+    width:20%;
+    margin-top:4px;
+
+  }
+  .container {
+    display: flex; flex-flow: row; justify-content: space-between;
+  }
 }
 
-.title {
-  font-size: 20px;
-  margin: 2px;
-  font-family: 'Avenir', sans-serif;
-}
+@media only screen and (max-width: 953px) {
 
-.container {
-  display: flex;
-  justify-content: space-between;
+  .title {
+    text-align: center;
+    font-size:21px;
+    margin: 5px;
+
+
+  }
+  .container {
+    display: flex; 
+    flex-flow: column; 
+    justify-content: space-between;
+  }  
 }
 
 @media only screen and (min-width: 953px) {
@@ -54,21 +73,27 @@ span.ngx-slider .ngx-slider-bar-wrapper {
     width: 20%;
     margin-top: 4px;
   }
+  
+  .custom-slider {
+    width: 95%;
+  }
 }
 
-@media only screen and (max-width: 953px) {
-  .title {
-    text-align: center;
-    font-size: 21px;
-    margin: 5px;
+@media only screen and (max-width: 1052px) {
+  .custom-slider {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-slider {
+    width: 85%;
   }
 
-  .container {
-    flex-flow: column;
-  }
+}
 
-  .filterTab {
-    margin: auto;
-    width: 88%;
+@media only screen and (max-width: 600px) {
+  .custom-slider {
+    width: 70%;
   }
 }

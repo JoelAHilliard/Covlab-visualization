@@ -251,7 +251,7 @@ export class TweetLineComponent implements OnInit {
           name: datasets[i].label,
           data: datasets[i].data,
           color: randomColor,
-          yAxis:i,
+          yAxis:0,
           marker: {
             lineWidth: 1,
             lineColor: randomColor,
@@ -259,12 +259,20 @@ export class TweetLineComponent implements OnInit {
             enabled:false
           }
         };
+        
+       
+
+        //used to duplicate the y-axis to the right as well
         seriesArray.push(seriesItem);
     }
 
     this.highcharts = Highcharts.chart('chartContainer1', {
       chart:{
         animation:false
+      },
+      exporting:{
+        scale:10,
+        width: 2000,
       },
       boost: {
         useGPUTranslations: true,
@@ -311,13 +319,10 @@ export class TweetLineComponent implements OnInit {
       yAxis: [
         { // Primary yAxis
           gridLineWidth:0,
-        labels: {
-            
-            },
-            title: {
+          title: {
                 text: datasets[0].label,
               
-            },
+          },
           min:0,
           crosshair:{
             width:2,
@@ -327,21 +332,13 @@ export class TweetLineComponent implements OnInit {
         },
         { // Primary yAxis
           gridLineWidth:0,
-
-          labels: {
-              
-          },
           title: {
-              text: datasets.length == 1 ? "" : datasets[1].label,
+              text: datasets[0].label,
           },
           min:0,
           opposite:true,
-          crosshair:{
-            width:2,
-            color:"black",
-            dashStyle:"Dash"
-          },
-          
+          linkedTo:0
+        
         }
       ],
       series: seriesArray

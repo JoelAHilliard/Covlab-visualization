@@ -63,9 +63,13 @@ import { ReinfectionSymptomsDurationChartComponent } from './components/reinfect
     AboutUsComponent,
     TeamComponent,
     PopupComponent,
-    SymptomRelationshipComponent
-  , SymptomsPiechartComponent
-  , RecoveryTimeChartComponent, AllSymtpomsPieChartComponent, ReinfectionProportionGraphComponent, ReinfectionSymptomsDurationChartComponent],
+    SymptomRelationshipComponent, 
+    SymptomsPiechartComponent, 
+    RecoveryTimeChartComponent, 
+    AllSymtpomsPieChartComponent, 
+    ReinfectionProportionGraphComponent, 
+    ReinfectionSymptomsDurationChartComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
