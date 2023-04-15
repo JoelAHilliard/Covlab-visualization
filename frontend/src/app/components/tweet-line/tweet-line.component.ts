@@ -66,17 +66,15 @@ export class TweetLineComponent implements OnInit {
   dateRange: Date[] = this.createDateRange(this.startDate,this.endDate);
 
   minValue: number = this.dateRange[0].getTime();
+  
   maxValue: number = this.dateRange[this.dateRange.length-1].getTime();
   
   value: number = this.dateRange[0].getTime();
 
   currentLowVal: number = this.dateRange[0].getTime();
+  
   currentHighVal: number = this.dateRange[this.dateRange.length-1].getTime();
   
-
-
-
-
   options: Options = {
     stepsArray: this.dateRange.map((date: Date) => {
       return { value: date.getTime() };

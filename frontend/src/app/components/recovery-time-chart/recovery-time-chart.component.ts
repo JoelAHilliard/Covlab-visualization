@@ -51,11 +51,11 @@ export class RecoveryTimeChartComponent implements OnInit{
       xAxis: [{
         categories: data.categories,
         crosshair: true,
-        visible:false,
+        visible:true,
         labels:{
         },
         title:{
-          text:"Recovered Days"
+          text:"Reinfection times"
         }
       }],
       yAxis: [
