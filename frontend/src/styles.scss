@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'sass:map';
 
 html, body {
     height: 100%;
@@ -15,4 +16,91 @@ body { margin: 0; font-family: 'Nunito', sans-serif; background-color: black; }
 .content {
     background-color: grey;
     flex: 1;
+}
+@import '@angular/material/theming';
+
+
+$dark-grey: (
+  50: #eaeaea,
+  100: #c8c8c8,
+  200: #a3a3a3,
+  300: #7d7d7d,
+  400: #5c5c5c,
+  500: #3c3c3c,
+  600: #2f2f2f,
+  700: #232323,
+  800: #171717,
+  900: #0c0c0c,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$burgundy: (
+  50: #f3e7e9,
+  100: #e0c0c7,
+  200: #c798a0,
+  300: #b16e78,
+  400: #9b4552,
+  500: #85272e,
+  600: #7b2029,
+  700: #6e1823,
+  800: #61101c,
+  900: #4a0311,
+  A100: #ffffff,
+  A200: #ffd5db,
+  A400: #ffa2b1,
+  A700: #ff8997,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+
+// If you already have a custom theme defined, skip these lines.
+@include mat-core();
+$primary: mat-palette($dark-grey);
+$accent: mat-palette($burgundy);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+// End of custom theme definition.
+
+.mat-snackbar-container.red-snackbar .mat-simple-snackbar {
+  color: red;
+}
+
+.mat-snackbar-container.red-snackbar .mat-simple-snackbar-action {
+  color: red;
 }

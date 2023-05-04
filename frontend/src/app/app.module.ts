@@ -43,6 +43,8 @@ import { RecoveryTimeChartComponent } from './components/recovery-time-chart/rec
 import { AllSymtpomsPieChartComponent } from './components/all-symtpoms-pie-chart/all-symtpoms-pie-chart.component';
 import { ReinfectionProportionGraphComponent } from './components/reinfection-proportion-graph/reinfection-proportion-graph.component';
 import { ReinfectionSymptomsDurationChartComponent } from './components/reinfection-symptoms-duration-chart/reinfection-symptoms-duration-chart.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +91,8 @@ import { ReinfectionSymptomsDurationChartComponent } from './components/reinfect
     NgxSliderModule,
     NgxDatatableModule,
     MatPaginatorModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

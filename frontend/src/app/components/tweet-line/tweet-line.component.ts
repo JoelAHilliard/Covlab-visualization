@@ -301,11 +301,10 @@ export class TweetLineComponent implements OnInit {
       },
       xAxis: {
           categories: this.days,
-          tickInterval:10,
           labels:{
-            step:10,
             rotation:-20,
-            y:25,    
+            y:25,
+              
           },
           crosshair:{
             width:2,

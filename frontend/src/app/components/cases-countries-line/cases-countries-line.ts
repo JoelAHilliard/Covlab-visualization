@@ -274,6 +274,9 @@ export class CasesCountries implements OnInit {
       });
       
   }
+  isMobile(): boolean {
+    return window.innerWidth <= 420;
+  }
   // code that creates the chart
   makeHighchart(datasets: any){
     let colors: string[] = ["darkred","blue"];
@@ -287,6 +290,9 @@ export class CasesCountries implements OnInit {
     let yAxisIndex = 0;
 
     let yAxisLabels = []
+
+    const categoryCount = this.days.length;
+    const stepSize = window.innerWidth <= 420 ? Math.floor(categoryCount / 3) : 1;
 
     for(let i = 0; i < datasets.length; i++) {
 
@@ -355,20 +361,13 @@ export class CasesCountries implements OnInit {
         text:''
       },
       xAxis: {
-          categories: this.days,
-          tickInterval:10,
-          labels:{
-            step:10,
-            rotation:-20,
-            y:25,    
-          },
-          crosshair:{
-            width:2,
-            color:"black",
-            dashStyle:"Dash"
-          }
-        
-      },
+        categories: this.days,
+        labels: {
+          rotation: -20,
+          y: 25,
+      
+        },
+      },      
       yAxis: [
         { // Primary yAxis
           gridLineWidth:0,
