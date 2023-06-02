@@ -12,14 +12,14 @@
             <mat-card class="mat-elevation-z8" [ngStyle]="{'display': ! didDataLoad ? 'none': 'block'}">
             
             
-                <div [ngStyle]="{'display': ! didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">
+                <!-- <div [ngStyle]="{'display': ! didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">
                     <mat-radio-group aria-label="Select an option" (change)="createMap($event.value)">
                         <mat-radio-button value="positive" checked="true">Positive</mat-radio-button>
-                        <!-- <mat-radio-button value="negative">Negative</mat-radio-button>
+                         <mat-radio-button value="negative">Negative</mat-radio-button>
                         <mat-radio-button value="probable">Probable</mat-radio-button>
                         <mat-radio-button value="model">Model Predicted</mat-radio-button> -->
-                    </mat-radio-group>
-                </div>
+                    <!-- </mat-radio-group> -->
+                <!-- </div> -->
                 <mat-card-title [ngStyle]="{'display': !didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}">Cases by States</mat-card-title>
                 
                 <div [ngStyle]="{'display': !didDataLoad ? 'none': 'block','margin':'auto','text-align':'center'}" id="mapdiv" style="width: 100%; height: 500px">

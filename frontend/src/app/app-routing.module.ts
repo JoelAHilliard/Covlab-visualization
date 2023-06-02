@@ -6,15 +6,17 @@ import { GraphsContainerComponent } from './components/graphs-container/graphs-c
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TeamComponent } from './components/team/team.component';
+
 const routes: Routes = [
+
   {path: 'map', component: MapComponent},
   {path: 'related-words', component: RelatedWordsComponent},
   {path: 'graphs', component: GraphsContainerComponent},
   {path: 'home', component: LandingPageComponent},
   {path: 'aboutus', component: AboutUsComponent},
   {path: 'team', component: TeamComponent},
-
   {path: '', redirectTo: '/home', pathMatch: 'full'}
+  
 ];
 
 @NgModule({

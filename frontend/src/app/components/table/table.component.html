@@ -2,6 +2,7 @@
 
   <img src="../../../assets/images/loading.gif" [ngStyle]="{'display': isLoading && didDataLoad ? 'block': 'none','margin':'auto'}">
     <p [ngStyle]="{'display': !didDataLoad ? 'block': 'none','margin':'auto','text-align':'center'}">Failed to load</p>
+    <h2>State Trends</h2>
   <table style="width: 100%; margin-bottom:20px;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" [ngStyle]="{'display': !isLoading ? 'table': 'none', 'flex-flow':'column'}">
       
     <ng-container matColumnDef="state">

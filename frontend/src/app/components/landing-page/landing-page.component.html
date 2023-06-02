@@ -71,5 +71,31 @@
         </div>
     </mat-card>
     <br>
+    <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px;">
+        <div class="infoWrapper" id="secondCard">
+            <div class="description">
+                <p style="text-align: center; font-size: 20px;">Counting the proportions of symptoms, and discovering unrecognized new symptoms.</p>
+            </div>  
+            <div  class="imgContainer">
+                <img id="graphImage" (click)="goToApp()" src="../../../assets/images/symptoms.png">
+                <!-- <img (click)="goToMap()" class="externalLink" src="../../../assets/images/externalLink.png" alt=""> -->
+
+            </div>    
+        </div>
+    </mat-card>
+    <br>
+    <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px;">
+        <div class="infoWrapper">
+            <div class="description">
+                <p style="text-align: center; font-size: 20px;">Track the new cases by state over a 14-day period. Top 10 symtpoms mentioned by self-reported positive patients.</p>
+            </div>  
+            <div  class="imgContainer">
+                <img id="graphImage" (click)="goToApp()" src="../../../assets/images/statetrends.png">
+                <!-- <img (click)="goToMap()" class="externalLink" src="../../../assets/images/externalLink.png" alt=""> -->
+
+            </div>    
+        </div>
+    </mat-card>
+    <br>
 </div>
 <app-footer></app-footer>

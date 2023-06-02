@@ -10,15 +10,15 @@ Wordcloud(Highcharts);
   styleUrls: ['./word-cloud.component.scss']
 })
 export class WordCloudComponent implements OnInit {
+
   isDataLoading = false;
 
-
   maxFont = 22;
-  minFont = 3
-  
 
+  minFont = 3;
 
   didDataLoad = true;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -45,7 +45,6 @@ export class WordCloudComponent implements OnInit {
     this.isDataLoading = true;
     axios.get("https://covlab-backend-production.up.railway.app/wordCloudData")
     .then((res:any) => {
-      console.log(res)
       this.createWordCloud(res.data);
       this.isDataLoading = false;
     })
@@ -76,9 +75,9 @@ export class WordCloudComponent implements OnInit {
         text: 'Covlab Wordcloud',
         align:'center',
         style: {
-          fontFamily:'avenir',
           fontSize:'22px',
           fontWeight:'bold'
+          
         }
       }
     });

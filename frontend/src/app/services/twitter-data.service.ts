@@ -12,17 +12,18 @@ export class TwitterDataService {
   apiDomain= GlobalConstants.apiDomain;
   apiPort = GlobalConstants.apiPort;
 
-  apiURL = this.apiDomain+ ":"+this.apiPort;
+  apiURL = this.apiDomain + ":" + this.apiPort;
 
 
   constructor(private http:HttpClient) { }
+
   getRelatedWords(word: string): any {
     const relatedWordsURL = "https://labelling.covlab.tech/word"
 
 
     const body = new URLSearchParams();
 
-    body.set('word',word)
+    body.set('word', word)
     
     const options = {
       headers: new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded")
@@ -31,6 +32,7 @@ export class TwitterDataService {
     return this.http.post<any[]>(relatedWordsURL, body.toString(), options);
 
   }
+
   getSource(): any {
     return this.http.get<TwitterData[]>(this.apiURL + "/source?key=source");
   }
@@ -40,7 +42,7 @@ export class TwitterDataService {
   }
 
   getWeeklyAvgPositiveCases(year: string): any {
-    return this.http.get<any[]>(this.apiURL + "/dailyPositiveNumber?year="+year);
+    return this.http.get<any[]>(this.apiURL + "/dailyPositiveNumber?year=" + year);
   }
 
  
