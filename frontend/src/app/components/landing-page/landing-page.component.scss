@@ -33,6 +33,7 @@ p {
   align-items: center;
   flex-flow: row;
   overflow: hidden;
+  min-height: 400px;
 }
 .imgContainer{
   width:50%;
@@ -42,8 +43,6 @@ p {
 }
 #secondCard {
   flex-flow: row-reverse;
-  min-height: 275px;
-
 }
 
 @media only screen and (max-width: 1100px) {

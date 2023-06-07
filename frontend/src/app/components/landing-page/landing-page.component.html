@@ -35,7 +35,7 @@
     <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px; ">
         <div class="infoWrapper">
             <div class="description" >
-                <p style="color: white;  text-align: center; font-size: 20px;">Based on manual-labeled tweets, we trained a Natural Language Processing (NLP) model to select the description of the self-reported covid positive tweets. The comparison with real daily cases has shown in the graph.</p>
+                <p style="color: white;  text-align: center;">Based on manual-labeled tweets, we trained a Natural Language Processing (NLP) model to select the description of the self-reported covid positive tweets. The comparison with real daily cases has shown in the graph.</p>
             </div>
             <div class="imgContainer">
                 <img id="graphImage" (click)="goToApp()" src="../../../assets/images/line-graph.jpg">
@@ -44,10 +44,10 @@
         </div>
     </mat-card>
     <br>
-    <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; display: flex; margin:auto; padding: 5px; align-content: center;">
+    <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px; ">
         <div class="infoWrapper" id="secondCard">
             <div class="description" >
-                <p style="color: white;  text-align: center; font-size: 20px;">The pie chart shows the total collected tweets sum, model predicted positive percentage and the current labelling status percentage.</p>
+                <p style="color: white; ">The pie chart shows the total collected tweets sum, model predicted positive percentage and the current labelling status percentage.</p>
             </div> 
             <div class="imgContainer">
                <img id="graphImage" (click)="goToApp()" src="../../../assets/images/pieChart.jpg">
@@ -61,7 +61,7 @@
     <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px;">
         <div class="infoWrapper">
             <div class="description">
-                <p style="text-align: center; font-size: 20px;">The US map shows the model predicted positive cases distribution of each state. Users can move cursor to each state to check the details. The darker color means the more people infected in that state.</p>
+                <p style="text-align: center;">The US map shows the model predicted positive cases distribution of each state. Users can move cursor to each state to check the details. The darker color means the more people infected in that state.</p>
             </div>  
             <div  class="imgContainer">
                 <img id="graphImage" (click)="goToMap()" src="../../../assets/images/usMap.jpg">
@@ -74,7 +74,7 @@
     <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px;">
         <div class="infoWrapper" id="secondCard">
             <div class="description">
-                <p style="text-align: center; font-size: 20px;">Counting the proportions of symptoms, and discovering unrecognized new symptoms.</p>
+                <p style="text-align: center;">Counting the proportions of symptoms, and discovering unrecognized new symptoms.</p>
             </div>  
             <div  class="imgContainer">
                 <img id="graphImage" (click)="goToApp()" src="../../../assets/images/symptoms.png">
@@ -87,7 +87,7 @@
     <mat-card class="mat-elevation-z8" style="background-color: gray; width:95%; margin:auto; padding: 5px;">
         <div class="infoWrapper">
             <div class="description">
-                <p style="text-align: center; font-size: 20px;">Track the new cases by state over a 14-day period. Top 10 symtpoms mentioned by self-reported positive patients.</p>
+                <p style="text-align: center;">Track the new cases by state over a 14-day period. Top 10 symtpoms mentioned by self-reported positive patients.</p>
             </div>  
             <div  class="imgContainer">
                 <img id="graphImage" (click)="goToApp()" src="../../../assets/images/statetrends.png">
