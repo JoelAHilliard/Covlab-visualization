@@ -4,20 +4,20 @@
 <div class="backgroundCss">
     <app-nav-bar style="width: 100%;"></app-nav-bar>
     <div class="background-overlay">
-        <div class="titleContainer">
+        <div class="titleContainer" *ngIf="!isLoading" [@slideInOut]>
             <p class="Covlab" style="padding-top: 15px;">Covlab</p>
             <p class="hook">Uncover the connection: Explore COVID-19 cases through tweets.</p>
             <div>
                 <div style="display: flex; flex-flow: row; width: 100%; justify-content: center; gap: 15px;">
-                    <div *ngIf="!isLoading" [@slideInOut]>
+                    <div *ngIf="!isLoading" >
                         <p class="dataTitle">Total Tweets</p>
                         <h4 >{{totalTweets | shortNumber}}</h4>
                     </div >
-                    <div *ngIf="!isLoading" [@slideInOut]>
+                    <div *ngIf="!isLoading" >
                         <p class="dataTitle" >Model Positive Tweets</p>
                         <h4 >{{modelPosTweets | shortNumber}}</h4>
                     </div>
-                    <div *ngIf="!isLoading" [@slideInOut]>
+                    <div *ngIf="!isLoading" >
                         <p class="dataTitle">Cases 14-day Avg</p>
                         <h4 >{{cases14Change | shortNumber}}</h4>
                     </div>

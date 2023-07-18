@@ -15,7 +15,7 @@ import axios from 'axios';
       }),
       animate('200ms ease-in', style({ 
         transform: 'translateY(0%)', 
-        opacity: 1
+        opacity: 0
       }))
     ]),
     transition(':leave', [
