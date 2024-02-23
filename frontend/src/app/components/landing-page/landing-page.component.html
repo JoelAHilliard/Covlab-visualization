@@ -17,10 +17,7 @@
                         <p class="dataTitle" >Model Positive Tweets</p>
                         <h4 >{{modelPosTweets | shortNumber}}</h4>
                     </div>
-                    <div *ngIf="!isLoading" >
-                        <p class="dataTitle">Cases 14-day Avg</p>
-                        <h4 >{{cases14Change | shortNumber}}</h4>
-                    </div>
+                   
 
                 </div>
                 <p class="lastUpdated" *ngIf="!isLoading" [@slideInOut]>{{updatedString}}</p>
